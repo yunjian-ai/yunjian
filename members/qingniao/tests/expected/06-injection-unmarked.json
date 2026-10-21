@@ -1,0 +1,6 @@
+{
+ "expect": [
+  "INJECTION_UNMARKED"
+ ],
+ "why": "资料夹带指令，没声明不执行"
+}

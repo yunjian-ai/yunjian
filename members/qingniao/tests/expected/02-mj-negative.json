@@ -1,0 +1,6 @@
+{
+ "expect": [
+  "MJ_NEGATIVE"
+ ],
+ "why": "Midjourney 写 no/without 反而容易出现，要用 --no"
+}

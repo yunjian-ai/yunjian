@@ -1,0 +1,18 @@
+name: ci
+on:
+  push:
+  pull_request:
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: 格式和禁用词检查
+        run: python3 tools/validate.py
+      - name: 配方是不是最新
+        run: python3 tools/pack.py --check
+      - name: 夹具和反向用例
+        run: python3 members/qingniao/tests/run_tests.py

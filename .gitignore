@@ -1,0 +1,8 @@
+.DS_Store
+__pycache__/
+*.pyc
+# Word 原件有同名 .txt，视频太大，都不进仓库
+*.docx
+*.mp4
+.env
+发布/
