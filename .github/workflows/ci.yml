@@ -14,5 +14,7 @@ jobs:
         run: python3 tools/validate.py
       - name: 配方是不是最新
         run: python3 tools/pack.py --check
-      - name: 夹具和反向用例
+      - name: 青鸟夹具和反向用例
         run: python3 members/qingniao/tests/run_tests.py
+      - name: 试金夹具和反向用例
+        run: python3 members/shijin/tests/run_tests.py

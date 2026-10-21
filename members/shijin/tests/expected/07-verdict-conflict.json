@@ -1,0 +1,6 @@
+{
+ "expect": [
+  "VERDICT_CONFLICT"
+ ],
+ "why": "有严重问题却判可以交"
+}

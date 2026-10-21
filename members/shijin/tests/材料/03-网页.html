@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>页面</title>
+<style>
+.btn{font-size:10px;padding:2px 4px}
+.btn2{font-size:10px;padding:2px 4px}
+</style>
+</head>
+<body>
+<h1>龙井茶</h1>
+<img src="tea-banner.jpg">
+<p>欢迎来到我们的茶叶店。</p>
+<a href="#">查看全部产品</a>
+<a href="https://example.com/old-page-404">联系我们</a>
+<form id="f"><input id="phone"><button class="btn" type="submit">提交</button></form>
+<button class="btn2" onclick="buy()">购买</button>
+<script>
+const API_KEY = "sk-示例0000-不是真密钥";
+console.log("debug: page loaded");
+function buy(){}
+document.getElementById('f').onsubmit = function(e){ e.preventDefault(); fetch('/api/save?phone=' + document.getElementById('phone').value + '&key=' + API_KEY); };
+</script>
+</body>
+</html>

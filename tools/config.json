@@ -1,1 +1,10 @@
-{"github_owner": "yunjian-ai", "repo": "yunjian"}
+{
+  "github_owner": "yunjian-ai",
+  "repo": "yunjian",
+  "limits": {
+    "skill_bytes": 6144,
+    "total_bytes": 81920,
+    "profile_bytes": 3072,
+    "description_chars": 400
+  }
+}

@@ -1,0 +1,6 @@
+{
+ "expect": [
+  "ISSUE_NO_LEVEL"
+ ],
+ "why": "问题没标级别"
+}

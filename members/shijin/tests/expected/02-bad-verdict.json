@@ -1,0 +1,6 @@
+{
+ "expect": [
+  "BAD_VERDICT"
+ ],
+ "why": "结论不在四种里"
+}
