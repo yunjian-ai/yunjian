@@ -41,5 +41,6 @@ def check(d):
 
 
 if __name__ == "__main__":
-    for f in sys.argv[1:]:
-        print(f, json.dumps(check(json.loads(Path(f).read_text(encoding="utf-8"))), ensure_ascii=False))
+    for name in sys.argv[1:]:
+        found = check(json.loads(Path(name).read_text(encoding="utf-8")))
+        print(name, "没问题" if not found else "、".join(f"{x['code']}（{x['hit']}）" for x in found))

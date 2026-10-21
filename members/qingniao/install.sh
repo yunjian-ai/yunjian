@@ -8,7 +8,10 @@ W=/tmp/yunjian-$T; RJ=/tmp/recipe-$T.json; rm -rf "${W:?}"
 git clone -q --depth 1 --branch "$T" "$R" "$W" 2>/dev/null && cp "$W/members/qingniao/dist/recipe.json" "$RJ" \
   || curl -fsSL "$RAW" -o "$RJ" || { echo "FETCH_FAILED $R"; exit 1; }
 # 技能目录：可用 QINGNIAO_SKILL_DIR 指定；否则找 Grok Bot 的技能目录
-D=${QINGNIAO_SKILL_DIR:-$(ls -d /home/box/agent-data/workflows /home/box/sand-data/workflows 2>/dev/null | head -1)}
+D=${QINGNIAO_SKILL_DIR:-}
+if [ -z "$D" ]; then
+  for cand in /home/box/agent-data/workflows /home/box/sand-data/workflows; do [ -d "$cand" ] && { D=$cand; break; }; done
+fi
 python3 - "$RJ" "$D" <<'PY'
 import json, os, sys
 r = json.load(open(sys.argv[1], encoding="utf-8")); d = sys.argv[2]

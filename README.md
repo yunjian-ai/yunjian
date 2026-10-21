@@ -7,8 +7,8 @@
 <p align="center">青鸟 Bluebird · 试金 Touchstone · cloudmere · Grok Bot 提示词助手和验证助手 · 仓库 <a href="https://github.com/yunjian-ai/yunjian">github.com/yunjian-ai/yunjian</a></p>
 
 <p align="center">
-  <a href="CHANGELOG.md"><img alt="青鸟" src="https://img.shields.io/badge/青鸟-v0.1.0-1f6feb"></a>
-  <a href="CHANGELOG.md"><img alt="试金" src="https://img.shields.io/badge/试金-v0.1.0-b08d2b"></a>
+  <a href="CHANGELOG.md"><img alt="青鸟" src="https://img.shields.io/badge/青鸟-v0.1.1-1f6feb"></a>
+  <a href="CHANGELOG.md"><img alt="试金" src="https://img.shields.io/badge/试金-v0.1.1-b08d2b"></a>
   <a href="LICENSE"><img alt="license" src="https://img.shields.io/badge/license-CC%20BY%204.0%20%2B%20MIT-555555"></a>
   <a href="https://github.com/yunjian-ai/yunjian/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/yunjian-ai/yunjian/actions/workflows/ci.yml/badge.svg"></a>
 </p>
@@ -19,7 +19,7 @@
 
 ## 云间是什么
 
-云间是一个 Grok Bot 系列。云上住着几位成员，每位都是一个可以分享、一键导入的 Bot，专管一件事：写提示词、做 Skill、蒸馏资料……成员之间共用同一套规范、安装方式和检查，但各自独立发版，装一位、不装另一位都可以。
+云间是一组 Grok Bot。想象云上有个小地方，住着几位手艺人：一位替你把话说清楚交给 AI，一位替你把做好的东西验一验……每位手艺人只守一门手艺，导入哪位就请来哪位。他们照同一份规矩干活、用同一种方式安装、过同一套检查，版本却各管各的，互不牵连。
 
 现在有两位成员：管提示词的 **青鸟**，管验证的 **试金**。
 
@@ -76,7 +76,7 @@
 
 ## 安装
 
-1. 打开成员的分享链接，导入到你的 Grok Bot（链接即将公布）。
+1. 在 Grok Bot 里点开某位成员的分享链接，把它请进来（链接陆续公布）。
 2. 第一次对话时，它会先问你能不能从本仓库装完整技能；你说可以，大约一分钟装好，不装插件，也不要任何密钥。
 3. 装好后直接开始第一次见面。
 
@@ -84,14 +84,14 @@
 
 ```bash
 # 青鸟
-curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/qingniao-v0.1.0/members/qingniao/dist/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/qingniao-v0.1.1/members/qingniao/dist/install.sh | bash
 # 试金
-curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/shijin-v0.1.0/members/shijin/dist/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/shijin-v0.1.1/members/shijin/dist/install.sh | bash
 ```
 
 Claude Code 等能装 Skill 的 AI：把 `members/<成员>/skills/` 下的五个文件夹复制进技能目录即可。
 
-**更新：** 对它说一句「更新青鸟」或「更新试金」。每位成员每周最多自动检查一次，有新版先用几行话告诉你改了什么，你同意才装。你的用户档案、提示词库、验收档案都存在你自己的记忆里，更新不会覆盖。只发布打过标签、考过的版本。
+**更新：** 想换新版，跟它说「更新青鸟」或「更新试金」就行；平时它一周顶多自己看一次有没有新版，看到了先告诉你新版改了哪几处，等你点头再装。你的用户档案、提示词库、验收档案都留在你自己的记忆里，换版本不会动它们。放出来的每个版本都打了标签、过了考试。
 
 **开始前想好这几样，三分钟就能用**
 
@@ -113,8 +113,8 @@ Claude Code 等能装 Skill 的 AI：把 `members/<成员>/skills/` 下的五个
 
 | 成员 | 职能 | 状态 |
 |---|---|---|
-| 青鸟 Bluebird | 提示词 | ✅ v0.1.0 |
-| 试金 Touchstone | 验证 | ✅ v0.1.0 |
+| 青鸟 Bluebird | 提示词 | ✅ v0.1.1 |
+| 试金 Touchstone | 验证 | ✅ v0.1.1 |
 | 千机 Gear | Skill | 筹备中 |
 | 凝露 Dew | 蒸馏 | 筹备中 |
 | 经纬 Loom | 本体 | 筹备中 |
@@ -144,7 +144,7 @@ python3 members/qingniao/tests/run_tests.py  # 青鸟：夹具和反向用例
 python3 members/shijin/tests/run_tests.py    # 试金：夹具和反向用例
 ```
 
-只用 Python 3 标准库。规则见 [CONTRIBUTING.md](CONTRIBUTING.md)，结构如下：
+脚本只依赖 Python 3 自带的库，不用另装东西。怎么参与见 [CONTRIBUTING.md](CONTRIBUTING.md)；仓库里大致是这样：
 
 ```
 shared/             所有成员共用的规范和安装技能写法
@@ -156,23 +156,23 @@ assets/             图片素材
 
 ## 许可
 
-版权所有 © 2026 杨先生。双许可，详见 [LICENSE](LICENSE)：
+© 2026 杨先生。内容和代码分开授权，全文在 [LICENSE](LICENSE)：
 
-- **内容**（技能、示例、资料卡、记忆、考题、shared/ 和所有文档）：[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh-hans)。转载或改编请署名「云间 Cloudmere · 杨先生」，并附仓库链接。
+- **文字类**（成员的技能、卡片、示例、考题，shared/ 里的规范，以及各种说明文档）用 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh-hans)：可以转载、改编，注明「云间 Cloudmere · 杨先生」并附上仓库地址即可。
 - **工具代码**（tools/、tests/ 里的脚本、.github/、安装脚本）：MIT。
 
 ---
 
 ## English
 
-**Cloudmere** is a family of shareable Grok Bots called *members*. Each member does one job well and ships on its own versioned tag.
+**Cloudmere** is a small set of Grok Bots, each a specialist with a single craft. Install only the ones you need; they share one set of house rules and checks, but every member is released and versioned separately.
 
 **Bluebird**, the first member, turns one sentence of what you want into a ready-to-paste prompt. It picks the right structure for the job — text, image, video, or long-term rules and bot instructions — and for simple requests it answers in a single reply, leaving 【placeholders】 with examples instead of firing off questions. For long-term prompts it interviews you one question at a time and ships test cases and a version number. It also fixes prompts that don't work by changing as little as possible, and saves good prompts to your own prompt library.
 
-- **Install:** import Bluebird from its share link (coming soon). On first chat it asks before installing its full skill set from a pinned tag of this repo. No plugins, no keys.
-- **Update:** say 「更新青鸟」 ("update Bluebird"). It checks at most weekly, summarises what changed, and installs only after you say yes. Your profile and prompt library are never overwritten.
+- **Install:** open a member's share link in Grok Bot (links coming). In the first chat it asks your permission, then pulls the full skill set from a tagged release of this repo. Nothing else gets installed and no keys are needed.
+- **Update:** ask it to update (e.g. 「更新青鸟」). It looks for a new release at most once a week, tells you what changed, and waits for your yes. Your profile, prompt library and review notes stay in your own memory and are left untouched.
 - **Skills:** first meeting, write a prompt, fix a prompt, plus install and update.
 
 **Touchstone**, the second member, checks what you are about to ship — prompts, skills, web pages, mini apps — and returns one verdict (ship / fix first / redo / cannot judge) plus an evidence-backed issue list graded critical, risky or suggestion. It runs real checks where it can (Lighthouse for web pages, five manual checks for apps), writes exams for another AI to take and grades the answer sheets, swaps order when comparing two versions, never grades its own work, and reviews without rewriting.
-- **Roadmap:** 青鸟 Bluebird, prompts (✅ v0.1.0); 试金 Touchstone, verification (✅ v0.1.0); 千机 Gear, skills; 凝露 Dew, distillation; 经纬 Loom, ontology.
+- **Roadmap:** 青鸟 Bluebird, prompts (✅ v0.1.1); 试金 Touchstone, verification (✅ v0.1.1); 千机 Gear, skills; 凝露 Dew, distillation; 经纬 Loom, ontology.
 - **License:** © 2026 杨先生. Content under CC BY 4.0; tooling under MIT.

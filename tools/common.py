@@ -9,7 +9,8 @@ import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-CONFIG = json.loads((ROOT / "tools" / "config.json").read_text(encoding="utf-8"))
+with open(ROOT / "tools" / "config.json", encoding="utf-8") as _fh:
+    CONFIG = json.load(_fh)
 LIM = CONFIG["limits"]
 
 
@@ -50,11 +51,18 @@ def hash_hits(text, entries):
 
 
 def run_negative_cases(member, cases, report):
-    """反向用例：把仓库复制一份、埋一个错，validate 必须失败并报出对应类别。cases = [(类别, 改法函数), ...]"""
-    for tag, fn in cases:
-        with tempfile.TemporaryDirectory() as td:
-            dst = Path(td) / "repo"
-            shutil.copytree(ROOT, dst, ignore=shutil.ignore_patterns(".git", "__pycache__", "发布", "资料", "考试记录"))
-            fn(dst)
-            r = subprocess.run([sys.executable, str(dst / "tools" / "validate.py"), str(dst)], capture_output=True, text=True)
-            report(r.returncode == 1 and f"[{tag}]" in r.stdout, f"validate 能拦住 {tag}")
+    """反向用例：每个用例都在一份临时副本里埋一个错，然后跑检查脚本——它必须失败，并且报出这个类别。
+    cases 是 [(类别, 埋错的函数), ...]；埋错的函数拿到副本的根目录。"""
+    skip = shutil.ignore_patterns(".git", "__pycache__", "发布", "资料", "考试记录")
+    has_list = (ROOT / "tools" / "scrub_hashes.json").exists()
+    for tag, plant in cases:
+        if tag == "private" and not has_list:
+            print(f"（跳过「{tag}」：禁用词名单只在开发仓库里，公开仓库没有）")
+            continue
+        with tempfile.TemporaryDirectory() as tmp:
+            copy_root = Path(tmp) / "副本"
+            shutil.copytree(ROOT, copy_root, ignore=skip)
+            plant(copy_root)
+            done = subprocess.run([sys.executable, "tools/validate.py", "."], cwd=copy_root, capture_output=True, text=True)
+            caught = done.returncode != 0 and ("[" + tag + "]") in done.stdout
+            report(caught, f"埋了一个「{tag}」类的错，检查脚本拦住了")

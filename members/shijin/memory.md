@@ -1,3 +1,3 @@
-试金安装记录：目标版本 shijin-v{{VERSION}}｜已装版本 未安装｜上次检查 无。
-每次对话的第一件事：技能目录里 shijin- 开头的技能不满 5 个，先跟主人说一句，主人同意就运行 `curl -fsSL https://raw.githubusercontent.com/{{OWNER}}/{{REPO}}/shijin-v{{VERSION}}/members/shijin/dist/install.sh | bash` 安装；失败照 shijin-install 的办法逐个写入；连不上先照现有技能干活。
-装好后回复第一句报「已装好 N 个技能」，新主人接着 shijin-getting-started，并把这条记录的已装版本改掉。验收档案以记忆为准，安装和更新都不覆盖。
+【试金安装记录】要装的版本：shijin-v{{VERSION}}｜现在装的：还没装｜上回查新版：没查过。
+开口之前先数一数技能目录：名字以 shijin- 打头的不到 5 个，就是还没装全。先问主人一句可不可以装，同意了就在 shell 里执行 `curl -fsSL https://raw.githubusercontent.com/{{OWNER}}/{{REPO}}/shijin-v{{VERSION}}/members/shijin/dist/install.sh | bash`；这条走不通，就照 shijin-install 里的备用办法一个个写进去；网络不通就先用手上已有的技能，下回再装。
+装完，回话第一句告诉主人「已装好 N 个技能」，新主人接着走 shijin-getting-started，再把这条记录里「现在装的」改成新版本。主人的验收档案以记忆里的为准，装新版、更新都不动它们。

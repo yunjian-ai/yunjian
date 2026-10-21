@@ -65,11 +65,11 @@ def check_member(m, root, errors):
             errors.append(f"[frontmatter] {d.name}: 缺 name 或 description")
         else:
             if meta["name"] != d.name:
-                errors.append(f"[frontmatter] {d.name}: name 是 {meta['name']}，和目录名不一致")
+                errors.append(f"[frontmatter] {d.name}: 头信息里的名字「{meta['name']}」跟文件夹名对不上")
             if not meta["name"].startswith(name + "-"):
                 errors.append(f"[frontmatter] {d.name}: name 必须以 {name}- 开头")
             if len(meta["description"]) > LIM["description_chars"]:
-                errors.append(f"[frontmatter] {d.name}: description 超过 {LIM['description_chars']} 字符")
+                errors.append(f"[frontmatter] {d.name}: 说明写长了，上限 {LIM['description_chars']} 字符")
         for extra in d.iterdir():
             if extra.is_file():
                 total += extra.stat().st_size
@@ -88,7 +88,8 @@ def check_member(m, root, errors):
     if (m / "memory.md").exists():
         pool["memory.md"] = (m / "memory.md").read_text(encoding="utf-8")
     for src, text in pool.items():
-        for ref in set(re.findall(rf"\b{name}-[a-z][a-z-]*[a-z]\b", text)):
+        mentioned = set(re.findall(r"\b" + re.escape(name) + r"-[a-z]{2,}(?:-[a-z]+)*\b", text))
+        for ref in mentioned:
             if ref not in names:
                 errors.append(f"[xref] {src}: 引用了不存在的技能 {ref}")
         for ref in set(re.findall(r"`([^`/\s]+\.md)`", text)):
@@ -120,4 +121,5 @@ def main(root):
 
 
 if __name__ == "__main__":
-    sys.exit(main(sys.argv[1] if len(sys.argv) > 1 else Path(__file__).resolve().parent.parent))
+    target = sys.argv[1] if len(sys.argv) > 1 else str(Path(__file__).resolve().parent.parent)
+    sys.exit(main(target))
