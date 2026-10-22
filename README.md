@@ -162,7 +162,16 @@
 
 ## 安装
 
-1. 在 Grok Bot 里点开某位成员的分享链接，把它请进来（链接陆续公布）。
+1. 在 Grok Bot 里点开某位成员的分享链接，把它请进来：
+
+   | 成员 | 分享链接 |
+   |---|---|
+   | 青鸟 Bluebird | https://x.ai/bot/9CwXPs6jsmaQ7HObWmQce |
+   | 千机 Gear | https://x.ai/bot/JYKF36-3atI76W5QYdIq3 |
+   | 凝露 Dew | https://x.ai/bot/9zPoGWngujInyf31EjpzL |
+   | 经纬 Loom | https://x.ai/bot/yZLB_EF-gFtOe8WRFTPeq |
+   | 试金 Touchstone | https://x.ai/bot/58rS6M89eG7fl_6UouP6y |
+
 2. 第一次对话时，它会先问你能不能从本仓库装完整技能；你说可以，大约一分钟装好，不装插件，也不要任何密钥。
 3. 装好后直接开始第一次见面。
 
@@ -285,7 +294,7 @@ assets/             图片素材
 
 **Bluebird**, the first member, turns one sentence of what you want into a ready-to-paste prompt. It picks the right structure for the job — text, image, video, or long-term rules and bot instructions — and for simple requests it answers in a single reply, leaving 【placeholders】 with examples instead of firing off questions. For long-term prompts it interviews you one question at a time and ships test cases and a version number. It also fixes prompts that don't work by changing as little as possible, and saves good prompts to your own prompt library.
 
-- **Install:** open a member's share link in Grok Bot (links coming). In the first chat it asks your permission, then pulls the full skill set from a tagged release of this repo. Nothing else gets installed and no keys are needed.
+- **Install:** open a member's share link in Grok Bot (links in the 安装 section above). In the first chat it asks your permission, then pulls the full skill set from a tagged release of this repo. Nothing else gets installed and no keys are needed.
 - **Update:** ask it to update (e.g. 「更新青鸟」). It looks for a new release at most once a week, tells you what changed, and waits for your yes. Your profile, prompt library and review notes stay in your own memory and are left untouched.
 - **Skills:** first meeting, write a prompt, fix a prompt, plus install and update.
 
