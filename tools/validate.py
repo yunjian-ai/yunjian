@@ -67,6 +67,11 @@ def check_member(m, root, errors):
         for where, text in places.items():
             if cmd not in text:
                 errors.append(f"[install] {name}: {where} 里没有标准安装命令（见 shared/安装写法.md）")
+            # 只升不降（shared/安装写法.md 第 4½ 条）：版本号写死在导入时的岗位说明里，写成「不是这一版就装」会在更新后劝主人装回旧版
+            if re.search(r"不是 ?(这一版|" + re.escape(name) + r"-v)", text):
+                errors.append(f"[install] {name}: {where} 写了「不是某版就装」，要改成「没装或比这一版旧才装」（只升不降）")
+            if "不装回" not in text:
+                errors.append(f"[install] {name}: {where} 没写「比这一版新就不装回旧版」（只升不降）")
         for n in re.findall(r"不到 ?(\d+) ?个", ins):
             if int(n) != len(names):
                 errors.append(f"[instructions] {name}: 岗位说明写「不到 {n} 个」，实际有 {len(names)} 个技能")

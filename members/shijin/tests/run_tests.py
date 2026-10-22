@@ -62,6 +62,8 @@ run_negative_cases("shijin", [
     ("instructions", edit_ins("members/shijin/profile.json", lambda t: t.replace("不到 5 个", "不到 4 个"))),
     ("instructions", edit_ins("members/shijin/profile.json", lambda t: "嗨，" + t)),
     ("install", lambda d: (d / "members/shijin/memory.md").write_text("【安装记录】去别处装。\n", encoding="utf-8")),
+    ("install", edit_ins("members/shijin/profile.json", lambda t: t.replace("装的比 shijin-v{{VERSION}} 旧", "装的不是 shijin-v{{VERSION}}"))),  # 只升不降：写成「不是这一版」会劝回旧版
+    ("install", lambda d: (d / "members/shijin/memory.md").write_text((d / "members/shijin/memory.md").read_text(encoding="utf-8").replace("不装回旧版", "重装"), encoding="utf-8")),  # 只升不降：漏写「不装回旧版」
     ("rehearsal", lambda d: (d / SK / "shijin-getting-started/SKILL.md").write_text((d / SK / "shijin-getting-started/SKILL.md").read_text(encoding="utf-8").replace("## 演练模式", "## 试一试"), encoding="utf-8")),
 ], report)
 

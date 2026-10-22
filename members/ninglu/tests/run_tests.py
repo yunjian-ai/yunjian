@@ -65,6 +65,8 @@ run_negative_cases("ninglu", [
     ("instructions", edit_ins("members/ninglu/profile.json", lambda t: t.replace("ninglu-ingest", "某技能"))),
     ("instructions", edit_ins("members/ninglu/profile.json", lambda t: t.replace("不到 7 个", "不到 5 个"))),
     ("install", lambda d: (d / "members/ninglu/memory.md").write_text("【安装记录】去别处装。\n", encoding="utf-8")),
+    ("install", edit_ins("members/ninglu/profile.json", lambda t: t.replace("装的比 ninglu-v{{VERSION}} 旧", "装的不是 ninglu-v{{VERSION}}"))),  # 只升不降：写成「不是这一版」会劝回旧版
+    ("install", lambda d: (d / "members/ninglu/memory.md").write_text((d / "members/ninglu/memory.md").read_text(encoding="utf-8").replace("不装回旧版", "重装"), encoding="utf-8")),  # 只升不降：漏写「不装回旧版」
     ("rehearsal", lambda d: (d / SK / "ninglu-getting-started/SKILL.md").write_text((d / SK / "ninglu-getting-started/SKILL.md").read_text(encoding="utf-8").replace("## 演练模式", "## 试一试"), encoding="utf-8")),
     ("private", append(SK / "ninglu-distill/check_cards.py", "\n# " + banned + "\n")),
     ("greeting", lambda d: (d / "members/ninglu/memory.md").write_text((d / "members/ninglu/memory.md").read_text(encoding="utf-8").replace("您好，欢迎来到云间。", "你好。"), encoding="utf-8")),
