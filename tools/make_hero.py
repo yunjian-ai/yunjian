@@ -28,7 +28,7 @@ html,body{{margin:0;width:{W}px;height:{H}px;overflow:hidden;background:#cfe0ea}
 .c{{position:absolute;top:324px;width:100%;text-align:center;font-family:"Songti SC","STSong",serif;font-size:24px;letter-spacing:5px;color:#2f5674;text-shadow:0 2px 10px rgba(255,255,255,.95)}}
 .ai{{position:absolute;right:14px;bottom:10px;font-family:"PingFang SC",sans-serif;font-size:14px;color:rgba(30,50,70,.55)}}
 </style></head><body><div class="bg"></div><div class="fog"></div>
-<div class="t">{TITLE}</div><div class="e">{EN}</div><div class="s">{SUB}</div><div class="c">{CREW}</div><div class="ai">云间工作室</div></body></html>"""
+<div class="t">{TITLE}</div><div class="e">{EN}</div><div class="s">{SUB}</div><div class="c">{CREW}</div><div class="ai">云间工作室出品</div></body></html>"""
     with tempfile.TemporaryDirectory() as d:
         page = Path(d) / "hero.html"
         page.write_text(html, encoding="utf-8")
