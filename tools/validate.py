@@ -1,31 +1,27 @@
 """仓库检查（规矩见 shared/成员规范.md 第五节）。只用标准库。
 用法：python3 tools/validate.py [仓库根目录]   有错误时退出码为 1，逐条列出。"""
+import hashlib
 import json
 import re
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from common import LIM, hash_hits, parse_frontmatter  # noqa: E402
+from common import LIM, hash_hits, norm, parse_frontmatter, public_picks  # noqa: E402
 
 REQUIRED = ("install", "update", "getting-started")
 LESSON = re.compile(r"第[一二三四五六七八九十0-9]+课")
 
 
 def public_files(root):
-    """装进 Bot、放进公开仓库的文件：只扫这些（开发仓库里的内部文档不扫）。"""
-    for p in ("README.md", "CHANGELOG.md", "CONTRIBUTING.md", "发布素材/README.md", "发布素材/CONTRIBUTING.md"):
-        if (root / p).exists():
-            yield root / p
-    yield from (root / "shared").glob("*.md")
-    for m in sorted((root / "members").iterdir()):
-        if not (m / "skills").is_dir():
-            continue
-        for n in ("profile.json", "memory.md"):
-            if (m / n).exists():
-                yield m / n
-        for sub in ("skills", "examples"):
-            yield from sorted(p for p in (m / sub).rglob("*.md")) if (m / sub).exists() else ()
+    """装进 Bot、放进公开仓库的文件：和 tools/publish.py 用同一份白名单（common.public_picks），
+    发布会挑走的每个文件都扫，不论后缀（.md、.json、.py、.sh……）；开发仓库里的内部文档不扫。"""
+    seen = set()
+    for src, _ in [(root / "README.md", ""), (root / "CHANGELOG.md", ""), (root / "CONTRIBUTING.md", "")] + public_picks(root):
+        for f in sorted(src.rglob("*")) if src.is_dir() else [src]:
+            if f.is_file() and f not in seen and f.name != ".DS_Store" and "__pycache__" not in f.parts:
+                seen.add(f)
+                yield f
 
 
 def check_member(m, root, errors):
@@ -134,8 +130,19 @@ def main(root):
     errors = []
     hp = root / "tools" / "scrub_hashes.json"
     entries = json.loads(hp.read_text(encoding="utf-8"))["private"] if hp.exists() else []
+    # 两份名单要一致：发布扫描用 禁用词.txt 的明文，这里用 scrub_hashes.json 的哈希；明文里有、哈希里没有的词，这里就会漏
+    wp = root / "tools" / "禁用词.txt"
+    if wp.exists():
+        have = {(e["len"], e["sha256"]) for e in entries}
+        for i, w in enumerate((x for x in wp.read_text(encoding="utf-8").splitlines() if x.strip()), 1):
+            n = norm(w)
+            if (len(n), hashlib.sha256(n.encode()).hexdigest()) not in have:
+                errors.append(f"[private] tools/禁用词.txt 第 {i} 个词（首字「{n[:1]}」）不在 scrub_hashes.json 里，用 tools/scrub_hash.py 补上")
     for f in public_files(root):
-        text = f.read_text(encoding="utf-8")
+        try:
+            text = f.read_text(encoding="utf-8")
+        except UnicodeDecodeError:
+            continue  # 图片等二进制文件
         rel = f.relative_to(root)
         if entries and hash_hits(text, entries):
             errors.append(f"[private] {rel}: 公开文件里有名单上的词（只显示首字）：{'、'.join(sorted(hash_hits(text, entries)))}")

@@ -61,6 +61,15 @@ run_negative_cases("qianji", [
     ("instructions", edit_ins("members/qianji/profile.json", lambda t: t.replace("不到 7 个", "不到 5 个"))),
     ("install", lambda d: (d / "members/qianji/memory.md").write_text("【安装记录】去别处装。\n", encoding="utf-8")),
     ("rehearsal", lambda d: (d / SK / "qianji-getting-started/SKILL.md").write_text((d / SK / "qianji-getting-started/SKILL.md").read_text(encoding="utf-8").replace("## 演练模式", "## 试一试"), encoding="utf-8")),
+    # 发布会挑走、以前 validate 却不扫的地方：夹具说明（.json）、技能里的脚本（.py）、改名后公开的设计摘要
+    ("private", lambda d: (d / "members/qianji/tests/expected/01-version-top.json").write_text(
+        json.dumps({"skill": "topic-check", "expect": ["头信息"], "why": banned + "式写法"}, ensure_ascii=False), encoding="utf-8")),
+    ("private", append(SK / "qianji-build/check_skill.py", "\n# " + banned + "\n")),
+    ("private", append(Path("发布素材/qianji-DESIGN.md"), "\n" + banned + "\n")),
+    # 发布扫描另外拦的字样（名单上的另一个词，同样用码点拼），validate 也要拦
+    ("private", append(Path("members/qianji/tests/材料/01-跑通的对话.md"), "\n" + "".join(map(chr, (0x98DE, 0x4E66))) + "\n")),
+    # 禁用词.txt 加了词、哈希名单没跟上：两份名单不一致要报
+    ("private", append(Path("tools/禁用词.txt"), "\n新加的词\n")),
 ], report)
 
 print("\n" + ("全部通过" if not fails else f"{fails} 项没过"))

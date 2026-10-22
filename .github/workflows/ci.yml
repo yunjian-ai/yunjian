@@ -18,3 +18,5 @@ jobs:
         run: python3 members/qingniao/tests/run_tests.py
       - name: 试金夹具和反向用例
         run: python3 members/shijin/tests/run_tests.py
+      - name: 千机夹具和反向用例
+        run: python3 members/qianji/tests/run_tests.py

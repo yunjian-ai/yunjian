@@ -14,6 +14,35 @@ with open(ROOT / "tools" / "config.json", encoding="utf-8") as _fh:
 LIM = CONFIG["limits"]
 
 
+# 公开仓库白名单：tools/publish.py 照它挑文件，tools/validate.py 照它扫——两边用同一份，平时检查不会比发布扫得少
+PUBLIC_FILES = ["LICENSE", "CHANGELOG.md", ".gitignore", ".github/workflows/ci.yml", "shared",
+                "tools/validate.py", "tools/pack.py", "tools/config.json", "tools/check_prompt.py", "tools/check_report.py",
+                "tools/make_hero.py", "tools/common.py", "assets/hero.png", "assets/README.md"]
+MEMBER_ITEMS = ["profile.json", "memory.md", "VERSION", "install.sh", "skills", "examples", "dist"]
+MEMBER_TEST_ITEMS = ["fixtures", "expected", "run_tests.py", "材料"]
+RENAME = {"发布素材/README.md": "README.md", "发布素材/CONTRIBUTING.md": "CONTRIBUTING.md",
+          "发布素材/qingniao-DESIGN.md": "members/qingniao/DESIGN.md",
+          "发布素材/shijin-DESIGN.md": "members/shijin/DESIGN.md",
+          "发布素材/qianji-DESIGN.md": "members/qianji/DESIGN.md"}
+
+
+def public_picks(root):
+    """要进公开仓库的 [(开发仓库里的源路径, 公开仓库里的相对路径)]，源可以是文件夹；不检查存不存在。
+    在公开仓库里跑时，改名的那几份源文件不在，就直接用改名后的位置。"""
+    root = Path(root)
+    picks = [(root / f, f) for f in PUBLIC_FILES]
+    picks += [((root / s) if (root / s).exists() else (root / d), d) for s, d in RENAME.items()]
+    for m in sorted((root / "members").iterdir()):
+        if not (m / "skills").is_dir():
+            continue
+        picks += [(m / i, f"members/{m.name}/{i}") for i in MEMBER_ITEMS]
+        tests = sorted((m / "tests").glob("考题*.md"))  # 公开的考题用最新一版，统一叫 考题.md
+        if tests:
+            picks.append((tests[-1], f"members/{m.name}/tests/考题.md"))
+        picks += [(m / "tests" / i, f"members/{m.name}/tests/{i}") for i in MEMBER_TEST_ITEMS]
+    return picks
+
+
 def parse_frontmatter(text):
     """解析 SKILL.md 开头的 name 和 description（支持 >- 折叠块）。"""
     if not text.startswith("---\n"):
