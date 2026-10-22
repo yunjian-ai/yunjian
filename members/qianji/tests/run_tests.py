@@ -66,8 +66,8 @@ run_negative_cases("qianji", [
         json.dumps({"skill": "topic-check", "expect": ["头信息"], "why": banned + "式写法"}, ensure_ascii=False), encoding="utf-8")),
     ("private", append(SK / "qianji-build/check_skill.py", "\n# " + banned + "\n")),
     ("private", append(Path("发布素材/qianji-DESIGN.md"), "\n" + banned + "\n")),
-    # 发布扫描另外拦的字样（名单上的另一个词，同样用码点拼），validate 也要拦
-    ("private", append(Path("members/qianji/tests/材料/01-跑通的对话.md"), "\n" + "".join(map(chr, (0x98DE, 0x4E66))) + "\n")),
+    # 名单上的另一个词（同样用码点拼），埋进示例，validate 也要拦（考试材料是原始资料，不扫）
+    ("private", append(Path("members/qianji/examples/01-第一次见面-阿茶.md"), "\n" + "".join(map(chr, (0x58A8, 0x7075))) + "\n")),
     # 禁用词.txt 加了词、哈希名单没跟上：两份名单不一致要报
     ("private", append(Path("tools/禁用词.txt"), "\n新加的词\n")),
 ], report)

@@ -20,10 +20,17 @@ PUBLIC_FILES = ["LICENSE", "CHANGELOG.md", ".gitignore", ".github/workflows/ci.y
                 "tools/make_hero.py", "tools/common.py", "assets/hero.png", "assets/README.md"]
 MEMBER_ITEMS = ["profile.json", "memory.md", "VERSION", "install.sh", "skills", "examples", "dist"]
 MEMBER_TEST_ITEMS = ["fixtures", "expected", "run_tests.py", "材料"]
+
+
+def is_material(rel):
+    """考试材料是要处理的原始资料，原样保留，不做禁用词扫描（杨先生 2026-10-22 定：扫描只扫自己写的说明，不碰资料原文）。"""
+    parts = Path(rel).parts
+    return "tests" in parts and "材料" in parts
 RENAME = {"发布素材/README.md": "README.md", "发布素材/CONTRIBUTING.md": "CONTRIBUTING.md",
           "发布素材/qingniao-DESIGN.md": "members/qingniao/DESIGN.md",
           "发布素材/shijin-DESIGN.md": "members/shijin/DESIGN.md",
-          "发布素材/qianji-DESIGN.md": "members/qianji/DESIGN.md"}
+          "发布素材/qianji-DESIGN.md": "members/qianji/DESIGN.md",
+          "发布素材/ninglu-DESIGN.md": "members/ninglu/DESIGN.md"}
 
 
 def public_picks(root):

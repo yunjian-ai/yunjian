@@ -7,7 +7,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from common import LIM, hash_hits, norm, parse_frontmatter, public_picks  # noqa: E402
+from common import LIM, hash_hits, is_material, norm, parse_frontmatter, public_picks  # noqa: E402
 
 REQUIRED = ("install", "update", "getting-started")
 LESSON = re.compile(r"第[一二三四五六七八九十0-9]+课")
@@ -41,8 +41,8 @@ def check_member(m, root, errors):
                 errors.append(f"[profile] {name}: profile.json 缺 {k}")
         if len(p.get("description", "")) > LIM["description_chars"]:
             errors.append(f"[profile] {name}: description 超过 {LIM['description_chars']} 字符")
-        if "云间出品" not in p.get("name", ""):
-            errors.append(f"[profile] {name}: 名字里没有「云间出品」")
+        if "云间工作室出品" not in p.get("name", ""):
+            errors.append(f"[profile] {name}: 名字里没有「云间工作室出品」")
         if b > LIM["profile_bytes"]:
             errors.append(f"[budget] {name}: profile.json {b} 字节 > {LIM['profile_bytes']}")
     if (m / "memory.md").exists():
@@ -144,6 +144,8 @@ def main(root):
         except UnicodeDecodeError:
             continue  # 图片等二进制文件
         rel = f.relative_to(root)
+        if is_material(rel):
+            continue
         if entries and hash_hits(text, entries):
             errors.append(f"[private] {rel}: 公开文件里有名单上的词（只显示首字）：{'、'.join(sorted(hash_hits(text, entries)))}")
         if LESSON.search(text):
