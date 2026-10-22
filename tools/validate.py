@@ -68,6 +68,10 @@ def check_member(m, root, errors):
         for n in re.findall(r"不到 ?(\d+) ?个", ins):
             if int(n) != len(names):
                 errors.append(f"[instructions] {name}: 岗位说明写「不到 {n} 个」，实际有 {len(names)} 个技能")
+    # 开场白（shared/成员规范.md 第三节）：安装技能、入门技能、安装记录三处都要写着
+    for where in (m / "skills" / f"{name}-install" / "SKILL.md", m / "skills" / f"{name}-getting-started" / "SKILL.md", m / "memory.md"):
+        if where.exists() and "您好，欢迎来到云间。我是" not in where.read_text(encoding="utf-8"):
+            errors.append(f"[greeting] {name}: {where.relative_to(m)} 里没有开场白「您好，欢迎来到云间。我是…」")
     for d in skills:
         f = d / "SKILL.md"
         if not f.exists():

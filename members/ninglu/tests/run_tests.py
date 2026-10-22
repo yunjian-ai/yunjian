@@ -67,6 +67,7 @@ run_negative_cases("ninglu", [
     ("install", lambda d: (d / "members/ninglu/memory.md").write_text("【安装记录】去别处装。\n", encoding="utf-8")),
     ("rehearsal", lambda d: (d / SK / "ninglu-getting-started/SKILL.md").write_text((d / SK / "ninglu-getting-started/SKILL.md").read_text(encoding="utf-8").replace("## 演练模式", "## 试一试"), encoding="utf-8")),
     ("private", append(SK / "ninglu-distill/check_cards.py", "\n# " + banned + "\n")),
+    ("greeting", lambda d: (d / "members/ninglu/memory.md").write_text((d / "members/ninglu/memory.md").read_text(encoding="utf-8").replace("您好，欢迎来到云间。", "你好。"), encoding="utf-8")),
     ("private", append(Path("members/ninglu/examples/01-第一次见面-阿茶.md"), "\n" + banned + "\n")),
 ], report)
 
