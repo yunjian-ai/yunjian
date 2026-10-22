@@ -41,8 +41,10 @@ def check_member(m, root, errors):
                 errors.append(f"[profile] {name}: profile.json 缺 {k}")
         if len(p.get("description", "")) > LIM["description_chars"]:
             errors.append(f"[profile] {name}: description 超过 {LIM['description_chars']} 字符")
-        if "云间工作室出品" not in p.get("name", ""):
-            errors.append(f"[profile] {name}: 名字里没有「云间工作室出品」")
+        if "出品" in p.get("name", "") or p.get("name", "").count("｜") != 1:
+            errors.append(f"[profile] {name}: 名字只写「中文名 · 英文名 ｜ 管什么」，不加出品方（杨先生 2026-10-22 定）")
+        if "云间工作室" not in p.get("description", ""):
+            errors.append(f"[profile] {name}: 简介里要写明「云间工作室」出品")
         if b > LIM["profile_bytes"]:
             errors.append(f"[budget] {name}: profile.json {b} 字节 > {LIM['profile_bytes']}")
     if (m / "memory.md").exists():
