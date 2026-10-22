@@ -7,9 +7,9 @@
 <p align="center">青鸟 Bluebird · 千机 Gear · 试金 Touchstone · cloudmere · Grok Bot 提示词、Skill、验证助手 · 仓库 <a href="https://github.com/yunjian-ai/yunjian">github.com/yunjian-ai/yunjian</a></p>
 
 <p align="center">
-  <a href="CHANGELOG.md"><img alt="青鸟" src="https://img.shields.io/badge/青鸟-v0.1.2-1f6feb"></a>
-  <a href="CHANGELOG.md"><img alt="千机" src="https://img.shields.io/badge/千机-v0.1.0-2e8b57"></a>
-  <a href="CHANGELOG.md"><img alt="试金" src="https://img.shields.io/badge/试金-v0.1.2-b08d2b"></a>
+  <a href="CHANGELOG.md"><img alt="青鸟" src="https://img.shields.io/badge/青鸟-v0.1.3-1f6feb"></a>
+  <a href="CHANGELOG.md"><img alt="千机" src="https://img.shields.io/badge/千机-v0.1.1-2e8b57"></a>
+  <a href="CHANGELOG.md"><img alt="试金" src="https://img.shields.io/badge/试金-v0.1.3-b08d2b"></a>
   <a href="LICENSE"><img alt="license" src="https://img.shields.io/badge/license-CC%20BY%204.0%20%2B%20MIT-555555"></a>
   <a href="https://github.com/yunjian-ai/yunjian/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/yunjian-ai/yunjian/actions/workflows/ci.yml/badge.svg"></a>
 </p>
@@ -112,11 +112,11 @@
 
 ```bash
 # 青鸟
-curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/qingniao-v0.1.2/members/qingniao/dist/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/qingniao-v0.1.3/members/qingniao/dist/install.sh | bash
 # 千机
-curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/qianji-v0.1.0/members/qianji/dist/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/qianji-v0.1.1/members/qianji/dist/install.sh | bash
 # 试金
-curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/shijin-v0.1.2/members/shijin/dist/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/shijin-v0.1.3/members/shijin/dist/install.sh | bash
 ```
 
 Claude Code 等能装 Skill 的 AI：把 `members/<成员>/skills/` 下的文件夹整个复制进技能目录即可。
@@ -145,9 +145,9 @@ Claude Code 等能装 Skill 的 AI：把 `members/<成员>/skills/` 下的文件
 
 | 成员 | 职能 | 状态 |
 |---|---|---|
-| 青鸟 Bluebird | 提示词 | ✅ v0.1.2 |
-| 千机 Gear | Skill | ✅ v0.1.0 |
-| 试金 Touchstone | 验证 | ✅ v0.1.2 |
+| 青鸟 Bluebird | 提示词 | ✅ v0.1.3 |
+| 千机 Gear | Skill | ✅ v0.1.1 |
+| 试金 Touchstone | 验证 | ✅ v0.1.3 |
 | 凝露 Dew | 蒸馏 | 筹备中 |
 | 经纬 Loom | 本体 | 筹备中 |
 
@@ -213,5 +213,5 @@ assets/             图片素材
 
 **Touchstone**, the second member, checks what you are about to ship — prompts, skills, web pages, mini apps — and returns one verdict (ship / fix first / redo / cannot judge) plus an evidence-backed issue list graded critical, risky or suggestion. It runs real checks where it can (Lighthouse for web pages, five manual checks for apps), writes exams for another AI to take and grades the answer sheets, swaps order when comparing two versions, never grades its own work, and reviews without rewriting.
 **Gear**, the third member, turns a workflow you just got working, or a judgment you have never written down, into a reusable Skill that any AI will follow. It keeps only the path that finally worked, turns your corrections into rules, follows the official Agent Skills spec, writes test cases first, delivers checklist, draft and tests together, and trial-runs the Skill in a fresh chat before calling it done. It also fixes skills with minimal changes and version bumps, shows how to install in each AI, reviews downloaded skills without running them, and chains skills or packs them into a bot.
-- **Roadmap:** 青鸟 Bluebird, prompts (✅ v0.1.2); 千机 Gear, skills (✅ v0.1.0); 试金 Touchstone, verification (✅ v0.1.2); 凝露 Dew, distillation; 经纬 Loom, ontology.
+- **Roadmap:** 青鸟 Bluebird, prompts (✅ v0.1.3); 千机 Gear, skills (✅ v0.1.1); 试金 Touchstone, verification (✅ v0.1.3); 凝露 Dew, distillation; 经纬 Loom, ontology.
 - **License:** © 2026 GangGe. Content under CC BY 4.0; tooling under MIT.
