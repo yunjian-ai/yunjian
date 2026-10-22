@@ -8,7 +8,7 @@ from pathlib import Path
 
 W, H = 1600, 640
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-TITLE, EN, SUB = "云间", "CLOUDMERE", "每位成员，只把一件事做好"
+TITLE, EN, SUB = "云间Bot元系列", "CLOUDMERE", "青鸟传话 · 千机造器 · 试金验真"
 
 
 def main(src, out="assets/hero.png"):

@@ -1,10 +1,10 @@
-云间 Cloudmere · 版权所有 © 2026 杨先生
+云间Bot元系列 Cloudmere · 版权所有 © 2026 GangGe
 
 本仓库采用双许可：
 
 1. 内容（members/ 下的技能、资料卡、记忆、示例、考题，shared/ 和所有文档）
    采用 知识共享 署名 4.0 国际许可协议（CC BY 4.0）：https://creativecommons.org/licenses/by/4.0/deed.zh-hans
-   转载或改编请署名「云间 Cloudmere · 杨先生」，并附仓库链接。
+   转载或改编请署名「云间Bot元系列 Cloudmere · GangGe」，并附仓库链接。
 
 2. 工具代码（tools/、.github/、members/*/install.sh 及 dist/install.sh）
    采用 MIT 许可：

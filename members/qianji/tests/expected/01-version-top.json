@@ -1,0 +1,7 @@
+{
+ "skill": "topic-check",
+ "expect": [
+  "头信息"
+ ],
+ "why": "常见的旧写法：version 单独一行，官方规格不认"
+}

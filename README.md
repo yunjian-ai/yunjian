@@ -1,27 +1,28 @@
-<p align="center"><img src="assets/hero.png" alt="云间 Cloudmere" width="100%"></p>
+<p align="center"><img src="assets/hero.png" alt="云间Bot元系列 Cloudmere" width="100%"></p>
 
-<h1 align="center">云间 Cloudmere</h1>
+<h1 align="center">云间Bot元系列 Cloudmere</h1>
 
-<p align="center"><b>一组能直接装进 Bot 的成员，每位只把一件事做好。</b></p>
+<p align="center"><b>云上住着几位手艺人：青鸟替你传话，千机替你造器，试金替你验真。你只管开口。</b></p>
 
-<p align="center">青鸟 Bluebird · 试金 Touchstone · cloudmere · Grok Bot 提示词助手和验证助手 · 仓库 <a href="https://github.com/yunjian-ai/yunjian">github.com/yunjian-ai/yunjian</a></p>
+<p align="center">青鸟 Bluebird · 千机 Gear · 试金 Touchstone · cloudmere · Grok Bot 提示词、Skill、验证助手 · 仓库 <a href="https://github.com/yunjian-ai/yunjian">github.com/yunjian-ai/yunjian</a></p>
 
 <p align="center">
-  <a href="CHANGELOG.md"><img alt="青鸟" src="https://img.shields.io/badge/青鸟-v0.1.1-1f6feb"></a>
-  <a href="CHANGELOG.md"><img alt="试金" src="https://img.shields.io/badge/试金-v0.1.1-b08d2b"></a>
+  <a href="CHANGELOG.md"><img alt="青鸟" src="https://img.shields.io/badge/青鸟-v0.1.2-1f6feb"></a>
+  <a href="CHANGELOG.md"><img alt="千机" src="https://img.shields.io/badge/千机-v0.1.0-2e8b57"></a>
+  <a href="CHANGELOG.md"><img alt="试金" src="https://img.shields.io/badge/试金-v0.1.2-b08d2b"></a>
   <a href="LICENSE"><img alt="license" src="https://img.shields.io/badge/license-CC%20BY%204.0%20%2B%20MIT-555555"></a>
   <a href="https://github.com/yunjian-ai/yunjian/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/yunjian-ai/yunjian/actions/workflows/ci.yml/badge.svg"></a>
 </p>
 
-<p align="center"><a href="#english">English</a> · <a href="#青鸟--bluebird">青鸟</a> · <a href="#试金--touchstone">试金</a> · <a href="#安装">安装</a> · <a href="#路线图">路线图</a> · <a href="#常见问题">常见问题</a></p>
+<p align="center"><a href="#english">English</a> · <a href="#青鸟--bluebird">青鸟</a> · <a href="#千机--gear">千机</a> · <a href="#试金--touchstone">试金</a> · <a href="#安装">安装</a> · <a href="#路线图">路线图</a> · <a href="#常见问题">常见问题</a></p>
 
 ---
 
-## 云间是什么
+## 云间Bot元系列是什么
 
-云间是一组 Grok Bot。想象云上有个小地方，住着几位手艺人：一位替你把话说清楚交给 AI，一位替你把做好的东西验一验……每位手艺人只守一门手艺，导入哪位就请来哪位。他们照同一份规矩干活、用同一种方式安装、过同一套检查，版本却各管各的，互不牵连。
+云间Bot元系列是一组为 Bot 做的成员，装进 Grok Bot 就能用。想象云上有个小地方，住着几位手艺人：一位替你把话说清楚交给 AI，一位替你把一套做法造成能反复用的工具，一位替你把做好的东西验一验……每位手艺人只守一门手艺，导入哪位就请来哪位。他们照同一份规矩干活、用同一种方式安装、过同一套检查，版本却各管各的，互不牵连。
 
-现在有两位成员：管提示词的 **青鸟**，管验证的 **试金**。
+现在有三位成员：管提示词的 **青鸟**，管 Skill 的 **千机**，管验证的 **试金**。
 
 ## 青鸟 · Bluebird
 
@@ -48,6 +49,33 @@
 | 3 | 改提示词 | 判断毛病属于哪一类，只改能堵住它的最少几句，逐条标出 |
 
 另有两个后台技能：`qingniao-install` 负责安装，`qingniao-update` 负责更新。
+
+## 千机 · Gear
+
+> 你有一套反复在做的做法，它帮你造成 AI 每次都照着做的 Skill，换个 AI 也照做。
+
+**写给谁：** 和 AI 跑通过一件事、心里有一套判断标准、每天重复同一件活，想让 AI 以后都按你的来、不用每次重新交代的人。
+
+**它做什么**
+
+- **把跑通的流程原样收下。** 你刚和 AI 做成一件事，说一句「把刚才这套做成技能」：它只收最后走通的那条路，你纠正过 AI 的地方变成规则，走错又退回的路不收，这次的文件名、日期换成空位。
+- **说不清的也能问出来。** 「好主播一看就知道」这种直觉，它像记者一样一次问一个问题，追问到「看什么、怎么打分、什么直接排除」都能照做；你没说的标准不替你编，标「待确认」。
+- **按官方规格写。** 头信息、名字、介绍照 Agent Skills 官方规格写；判断、流程、知识、工具四类各用各的骨架；判断类自带「没依据就说是推测」。
+- **先定试题再写，造完先试一次。** 清单、初稿、试题一起交给你；拿你判断过的真实例子，在全新对话里只给 Skill 跑一遍，对上了才定稿。自带检查脚本 `check_skill.py`，能跑程序的地方自动查格式。
+- **改得稳。** 判错了只改出问题的那一条、写成通用规则，跳版本号、记一行改动，改完把以前的试题全部重跑。
+- **装、审、串。** 告诉你在 Claude、Codex、WorkBuddy、Grok Bot 里各怎么装；网上下的 Skill 先逐个文件看、不运行，说清它实际会做什么；几个 Skill 接成一条线，或配成一个专门的 Bot。
+
+**五个技能，各干一步**
+
+| # | 技能 | 做什么 |
+|---|---|---|
+| 1 | 第一次见面 | 一次问一个问题，建好你的 Skill 档案，然后马上造第一个；支持「演练」模式 |
+| 2 | 收流程 | 从刚跑通的对话里抽出做法 → 清单、初稿、试题一起交 → 试用 → 定稿 |
+| 3 | 造 | 采访、照你讲的、照别人的结构、打包知识卡，四种起点都能造 |
+| 4 | 改 | 判错了、标准变了、叫不出来、乱出来，各有改法 |
+| 5 | 装和串 | 各家 AI 的装法、装前先审、接成一条线、配成一个 Bot |
+
+另有两个后台技能：`qianji-install` 负责安装，`qianji-update` 负责更新。
 
 ## 试金 · Touchstone
 
@@ -84,14 +112,16 @@
 
 ```bash
 # 青鸟
-curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/qingniao-v0.1.1/members/qingniao/dist/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/qingniao-v0.1.2/members/qingniao/dist/install.sh | bash
+# 千机
+curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/qianji-v0.1.0/members/qianji/dist/install.sh | bash
 # 试金
-curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/shijin-v0.1.1/members/shijin/dist/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/shijin-v0.1.2/members/shijin/dist/install.sh | bash
 ```
 
-Claude Code 等能装 Skill 的 AI：把 `members/<成员>/skills/` 下的五个文件夹复制进技能目录即可。
+Claude Code 等能装 Skill 的 AI：把 `members/<成员>/skills/` 下的文件夹整个复制进技能目录即可。
 
-**更新：** 想换新版，跟它说「更新青鸟」或「更新试金」就行；平时它一周顶多自己看一次有没有新版，看到了先告诉你新版改了哪几处，等你点头再装。你的用户档案、提示词库、验收档案都留在你自己的记忆里，换版本不会动它们。放出来的每个版本都打了标签、过了考试。
+**更新：** 想换新版，跟它说「更新青鸟」「更新千机」或「更新试金」就行；平时它一周顶多自己看一次有没有新版，看到了先告诉你新版改了哪几处，等你点头再装。你的用户档案、提示词库、Skill 档案、验收档案都留在你自己的记忆里，换版本不会动它们。放出来的每个版本都打了标签、过了考试。
 
 **开始前想好这几样，三分钟就能用**
 
@@ -105,17 +135,19 @@ Claude Code 等能装 Skill 的 AI：把 `members/<成员>/skills/` 下的五个
 
 [`members/qingniao/examples/`](members/qingniao/examples/) 里是青鸟对各类请求的回答：做图、视频、Midjourney、改图、模板、Bot 岗位指令、系列短片、改提示词、夹带指令、生成提示词的提示词。全部是示例数据。
 
+[`members/qianji/examples/`](members/qianji/examples/) 里是虚构茶叶店主「阿茶」从第一次见面、收流程、造、改，一直走到配成一个 Bot 的全过程，以及「小林」的一次完整演练。
+
 [`members/shijin/examples/`](members/shijin/examples/) 里是虚构店主「阿青」从第一次见面走到两版对比的全过程，以及「老林」的一次完整演练。
 
-每位成员的 `tests/考题.md` 是 12 道考题和合格标准，每次发版前用全新的 AI 只装这位成员照做，按它判分。
+每位成员的 `tests/考题.md` 是考题和合格标准（青鸟、试金各 12 道，千机 15 道），每次发版前用全新的 AI 只装这位成员照做，按它判分。
 
 ## 路线图
 
 | 成员 | 职能 | 状态 |
 |---|---|---|
-| 青鸟 Bluebird | 提示词 | ✅ v0.1.1 |
-| 试金 Touchstone | 验证 | ✅ v0.1.1 |
-| 千机 Gear | Skill | 筹备中 |
+| 青鸟 Bluebird | 提示词 | ✅ v0.1.2 |
+| 千机 Gear | Skill | ✅ v0.1.0 |
+| 试金 Touchstone | 验证 | ✅ v0.1.2 |
 | 凝露 Dew | 蒸馏 | 筹备中 |
 | 经纬 Loom | 本体 | 筹备中 |
 
@@ -127,7 +159,11 @@ Claude Code 等能装 Skill 的 AI：把 `members/<成员>/skills/` 下的五个
 
 **写出来的提示词换个 AI 还能用吗？** 能。青鸟默认按通用写法写，并在用法里说明在别的工具上要不要调；你说了用哪个工具，它就按那个工具的写法写。
 
-**试金会替我把东西改好吗？** 不会。它只查不改，给你问题清单和改法；提示词可以交给青鸟改。
+**试金会替我把东西改好吗？** 不会。它只查不改，给你问题清单和改法；提示词可以找青鸟改，Skill 可以找千机改。
+
+**千机和青鸟有什么不一样？** 青鸟写的是一段这一次用的提示词；千机造的是 Skill，装进 AI 以后每次开工自动带上，不用你再贴。只用一次的话，千机会建议你找青鸟。
+
+**千机会替我把 Skill 发到网上吗？** 不会。它只给你自己发的步骤，并提醒你先查有没有密钥、手机号、客户资料。
 
 **试金说「判不了」是什么意思？** 东西没给全、或者没法真跑起来时，它不硬判，会写清还缺什么、问你一个最关键的问题。
 
@@ -142,6 +178,7 @@ python3 tools/validate.py                    # 格式、大小、交叉引用、
 python3 tools/pack.py                        # 生成各成员 dist/ 配方和分享卡
 python3 members/qingniao/tests/run_tests.py  # 青鸟：夹具和反向用例
 python3 members/shijin/tests/run_tests.py    # 试金：夹具和反向用例
+python3 members/qianji/tests/run_tests.py    # 千机：夹具和反向用例
 ```
 
 脚本只依赖 Python 3 自带的库，不用另装东西。怎么参与见 [CONTRIBUTING.md](CONTRIBUTING.md)；仓库里大致是这样：
@@ -150,22 +187,23 @@ python3 members/shijin/tests/run_tests.py    # 试金：夹具和反向用例
 shared/             所有成员共用的规范和安装技能写法
 tools/              检查、打包、提示词和报告的机械检查
 members/qingniao/   青鸟：skills/ · examples/ · tests/ · dist/
+members/qianji/     千机：skills/ · examples/ · tests/ · dist/
 members/shijin/     试金：skills/ · examples/ · tests/ · dist/
 assets/             图片素材
 ```
 
 ## 许可
 
-© 2026 杨先生。内容和代码分开授权，全文在 [LICENSE](LICENSE)：
+© 2026 GangGe。内容和代码分开授权，全文在 [LICENSE](LICENSE)：
 
-- **文字类**（成员的技能、卡片、示例、考题，shared/ 里的规范，以及各种说明文档）用 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh-hans)：可以转载、改编，注明「云间 Cloudmere · 杨先生」并附上仓库地址即可。
+- **文字类**（成员的技能、卡片、示例、考题，shared/ 里的规范，以及各种说明文档）用 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh-hans)：可以转载、改编，注明「云间Bot元系列 Cloudmere · GangGe」并附上仓库地址即可。
 - **工具代码**（tools/、tests/ 里的脚本、.github/、安装脚本）：MIT。
 
 ---
 
 ## English
 
-**Cloudmere** is a small set of Grok Bots, each a specialist with a single craft. Install only the ones you need; they share one set of house rules and checks, but every member is released and versioned separately.
+**Cloudmere (云间Bot元系列)** is a small set of members built for bots such as Grok Bot, each a specialist with a single craft. Install only the ones you need; they share one set of house rules and checks, but every member is released and versioned separately.
 
 **Bluebird**, the first member, turns one sentence of what you want into a ready-to-paste prompt. It picks the right structure for the job — text, image, video, or long-term rules and bot instructions — and for simple requests it answers in a single reply, leaving 【placeholders】 with examples instead of firing off questions. For long-term prompts it interviews you one question at a time and ships test cases and a version number. It also fixes prompts that don't work by changing as little as possible, and saves good prompts to your own prompt library.
 
@@ -174,5 +212,6 @@ assets/             图片素材
 - **Skills:** first meeting, write a prompt, fix a prompt, plus install and update.
 
 **Touchstone**, the second member, checks what you are about to ship — prompts, skills, web pages, mini apps — and returns one verdict (ship / fix first / redo / cannot judge) plus an evidence-backed issue list graded critical, risky or suggestion. It runs real checks where it can (Lighthouse for web pages, five manual checks for apps), writes exams for another AI to take and grades the answer sheets, swaps order when comparing two versions, never grades its own work, and reviews without rewriting.
-- **Roadmap:** 青鸟 Bluebird, prompts (✅ v0.1.1); 试金 Touchstone, verification (✅ v0.1.1); 千机 Gear, skills; 凝露 Dew, distillation; 经纬 Loom, ontology.
-- **License:** © 2026 杨先生. Content under CC BY 4.0; tooling under MIT.
+**Gear**, the third member, turns a workflow you just got working, or a judgment you have never written down, into a reusable Skill that any AI will follow. It keeps only the path that finally worked, turns your corrections into rules, follows the official Agent Skills spec, writes test cases first, delivers checklist, draft and tests together, and trial-runs the Skill in a fresh chat before calling it done. It also fixes skills with minimal changes and version bumps, shows how to install in each AI, reviews downloaded skills without running them, and chains skills or packs them into a bot.
+- **Roadmap:** 青鸟 Bluebird, prompts (✅ v0.1.2); 千机 Gear, skills (✅ v0.1.0); 试金 Touchstone, verification (✅ v0.1.2); 凝露 Dew, distillation; 经纬 Loom, ontology.
+- **License:** © 2026 GangGe. Content under CC BY 4.0; tooling under MIT.

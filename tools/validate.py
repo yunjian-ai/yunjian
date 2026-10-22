@@ -53,6 +53,25 @@ def check_member(m, root, errors):
         total += (m / "memory.md").stat().st_size
     skills = sorted(d for d in (m / "skills").iterdir() if d.is_dir())
     names, corpus = {d.name for d in skills}, {}
+    # 岗位说明（shared/岗位说明写法.md 第四节）
+    if prof.exists():
+        ins = json.loads(prof.read_text(encoding="utf-8")).get("instructions", "")
+        if not ins.startswith("你是"):
+            errors.append(f"[instructions] {name}: 岗位说明要以「你是」开头")
+        for s in sorted(names - {f"{name}-install", f"{name}-update"}):
+            if s not in ins:
+                errors.append(f"[instructions] {name}: 岗位说明没派到技能 {s}")
+        # 装法三处一致（shared/安装写法.md）：岗位说明、安装记录、安装技能都带同一条安装命令
+        cmd = f"{{{{REPO}}}}/{name}-v{{{{VERSION}}}}/members/{name}/dist/install.sh"
+        places = {"岗位说明": ins, "memory.md": (m / "memory.md").read_text(encoding="utf-8") if (m / "memory.md").exists() else "",
+                  f"{name}-install": (m / "skills" / f"{name}-install" / "SKILL.md").read_text(encoding="utf-8")
+                  if (m / "skills" / f"{name}-install" / "SKILL.md").exists() else ""}
+        for where, text in places.items():
+            if cmd not in text:
+                errors.append(f"[install] {name}: {where} 里没有标准安装命令（见 shared/安装写法.md）")
+        for n in re.findall(r"不到 ?(\d+) ?个", ins):
+            if int(n) != len(names):
+                errors.append(f"[instructions] {name}: 岗位说明写「不到 {n} 个」，实际有 {len(names)} 个技能")
     for d in skills:
         f = d / "SKILL.md"
         if not f.exists():
@@ -60,6 +79,10 @@ def check_member(m, root, errors):
             continue
         text = f.read_text(encoding="utf-8")
         corpus[d.name] = text
+        if d.name.endswith("-getting-started") and "## 演练模式" not in text:
+            errors.append(f"[rehearsal] {d.name}: 入门技能缺「## 演练模式」一节（见 shared/成员规范.md）")
+        if not d.name.endswith(("-install", "-update")) and re.search(r"写进记忆|存进记忆|写入记忆", text) and "演练" not in text:
+            errors.append(f"[rehearsal] {d.name}: 会写记忆，但没写演练模式下只打印")
         meta = parse_frontmatter(text)
         if not meta or not meta.get("name") or not meta.get("description"):
             errors.append(f"[frontmatter] {d.name}: 缺 name 或 description")
@@ -77,6 +100,14 @@ def check_member(m, root, errors):
                     errors.append(f"[budget] {d.name}/SKILL.md {extra.stat().st_size} 字节 > {LIM['skill_bytes']}")
             if extra.is_file() and extra.suffix == ".md" and extra.name != "SKILL.md":
                 corpus[f"{d.name}/{extra.name}"] = extra.read_text(encoding="utf-8")
+    # 示例（shared/成员规范.md）：一位虚构主人从头走到尾＋一份全流程演练，开头都标「示例数据（虚构主人）」
+    ex = sorted((m / "examples").glob("*.md")) if (m / "examples").is_dir() else []
+    if not any("全流程" in f.name for f in ex) or len(ex) < 3:
+        errors.append(f"[examples] {name}: 示例要有一位虚构主人走一遍（至少 2 份）＋一份「全流程」演练")
+    for f in ex:
+        head = "\n".join(f.read_text(encoding="utf-8").splitlines()[:5])
+        if "示例数据" not in head and "【示例】" not in head:
+            errors.append(f"[examples] {name}/examples/{f.name}: 开头没标「示例数据（虚构主人）」")
     for r in REQUIRED:
         if f"{name}-{r}" not in names:
             errors.append(f"[skills] {name}: 缺必备技能 {name}-{r}")

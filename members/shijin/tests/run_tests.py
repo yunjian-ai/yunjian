@@ -39,6 +39,17 @@ def append(rel, text):
 
 
 banned = "".join(map(chr, (0x8BFE, 0x4EF6)))          # 名单上的词用码点拼出来，仓库里不出现明文
+
+
+def edit_ins(rel, fn):
+    """改岗位说明（profile.json 的 instructions）"""
+    def go(d):
+        p = json.loads((d / rel).read_text(encoding="utf-8"))
+        p["instructions"] = fn(p["instructions"])
+        (d / rel).write_text(json.dumps(p, ensure_ascii=False, indent=2), encoding="utf-8")
+    return go
+
+
 run_negative_cases("shijin", [
     ("budget", append(SK / "shijin-check/SKILL.md", "啊" * 3000)),
     ("private", append(SK / "shijin-check/规则卡.md", "\n" + banned + "\n")),
@@ -46,6 +57,12 @@ run_negative_cases("shijin", [
     ("xref", append(SK / "shijin-check/SKILL.md", "\n见 `不存在的卡.md`。\n")),
     ("frontmatter", lambda d: (d / SK / "shijin-exam/SKILL.md").write_text("没有头部\n", encoding="utf-8")),
     ("version", lambda d: (d / "members/shijin/VERSION").write_text("v1\n")),
+    ("examples", lambda d: (d / "members/shijin/examples/02-快查提示词-阿青.md").write_text("没有标记的示例\n", encoding="utf-8")),
+    ("instructions", edit_ins("members/shijin/profile.json", lambda t: t.replace("shijin-exam", "某技能"))),
+    ("instructions", edit_ins("members/shijin/profile.json", lambda t: t.replace("不到 5 个", "不到 4 个"))),
+    ("instructions", edit_ins("members/shijin/profile.json", lambda t: "嗨，" + t)),
+    ("install", lambda d: (d / "members/shijin/memory.md").write_text("【安装记录】去别处装。\n", encoding="utf-8")),
+    ("rehearsal", lambda d: (d / SK / "shijin-getting-started/SKILL.md").write_text((d / SK / "shijin-getting-started/SKILL.md").read_text(encoding="utf-8").replace("## 演练模式", "## 试一试"), encoding="utf-8")),
 ], report)
 
 print("\n" + ("全部通过" if not fails else f"{fails} 项没过"))

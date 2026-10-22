@@ -1,0 +1,8 @@
+{
+ "skill": "good",
+ "expect": [
+  "name",
+  "description"
+ ],
+ "why": "名字大写、连着两个连字符、和文件夹不同名；名片有尖括号"
+}
