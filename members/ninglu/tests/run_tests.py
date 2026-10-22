@@ -79,7 +79,7 @@ else:
     pieces = st.sampled_from(["# 标题\n", "> 主题\n", "- 类型：规则\n", "- 可信度：原文\n", "- 出处：第 3 页\n",
                               "- 原话：「」\n", "- 关系：属于 → \n", "- 关系：独立\n", "## 正文\n", "```\n", "；→←\n"])
 
-    @settings(max_examples=300, deadline=None)
+    @settings(max_examples=300, deadline=None, database=None)
     @given(st.lists(st.one_of(pieces, st.text(max_size=40)), max_size=30))
     def no_crash(parts):
         with tempfile.TemporaryDirectory() as t:
