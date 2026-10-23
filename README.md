@@ -7,11 +7,11 @@
 <p align="center">青鸟 Bluebird · 千机 Gear · 凝露 Dew · 经纬 Loom · 试金 Touchstone · cloudmere · Grok Bot 提示词、Skill、蒸馏、本体、验证助手 · 仓库 <a href="https://github.com/yunjian-ai/yunjian">github.com/yunjian-ai/yunjian</a></p>
 
 <p align="center">
-  <a href="CHANGELOG.md"><img alt="青鸟" src="https://img.shields.io/badge/青鸟-v0.1.8-1f6feb"></a>
-  <a href="CHANGELOG.md"><img alt="千机" src="https://img.shields.io/badge/千机-v0.1.6-2e8b57"></a>
-  <a href="CHANGELOG.md"><img alt="凝露" src="https://img.shields.io/badge/凝露-v0.1.4-5b8fa8"></a>
-  <a href="CHANGELOG.md"><img alt="经纬" src="https://img.shields.io/badge/经纬-v0.1.0-7a5c99"></a>
-  <a href="CHANGELOG.md"><img alt="试金" src="https://img.shields.io/badge/试金-v0.1.8-b08d2b"></a>
+  <a href="CHANGELOG.md"><img alt="青鸟" src="https://img.shields.io/badge/青鸟-v0.1.9-1f6feb"></a>
+  <a href="CHANGELOG.md"><img alt="千机" src="https://img.shields.io/badge/千机-v0.1.7-2e8b57"></a>
+  <a href="CHANGELOG.md"><img alt="凝露" src="https://img.shields.io/badge/凝露-v0.1.5-5b8fa8"></a>
+  <a href="CHANGELOG.md"><img alt="经纬" src="https://img.shields.io/badge/经纬-v0.1.1-7a5c99"></a>
+  <a href="CHANGELOG.md"><img alt="试金" src="https://img.shields.io/badge/试金-v0.1.9-b08d2b"></a>
   <a href="LICENSE"><img alt="license" src="https://img.shields.io/badge/license-CC%20BY%204.0%20%2B%20MIT-555555"></a>
   <a href="https://github.com/yunjian-ai/yunjian/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/yunjian-ai/yunjian/actions/workflows/ci.yml/badge.svg"></a>
 </p>
@@ -179,20 +179,28 @@
 
 ```bash
 # 青鸟
-curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/qingniao-v0.1.8/members/qingniao/dist/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/qingniao-v0.1.9/members/qingniao/dist/install.sh | bash
 # 千机
-curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/qianji-v0.1.6/members/qianji/dist/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/qianji-v0.1.7/members/qianji/dist/install.sh | bash
 # 凝露
-curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/ninglu-v0.1.4/members/ninglu/dist/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/ninglu-v0.1.5/members/ninglu/dist/install.sh | bash
 # 经纬
-curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/jingwei-v0.1.0/members/jingwei/dist/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/jingwei-v0.1.1/members/jingwei/dist/install.sh | bash
 # 试金
-curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/shijin-v0.1.8/members/shijin/dist/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/shijin-v0.1.9/members/shijin/dist/install.sh | bash
 ```
 
-Claude Code 等能装 Skill 的 AI：把 `members/<成员>/skills/` 下的文件夹整个复制进技能目录即可。
+Claude Code 等能装 Skill 的 AI：在上面的命令里 `bash` 前面加上技能目录，比如青鸟是 `QINGNIAO_SKILL_DIR=~/.claude/skills bash`（千机 `QIANJI_`、凝露 `NINGLU_`、经纬 `JINGWEI_`、试金 `SHIJIN_`）；也可以把 `members/<成员>/skills/` 下的文件夹整个复制进技能目录。
 
-**更新：** 想换新版，跟它说「更新青鸟」「更新千机」「更新凝露」「更新经纬」或「更新试金」就行；平时它一周顶多自己看一次有没有新版，看到了先告诉你新版改了哪几处，等你点头再装。你的用户档案、提示词库、Skill 档案、蒸馏档案、母体档案、验收档案都留在你自己的记忆里，换版本不会动它们。放出来的每个版本都打了标签、过了考试。
+**更新：** 装好后它只问你一句以后怎么更新——
+- **自动**（推荐）：它在 Grok Bot 里建一个每周一上午 9 点的定时任务，自己查有没有新版；有新版先告诉你改了哪几处，你点头才装。
+- **一句话**：你说「更新青鸟」「更新千机」「更新凝露」「更新经纬」或「更新试金」，它再查。
+
+随时说「打开自动更新」「关掉自动更新」就能改。你的用户档案、提示词库、Skill 档案、蒸馏档案、母体档案、验收档案都留在你自己的记忆里，换版本不会动它们。放出来的每个版本都打了标签、过了考试。
+
+**坏了能自己修：** 技能被删了、改乱了，跟它说「青鸟坏了」或「修一下青鸟」。它先体检（安装命令后面加 `-s -- --check`，只看不改），告诉你缺了哪个、哪个和原版不一样，你同意才恢复；你自己改过的技能会先备份到 `~/yunjian-backup/`。选了自动更新的，每周检查时也会顺带体检。
+
+**反馈：** 用得不顺，跟它说「我要反馈」。它把问题整理成一张十行以内的反馈单，先去掉姓名、电话、账号这些隐私给你看，再给你提交的地方：[反馈表单](https://www.feishu.cn/share/base/form/shrcnFyVGCVJkpcH7lfjOD8Ec6b)（不用注册）或本仓库的 [Issues](https://github.com/yunjian-ai/yunjian/issues)。由你自己提交，它不会在后台替你发。
 
 **开始前想好这几样，三分钟就能用**
 
@@ -220,11 +228,11 @@ Claude Code 等能装 Skill 的 AI：把 `members/<成员>/skills/` 下的文件
 
 | 系列 | 成员 | 职能 | 状态 |
 |---|---|---|---|
-| 起元 | 青鸟 Bluebird | 提示词 | ✅ v0.1.8 |
-| 起元 | 千机 Gear | Skill | ✅ v0.1.6 |
-| 起元 | 凝露 Dew | 蒸馏 | ✅ v0.1.4 |
-| 起元 | 试金 Touchstone | 验证 | ✅ v0.1.8 |
-| 起元 | 经纬 Loom | 本体 | ✅ v0.1.0 |
+| 起元 | 青鸟 Bluebird | 提示词 | ✅ v0.1.9 |
+| 起元 | 千机 Gear | Skill | ✅ v0.1.7 |
+| 起元 | 凝露 Dew | 蒸馏 | ✅ v0.1.5 |
+| 起元 | 试金 Touchstone | 验证 | ✅ v0.1.9 |
+| 起元 | 经纬 Loom | 本体 | ✅ v0.1.1 |
 
 ## 常见问题
 
@@ -295,12 +303,14 @@ assets/             图片素材
 **Bluebird**, the first member, turns one sentence of what you want into a ready-to-paste prompt. It picks the right structure for the job — text, image, video, or long-term rules and bot instructions — and for simple requests it answers in a single reply, leaving 【placeholders】 with examples instead of firing off questions. For long-term prompts it interviews you one question at a time and ships test cases and a version number. It also fixes prompts that don't work by changing as little as possible, and saves good prompts to your own prompt library.
 
 - **Install:** open a member's share link in Grok Bot (links in the 安装 section above). In the first chat it asks your permission, then pulls the full skill set from a tagged release of this repo. Nothing else gets installed and no keys are needed.
-- **Update:** ask it to update (e.g. 「更新青鸟」). It looks for a new release at most once a week, tells you what changed, and waits for your yes. Your profile, prompt library and review notes stay in your own memory and are left untouched.
+- **Update:** right after installing it asks once how you want updates: *automatic* (a weekly Monday 9 am scheduled task checks for a new release, tells you what changed and waits for your yes) or *on request* (say 「更新青鸟」). Your profile, prompt library and review notes stay in your own memory and are left untouched.
+- **Self-repair:** say 「修一下青鸟」 and it runs a read-only check (`bash -s -- --check`), lists missing or altered skills, and restores the originals once you agree — anything you edited is backed up to `~/yunjian-backup/` first.
+- **Feedback:** say 「我要反馈」 and it drafts a short, privacy-scrubbed report for you to review and submit yourself via the [feedback form](https://www.feishu.cn/share/base/form/shrcnFyVGCVJkpcH7lfjOD8Ec6b) or [Issues](https://github.com/yunjian-ai/yunjian/issues). It never sends anything on its own.
 - **Skills:** first meeting, write a prompt, fix a prompt, plus install and update.
 
 **Touchstone**, the second member, checks what you are about to ship — prompts, skills, web pages, mini apps — and returns one verdict (ship / fix first / redo / cannot judge) plus an evidence-backed issue list graded critical, risky or suggestion. It runs real checks where it can (Lighthouse for web pages, five manual checks for apps), writes exams for another AI to take and grades the answer sheets, swaps order when comparing two versions, never grades its own work, and reviews without rewriting.
 **Gear**, the third member, turns a workflow you just got working, or a judgment you have never written down, into a reusable Skill that any AI will follow. It keeps only the path that finally worked, turns your corrections into rules, follows the official Agent Skills spec, writes test cases first, delivers checklist, draft and tests together, and trial-runs the Skill in a fresh chat before calling it done. It also fixes skills with minimal changes and version bumps, shows how to install in each AI, reviews downloaded skills without running them, and chains skills or packs them into a bot.
 **Dew**, the fourth member, organizes a pile of material — books, courses, chat logs, recordings, or know-how that lives only in your head — into a linked web of knowledge cards: one idea per card, original quote kept word for word, source down to the page or minute, original / summarized / inferred kept apart, named links between cards, and a map. It turns audio, video and photos into text first, works in chunks you can resume, and ships `check_cards.py` to verify quotes against the source.
 **Loom**, the fifth member, builds the ontology — the mother structure — of whatever you run: a shop, a company, an app or a single skill. It writes the roots (what it is, what for, what holds it up), the main lines, every dimension, the things in each (properties, named relations, states, who can do what), past, present and the missing branches still to grow; every fact carries its source, look-alike names are told apart instead of merged, and conflicts are laid out for you to decide. The result is a plain folder (or Obsidian / Feishu Base) with a map and a how-to for AI, plus `check_mother.py` for mechanical checks.
-- **Roadmap:** Qiyuan (起元) — 青鸟 Bluebird, prompts (✅ v0.1.8); 千机 Gear, skills (✅ v0.1.6); 凝露 Dew, distillation (✅ v0.1.4); 试金 Touchstone, verification (✅ v0.1.8); 经纬 Loom, ontology (✅ v0.1.0).
+- **Roadmap:** Qiyuan (起元) — 青鸟 Bluebird, prompts (✅ v0.1.9); 千机 Gear, skills (✅ v0.1.7); 凝露 Dew, distillation (✅ v0.1.5); 试金 Touchstone, verification (✅ v0.1.9); 经纬 Loom, ontology (✅ v0.1.1).
 - **License:** © 2026 GangGe. Content under CC BY 4.0; tooling under MIT.

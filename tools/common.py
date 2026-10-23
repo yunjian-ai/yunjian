@@ -16,7 +16,7 @@ LIM = CONFIG["limits"]
 
 # 公开仓库白名单：tools/publish.py 照它挑文件，tools/validate.py 照它扫——两边用同一份，平时检查不会比发布扫得少
 PUBLIC_FILES = ["LICENSE", "CHANGELOG.md", ".gitignore", ".github/workflows/ci.yml", "shared",
-                "tools/validate.py", "tools/pack.py", "tools/config.json", "tools/check_prompt.py", "tools/check_report.py",
+                "tools/validate.py", "tools/pack.py", "tools/test_install.py", "tools/config.json", "tools/check_prompt.py", "tools/check_report.py",
                 "tools/make_hero.py", "tools/common.py", "assets/hero.png", "assets/README.md"]
 MEMBER_ITEMS = ["profile.json", "memory.md", "VERSION", "install.sh", "skills", "examples", "dist"]
 MEMBER_TEST_ITEMS = ["fixtures", "expected", "run_tests.py", "材料"]

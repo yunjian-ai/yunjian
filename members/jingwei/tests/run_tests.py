@@ -79,6 +79,9 @@ run_negative_cases("jingwei", [
     ("install", lambda d: (d / "members/jingwei/memory.md").write_text("【安装记录】去别处装。\n", encoding="utf-8")),
     ("install", edit_ins("members/jingwei/profile.json", lambda t: t.replace("装的比 jingwei-v{{VERSION}} 旧", "装的不是 jingwei-v{{VERSION}}"))),  # 只升不降
     ("install", edit("members/jingwei/memory.md", "不装回旧版", "重装")),  # 只升不降：漏写「不装回旧版」
+    ("install", lambda d: (d / "members/jingwei/memory.md").write_text((d / "members/jingwei/memory.md").read_text(encoding="utf-8").replace("\n\n", "\n"), encoding="utf-8")),  # 两条记忆并成一条：平台改不准一条里的几格
+    ("install", lambda d: (d / "members/jingwei/profile.json").write_text((d / "members/jingwei/profile.json").read_text(encoding="utf-8").replace("安装状态", "安装记录"), encoding="utf-8")),  # 岗位说明还写旧的「安装记录」
+    ("install", lambda d: (d / "members/jingwei/skills/jingwei-update/SKILL.md").write_text((d / "members/jingwei/skills/jingwei-update/SKILL.md").read_text(encoding="utf-8").replace("整条删掉", "改一下"), encoding="utf-8")),  # 更新技能没写整条换新
     ("rehearsal", edit(SK / "jingwei-getting-started/SKILL.md", "## 演练模式", "## 试一试")),
     ("private", append(SK / "jingwei-store/check_mother.py", "\n# " + banned + "\n")),
     ("greeting", edit("members/jingwei/memory.md", "您好，欢迎来到云间。", "你好。")),

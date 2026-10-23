@@ -62,6 +62,9 @@ run_negative_cases("qianji", [
     ("install", lambda d: (d / "members/qianji/memory.md").write_text("【安装记录】去别处装。\n", encoding="utf-8")),
     ("install", edit_ins("members/qianji/profile.json", lambda t: t.replace("装的比 qianji-v{{VERSION}} 旧", "装的不是 qianji-v{{VERSION}}"))),  # 只升不降：写成「不是这一版」会劝回旧版
     ("install", lambda d: (d / "members/qianji/memory.md").write_text((d / "members/qianji/memory.md").read_text(encoding="utf-8").replace("不装回旧版", "重装"), encoding="utf-8")),  # 只升不降：漏写「不装回旧版」
+    ("install", lambda d: (d / "members/qianji/memory.md").write_text((d / "members/qianji/memory.md").read_text(encoding="utf-8").replace("\n\n", "\n"), encoding="utf-8")),  # 两条记忆并成一条：平台改不准一条里的几格
+    ("install", lambda d: (d / "members/qianji/profile.json").write_text((d / "members/qianji/profile.json").read_text(encoding="utf-8").replace("安装状态", "安装记录"), encoding="utf-8")),  # 岗位说明还写旧的「安装记录」
+    ("install", lambda d: (d / "members/qianji/skills/qianji-update/SKILL.md").write_text((d / "members/qianji/skills/qianji-update/SKILL.md").read_text(encoding="utf-8").replace("整条删掉", "改一下"), encoding="utf-8")),  # 更新技能没写整条换新
     ("rehearsal", lambda d: (d / SK / "qianji-getting-started/SKILL.md").write_text((d / SK / "qianji-getting-started/SKILL.md").read_text(encoding="utf-8").replace("## 演练模式", "## 试一试"), encoding="utf-8")),
     # 发布会挑走、以前 validate 却不扫的地方：夹具说明（.json）、技能里的脚本（.py）、改名后公开的设计摘要
     ("private", lambda d: (d / "members/qianji/tests/expected/01-version-top.json").write_text(

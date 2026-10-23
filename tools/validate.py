@@ -72,6 +72,26 @@ def check_member(m, root, errors):
                 errors.append(f"[install] {name}: {where} 写了「不是某版就装」，要改成「没装或比这一版旧才装」（只升不降）")
             if "不装回" not in text:
                 errors.append(f"[install] {name}: {where} 没写「比这一版新就不装回旧版」（只升不降）")
+        # 两条记忆（shared/安装写法.md）：平台记忆改不准一条里的几格，所以分「安装规矩」（不变）和一行「安装状态」（装完、更新完整条换新）
+        cn = json.loads(prof.read_text(encoding="utf-8")).get("name", "").split(" · ")[0]
+        entries = [e.strip() for e in places["memory.md"].split("\n\n") if e.strip()]
+        if len(entries) != 2 or not entries[0].startswith(f"【{cn}安装规矩】") or not re.fullmatch(
+                f"【{cn}安装状态】现在装的：[^\n｜]+｜上回查新版：[^\n｜]+｜更新方式：[^\n｜]+", entries[1]):
+            errors.append(f"[install] {name}: memory.md 要正好两段——「【{cn}安装规矩】…」和一行「【{cn}安装状态】现在装的：…｜上回查新版：…｜更新方式：…」")
+        if "安装记录" in ins:
+            errors.append(f"[install] {name}: 岗位说明还写着「安装记录」，改成「安装状态」")
+        upd = m / "skills" / f"{name}-update" / "SKILL.md"
+        for where, text in ((f"{name}-install", places[f"{name}-install"]), (f"{name}-update", upd.read_text(encoding="utf-8") if upd.exists() else "")):
+            if f"「{cn}安装状态」" not in text or "整条删掉" not in text:
+                errors.append(f"[install] {name}: {where} 要写明把「{cn}安装状态」整条删掉、再写一条新的")
+        # 三种基本能力（shared/安装写法.md 第 7～9 条）：体检修复、自动更新的选项和定时任务、反馈由主人自己提交
+        utext = upd.read_text(encoding="utf-8") if upd.exists() else ""
+        if f"{name}/dist/install.sh | bash -s -- --check" not in places[f"{name}-install"]:
+            errors.append(f"[heal] {name}: {name}-install 要有体检命令（install.sh 加 --check）")
+        if "更新方式" not in places[f"{name}-install"] or "定时任务" not in utext or "每周检查" not in utext:
+            errors.append(f"[update] {name}: 要在装完问更新方式，并在 {name}-update 写定时任务和每周检查")
+        if "{{FEEDBACK}}" not in utext or "不替主人提交" not in utext or "隐私" not in utext:
+            errors.append(f"[feedback] {name}: {name}-update 要写反馈单：去隐私、给 {{{{FEEDBACK}}}} 链接、不替主人提交")
         for n in re.findall(r"不到 ?(\d+) ?个", ins):
             if int(n) != len(names):
                 errors.append(f"[instructions] {name}: 岗位说明写「不到 {n} 个」，实际有 {len(names)} 个技能")

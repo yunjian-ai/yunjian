@@ -1,6 +1,6 @@
 """打包：把一位成员的文件做成 Bot 安装要用的三样东西，放进 members/<成员>/dist/。只用标准库。
 - recipe.json：全部技能的完整内容（安装脚本和安装技能读它）
-- template.json：Grok Bot 分享卡（只放安装、第一次见面两个技能，外加一条安装记录）
+- template.json：Grok Bot 分享卡（只放安装、第一次见面两个技能，外加两条记忆：安装规矩、安装状态）
 - install.sh、EXPORT.md：把占位符换成真实的仓库和版本
 用法：python3 tools/pack.py [成员 ...]      加 --check 只核对 dist 是不是最新（CI 用），不写文件。"""
 import json
@@ -13,7 +13,8 @@ from common import CONFIG, ROOT, parse_frontmatter  # noqa: E402
 
 def placeholders(member):
     version = (ROOT / "members" / member / "VERSION").read_text().strip()
-    return version, {"{{OWNER}}": CONFIG["github_owner"], "{{REPO}}": CONFIG["repo"], "{{VERSION}}": version}
+    return version, {"{{OWNER}}": CONFIG["github_owner"], "{{REPO}}": CONFIG["repo"], "{{VERSION}}": version,
+                     "{{FEEDBACK}}": CONFIG["feedback_url"]}
 
 
 def filled(path, table):
@@ -42,14 +43,15 @@ def outputs(member):
     version, table = placeholders(member)
     skills = collect_skills(member, table)
     profile = json.loads(filled(base / "profile.json", table))
-    memory = filled(base / "memory.md", table)
+    # memory.md 里空一行隔开的每一段是一条记忆：安装规矩（不变）、安装状态（一行，装完整条换新）
+    memory = [e.strip() for e in filled(base / "memory.md", table).split("\n\n") if e.strip()]
     tag = f"{member}-v{version}"
     recipe = dict(member=member, version=version, tag=tag, profile=profile, memory=memory, skills=skills,
                   repo="https://github.com/%s/%s" % (CONFIG["github_owner"], CONFIG["repo"]))
     on_card = {member + "-install", member + "-getting-started"}
     card = dict(
         profile=dict(name=profile["name"], description=profile["instructions"]),
-        memory=[dict(kind="log", content=memory)],
+        memory=[dict(kind="log", content=e) for e in memory],
         skills=[dict(name=s["name"], description=s["description"], content=s["content"]) for s in skills if s["name"] in on_card],
         gettingStarted=dict(skill=member + "-install"),
         _meta=dict(member=member, version=version, tag=tag, storefront=profile["description"]),
