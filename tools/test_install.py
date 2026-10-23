@@ -1,4 +1,4 @@
-"""安装脚本实测（shared/安装写法.md 第 7 条）：五位的 dist/install.sh 在临时文件夹里走一遍
+"""安装脚本实测（shared/安装写法.md 第 7 条）：各位成员的 dist/install.sh 在临时文件夹里走一遍
 装 → 体检 OK → 删一个、改一个 → 体检报出来 → 重装修好、改过的先备份 → 再体检 OK；升级时没改过的旧文件不备份。
 只用标准库，不联网（直接跑脚本里的 Python 那段，配方用本地 dist/recipe.json）。
 用法：python3 tools/test_install.py"""

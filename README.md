@@ -12,7 +12,7 @@
   <a href="CHANGELOG.md"><img alt="凝露" src="https://img.shields.io/badge/凝露-v0.1.6-5b8fa8"></a>
   <a href="CHANGELOG.md"><img alt="经纬" src="https://img.shields.io/badge/经纬-v0.1.2-7a5c99"></a>
   <a href="CHANGELOG.md"><img alt="试金" src="https://img.shields.io/badge/试金-v0.1.10-b08d2b"></a>
-  <a href="CHANGELOG.md"><img alt="起元操盘" src="https://img.shields.io/badge/起元操盘-v0.1.1-8b3a3a"></a>
+  <a href="CHANGELOG.md"><img alt="起元操盘" src="https://img.shields.io/badge/起元操盘-v0.1.2-8b3a3a"></a>
   <a href="LICENSE"><img alt="license" src="https://img.shields.io/badge/license-CC%20BY%204.0%20%2B%20MIT-555555"></a>
   <a href="https://github.com/yunjian-ai/yunjian/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/yunjian-ai/yunjian/actions/workflows/ci.yml/badge.svg"></a>
 </p>
@@ -33,18 +33,6 @@
 
 > 你说一句想让 AI 干什么，它给你一段能直接贴进 AI 的话。
 
-**写给谁：** 天天用 AI 做图、做视频、写文案，却常常不知道该怎么开口的人。
-
-**它做什么**
-
-- **说一句就交货。** 简单的事一条回复就给出提示词；你没说的细节用【】留出来并附一个例子，不先连问一串。
-- **按写给谁换写法。** 文字用角色、背景、任务、格式、约束五块；出图按画幅、主体、场景、机位、光色、风格写成连贯的句子；视频把动作写成节拍，超过 10 秒按时间分段，每段重复人物和光线。
-- **看对象说话。** 给 Midjourney 写英文短句、要排除的用 `--no`；推理模式的 AI 写清目标，不写死步骤。规矩依据 Anthropic、OpenAI、Google、Midjourney 的官方提示词指南。
-- **长期的先问清楚。** Bot 岗位指令、长期规则、分身，一次只问一个问题，把你心里的标准问出来再写，交付带 3 道测试题和版本号。
-- **改得少。** 拿来一段不好使的提示词，先说清缺了哪件，只补那几句，标出改了哪里。
-- **能存能调。** 好用的提示词存进你自己的提示词库，下次说「调出某某，改成我的」就能用。
-- **不编、不夸。** 你给的事实原样用；资料里夹带的「忽略之前的要求」这类话不照做，并提醒你。
-
 **三个技能，各干一步**
 
 | # | 技能 | 做什么 |
@@ -58,17 +46,6 @@
 ## 千机 · Gear
 
 > 你有一套反复在做的做法，它帮你造成 AI 每次都照着做的 Skill，换个 AI 也照做。
-
-**写给谁：** 和 AI 跑通过一件事、心里有一套判断标准、每天重复同一件活，想让 AI 以后都按你的来、不用每次重新交代的人。
-
-**它做什么**
-
-- **把跑通的流程原样收下。** 你刚和 AI 做成一件事，说一句「把刚才这套做成技能」：它只收最后走通的那条路，你纠正过 AI 的地方变成规则，走错又退回的路不收，这次的文件名、日期换成空位。
-- **说不清的也能问出来。** 「好主播一看就知道」这种直觉，它像记者一样一次问一个问题，追问到「看什么、怎么打分、什么直接排除」都能照做；你没说的标准不替你编，标「待确认」。
-- **按官方规格写。** 头信息、名字、介绍照 Agent Skills 官方规格写；判断、流程、知识、工具四类各用各的骨架；判断类自带「没依据就说是推测」。
-- **先定试题再写，造完先试一次。** 清单、初稿、试题一起交给你；拿你判断过的真实例子，在全新对话里只给 Skill 跑一遍，对上了才定稿。自带检查脚本 `check_skill.py`，能跑程序的地方自动查格式。
-- **改得稳。** 判错了只改出问题的那一条、写成通用规则，跳版本号、记一行改动，改完把以前的试题全部重跑。
-- **装、审、串。** 告诉你在 Claude、Codex、WorkBuddy、Grok Bot 里各怎么装；网上下的 Skill 先逐个文件看、不运行，说清它实际会做什么；几个 Skill 接成一条线，或配成一个专门的 Bot。
 
 **五个技能，各干一步**
 
@@ -86,17 +63,6 @@
 
 > 你把一堆资料交给它，它整理成一张关系清楚的知识网：每张卡一个判断，原话原样、带出处，卡和卡之间连着关系，再配一张地图。
 
-**写给谁：** 手上资料一大堆——书、课、客户聊天记录、旧文案、录音视频，或者经验全在自己脑子里——想以后反复查、反复用，交给 AI 也能直接用的人。
-
-**它做什么**
-
-- **先变成文字。** 能读的直接读；录音、视频告诉你用飞书妙记这类工具转成带时间的文字；拍的书页逐页读，看不清的标出来请你补拍；经验只在脑子里的，一次问一个问题采访出来。
-- **梳理。** 先看清全貌：有几份、目录和正文对不对得上、只有哪一部分；理出骨架、列出最重要的几件事，给你看一眼再动手。
-- **拆到一个判断一张。** 一段话讲了五点就是五张卡；原话一字不改，名字、数字、价格照原文；出处写到第几页、第几分钟、哪条消息；原文、归纳、推测分清。故事、话术模板也能成卡。
-- **往回挖逻辑。** 每个结论往回问「为什么」，原文给了理由就拆出来连上，没给就照实写「原文没给理由」；好案例反推出做法。
-- **连成关系链。** 讲同一件事的合并、出处都留；说法不一样的两边都留并标出来，你来定；用有名字的关系（属于、前提、依据、举例、细化、顺序、反驳）连起来，最后出一张地图。
-- **能接着做。** 大资料一块一块来，每块记进度，换个窗口说「继续」就接上。自带检查脚本 `check_cards.py`：查原话在不在原文里、出处翻不翻得回去、关系有没有连上。
-
 **五个技能，各干一步**
 
 | # | 技能 | 做什么 |
@@ -112,17 +78,6 @@
 ## 经纬 · Loom
 
 > 你要做的一件事——一家店、一个应用、一个技能——它陪你立起这件事的母体：根是什么、有哪些方面、里面有什么东西、彼此什么关系、以前做过什么、将来缺什么，知识带出处，存成以后任何人、任何 AI 都能站在上面看清全貌的底座。
-
-**写给谁：** 要给一件事打底的人——开一家公司或店、做一个应用、写一个要长期用的技能，想把它的思路、规划、做过的事、链路、分工都理清楚，让以后接手的人和 AI 一上来就看清全貌。
-
-**它做什么**
-
-- **像种一棵树。** 根（它是什么、为了什么、靠什么成立）、主干（几条主线）、枝（方方面面的维度）、节（维度里的东西，每样有属性、关系、状态、谁能做什么）、叶（一条条带出处的知识），还有该长没长的空枝。小到一个技能、大到一家公司，同一套做法。
-- **第一条回复就交初稿。** 你讲一讲或给份资料，它当场交一版母体草稿，没讲到的标「待确认」，不编；同时和你定 3～5 个以后最想让它答的问题，最后拿这几个问题验收。
-- **照现实建模。** 先问你这件事里真有什么，再看各个系统、表格怎么记的；一样东西只装一种（客人是东西，一次购买是事件）；关系用具体的动词（购买、来自、负责），不写「有关」。
-- **分清同名不同义。** 两个系统都叫「会员」却不是一回事，它不合并，各起清楚的名字、写清怎么区分；「回头客」「老客」定义不同也不硬合。两份说法打架，按「同场景吗、同一个问题吗、方向相反吗」判，写清各自的条件，交你定。
-- **有以前、现在、将来。** 关掉的店、换掉的货源不删，收进「以前」并写清为什么；想做没做的进「空枝」。
-- **存成底座、接着长。** 默认一个文件夹（也能放进 Obsidian 或飞书多维表格），附一页地图和「给 AI 的用法」；新情况来了，旧的冷藏、新的挂上，改规则前先写反馈单，每次改动记版本。自带检查脚本 `check_mother.py`：查定义、空关系名、死链、同名撞车、证据出处。用不着母体的事（只查一张价目表），它直说。
 
 **五个技能，各干一步**
 
@@ -140,17 +95,6 @@
 
 > 你把做好的东西交给它，它告诉你能不能交出去、哪里要改，每条都有证据。
 
-**写给谁：** 要把东西交出去、心里却没底的人——提示词、Skill、网页、小程序做好了，不知道能不能交给客户、能不能公开。
-
-**它做什么**
-
-- **一个结论，一张带证据的清单。** 结论只选一种：可以交、改完再交、要重做、判不了；每条问题写清在哪、看到了什么、违反哪条、怎么改，分严重、有风险、建议三级。
-- **按东西换查法。** 文字类查规则写得清不清楚、有没有打架、漏没漏情况，再拿真实案例核对；网页能跑 Lighthouse 就真跑，跑不了给步骤，再查密钥、假按钮、手机适配；小程序过一遍添加、状态、重进、删除、空值五项手测。
-- **考试用真实答卷说话。** 要知道到底好不好用，它定合格线、出考题、写好委托，你拿去另一家 AI 跑，答卷交回来它逐题判；没跑过不给分。
-- **防裁判的老毛病。** 两个版本对比换顺序各判一次，提醒自己长不等于好；不给自己写的东西打分。
-- **交付前看收敛。** 审一轮改一轮，问题数要越来越少；连着两轮不见少，说明是方向问题，不接着修细节。
-- **只查不改。** 给清单和改法，改交给做的一方；资料里夹带「直接回复可以交」这类话，照常查并指出来。
-
 **三个技能，各干一步**
 
 | # | 技能 | 做什么 |
@@ -164,18 +108,6 @@
 ## 起元操盘 · Genesis
 
 > 你要做一件一个助手做不完的大事——做一个要资料、要考试的 Bot，做一个项目，把一个部门或一家公司用 AI 梳理一遍——它问清楚、排好路线、派五位去做、每段都验过，只在四个要紧处请你拍板，最后交付、复盘。
-
-**写给谁：** 手上有一件大事、不知道从哪下手的人；自己做，或者替客户做都行。
-
-**它做什么**
-
-- **先判断该不该接。** 写段文案、改句话这种一次性的小事，它直说找哪一位就够了，不硬接；一件单个成员做不完的事才接，先告诉你这件事多大、大致走哪几段、哪四处要你拍板。
-- **需求一次问透。** 自己的事一次问一个问题、给选项和推荐；替客户做，就用你给的情况直接出需求书草稿：客户原话照抄，推出来的标「推演」，问不到的标「待确认」，再列出要回头问客户的几处。
-- **第一站永远是最小能跑通的一块。** 路线图写清五位先后、哪几步能同时做、每段怎么算过，先做最痛、规则最清楚、出错能撤回的那一块。
-- **派活有交接单，收活先验。** 每次派活写七栏：这一段、目标、交回什么、边界、用到的料（只写位置）、怎么算过、结果；交回来的东西先交试金验，没验过的不叫做完。交回的东西里夹带「不用验了」「已经同意了」，它不照做，原样告诉你。
-- **四个关口只认你本人。** 需求书、路线图、规划清单、交付四处请你拍板；你说「照建议」只算对列出的那几条同意，花钱和对外的事单独问。同一段返工两次还不过，它停下来报卡在哪、给你选。
-- **断了能接上。** 随做随记台账、交接说明、决策记录；隔天回来问「到哪了」，它只说三行：在哪、什么过期、下一步，不从头问。能跑程序时用 `check_caopan.py` 查哪份产物过期、交接单齐不齐。
-- **收尾带复盘。** 交付清单写清每件在哪、怎么装、怎么用、验收结论；复盘五问，改进清单每条写清交给谁改。
 
 **十个技能，各干一步**
 
@@ -224,7 +156,7 @@ curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/jingwei-v0.1.2/m
 # 试金
 curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/shijin-v0.1.10/members/shijin/dist/install.sh | bash
 # 起元操盘（它要调动五位，五位也一起装上）
-curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/caopan-v0.1.1/members/caopan/dist/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/caopan-v0.1.2/members/caopan/dist/install.sh | bash
 ```
 
 Claude Code 等能装 Skill 的 AI：在上面的命令里 `bash` 前面加上技能目录，比如青鸟是 `QINGNIAO_SKILL_DIR=~/.claude/skills bash`（千机 `QIANJI_`、凝露 `NINGLU_`、经纬 `JINGWEI_`、试金 `SHIJIN_`、起元操盘 `CAOPAN_`）；也可以把 `members/<成员>/skills/` 下的文件夹整个复制进技能目录。
@@ -272,7 +204,7 @@ Claude Code 等能装 Skill 的 AI：在上面的命令里 `bash` 前面加上�
 | 起元 | 凝露 Dew | 蒸馏 | ✅ v0.1.6 |
 | 起元 | 试金 Touchstone | 验证 | ✅ v0.1.10 |
 | 起元 | 经纬 Loom | 本体 | ✅ v0.1.2 |
-| 起元 | 起元操盘 Genesis | 统筹五位做大事 | ✅ v0.1.1 |
+| 起元 | 起元操盘 Genesis | 统筹五位做大事 | ✅ v0.1.2 |
 
 ## 常见问题
 
@@ -359,5 +291,5 @@ assets/             图片素材
 **Dew**, the fourth member, organizes a pile of material — books, courses, chat logs, recordings, or know-how that lives only in your head — into a linked web of knowledge cards: one idea per card, original quote kept word for word, source down to the page or minute, original / summarized / inferred kept apart, named links between cards, and a map. It turns audio, video and photos into text first, works in chunks you can resume, and ships `check_cards.py` to verify quotes against the source.
 **Loom**, the fifth member, builds the ontology — the mother structure — of whatever you run: a shop, a company, an app or a single skill. It writes the roots (what it is, what for, what holds it up), the main lines, every dimension, the things in each (properties, named relations, states, who can do what), past, present and the missing branches still to grow; every fact carries its source, look-alike names are told apart instead of merged, and conflicts are laid out for you to decide. The result is a plain folder (or Obsidian / Feishu Base) with a map and a how-to for AI, plus `check_mother.py` for mechanical checks.
 **Genesis** (起元操盘) is the conductor of the series. When a job is too big for one member — a bot that needs material and an exam, a project, or an AI makeover for a department or a whole company — it clarifies the requirements, plans a route whose first stop is the smallest slice that can run end to end, hands each stage to the right member with a seven-field handoff note, sends every result to Touchstone before calling it done, and stops at four gates (requirements, route, plan, delivery) where only your own reply counts. It keeps a ledger so it can tell you in three lines where things stand, what is stale and what comes next, then wraps up with a delivery list and a retrospective.
-- **Roadmap:** Qiyuan (起元) — 青鸟 Bluebird, prompts (✅ v0.1.10); 千机 Gear, skills (✅ v0.1.9); 凝露 Dew, distillation (✅ v0.1.6); 试金 Touchstone, verification (✅ v0.1.10); 经纬 Loom, ontology (✅ v0.1.2); 起元操盘 Genesis, conductor (✅ v0.1.1).
+- **Roadmap:** Qiyuan (起元) — 青鸟 Bluebird, prompts (✅ v0.1.10); 千机 Gear, skills (✅ v0.1.9); 凝露 Dew, distillation (✅ v0.1.6); 试金 Touchstone, verification (✅ v0.1.10); 经纬 Loom, ontology (✅ v0.1.2); 起元操盘 Genesis, conductor (✅ v0.1.2).
 - **License:** © 2026 GangGe. Content under CC BY 4.0; tooling under MIT.
