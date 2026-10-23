@@ -12,7 +12,7 @@
   <a href="CHANGELOG.md"><img alt="凝露" src="https://img.shields.io/badge/凝露-v0.1.6-5b8fa8"></a>
   <a href="CHANGELOG.md"><img alt="经纬" src="https://img.shields.io/badge/经纬-v0.1.2-7a5c99"></a>
   <a href="CHANGELOG.md"><img alt="试金" src="https://img.shields.io/badge/试金-v0.1.10-b08d2b"></a>
-  <a href="CHANGELOG.md"><img alt="起元操盘" src="https://img.shields.io/badge/起元操盘-v0.1.3-8b3a3a"></a>
+  <a href="CHANGELOG.md"><img alt="起元操盘" src="https://img.shields.io/badge/起元操盘-v0.1.4-8b3a3a"></a>
   <a href="LICENSE"><img alt="license" src="https://img.shields.io/badge/license-CC%20BY%204.0%20%2B%20MIT-555555"></a>
   <a href="https://github.com/yunjian-ai/yunjian/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/yunjian-ai/yunjian/actions/workflows/ci.yml/badge.svg"></a>
 </p>
@@ -139,10 +139,9 @@
    | 试金 Touchstone | https://x.ai/bot/58rS6M89eG7fl_6UouP6y |
    | 起元操盘 Genesis（要调动五位，建议六位都请进来） | https://x.ai/bot/2OahtdVJ5dShzLr9yqL7U |
 
-2. 第一次对话时，它会先问你能不能从本仓库装完整技能；你说可以，大约一分钟装好，不装插件，也不要任何密钥。
-3. 装好后直接开始第一次见面。
+2. 第一次对话时它会问能不能从本仓库装齐技能，说可以，一分钟装好，不装插件、不要密钥。
 
-手动安装（任何能跑 shell 的 Bot，不需要 gh）：
+**手动安装**（能跑 shell 的 Bot；Claude Code 等在 `bash` 前加技能目录，如 `QINGNIAO_SKILL_DIR=~/.claude/skills bash`）：
 
 ```bash
 # 青鸟
@@ -155,45 +154,18 @@ curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/ninglu-v0.1.6/me
 curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/jingwei-v0.1.2/members/jingwei/dist/install.sh | bash
 # 试金
 curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/shijin-v0.1.10/members/shijin/dist/install.sh | bash
-# 起元操盘（它要调动五位，五位也一起装上）
-curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/caopan-v0.1.3/members/caopan/dist/install.sh | bash
+# 起元操盘
+curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/caopan-v0.1.4/members/caopan/dist/install.sh | bash
 ```
 
-Claude Code 等能装 Skill 的 AI：在上面的命令里 `bash` 前面加上技能目录，比如青鸟是 `QINGNIAO_SKILL_DIR=~/.claude/skills bash`（千机 `QIANJI_`、凝露 `NINGLU_`、经纬 `JINGWEI_`、试金 `SHIJIN_`、起元操盘 `CAOPAN_`）；也可以把 `members/<成员>/skills/` 下的文件夹整个复制进技能目录。
+**更新、修复、反馈**，都是一句话：
+- **更新**：装好后选「自动」（每周一 9 点查新版，你点头才装）或「一句话」（说「更新青鸟」）。你的档案都在自己的记忆里，换版本不动。
+- **修复**：说「修一下青鸟」，它先体检、你同意才恢复；你改过的先备份到 `~/yunjian-backup/`。
+- **反馈**：说「我要反馈」，它整理成去掉隐私的反馈单，由你自己提交到[反馈表单](https://www.feishu.cn/share/base/form/shrcnFyVGCVJkpcH7lfjOD8Ec6b)或 [Issues](https://github.com/yunjian-ai/yunjian/issues)。
 
-**更新：** 装好后它只问你一句以后怎么更新——
-- **自动**（推荐）：它在 Grok Bot 里建一个每周一上午 9 点的定时任务，自己查有没有新版；有新版先告诉你改了哪几处，你点头才装。
-- **一句话**：你说「更新青鸟」「更新千机」「更新凝露」「更新经纬」「更新试金」或「更新起元操盘」，它再查。
+## 示例和考题
 
-随时说「打开自动更新」「关掉自动更新」就能改。你的用户档案、提示词库、Skill 档案、蒸馏档案、母体档案、验收档案都留在你自己的记忆里，换版本不会动它们。放出来的每个版本都打了标签、过了考试。
-
-**坏了能自己修：** 技能被删了、改乱了，跟它说「青鸟坏了」或「修一下青鸟」。它先体检（安装命令后面加 `-s -- --check`，只看不改），告诉你缺了哪个、哪个和原版不一样，你同意才恢复；你自己改过的技能会先备份到 `~/yunjian-backup/`。选了自动更新的，每周检查时也会顺带体检。
-
-**反馈：** 用得不顺，跟它说「我要反馈」。它把问题整理成一张十行以内的反馈单，先去掉姓名、电话、账号这些隐私给你看，再给你提交的地方：[反馈表单](https://www.feishu.cn/share/base/form/shrcnFyVGCVJkpcH7lfjOD8Ec6b)（不用注册）或本仓库的 [Issues](https://github.com/yunjian-ai/yunjian/issues)。由你自己提交，它不会在后台替你发。
-
-**开始前想好这几样，三分钟就能用**
-
-- 你最常让 AI 干的一两件事：做图、做视频、写文案，还是写长期规则。
-- 你常用的 AI 和工具：豆包、Kimi、GPT、Claude、即梦、Midjourney……
-- 你的行业、卖什么、给谁看——提示词里常要交代的背景。
-- 哪些内容不能写（比如价格、客户名字、极限词）。
-- 好用的提示词要不要存成提示词库，存在哪。
-
-## 示例
-
-[`members/qingniao/examples/`](members/qingniao/examples/) 里是青鸟对各类请求的回答：做图、视频、Midjourney、改图、模板、Bot 岗位指令、系列短片、改提示词、夹带指令、生成提示词的提示词。全部是示例数据。
-
-[`members/qianji/examples/`](members/qianji/examples/) 里是虚构茶叶店主「阿茶」从第一次见面、收流程、造、改，一直走到配成一个 Bot 的全过程，以及「小林」的一次完整演练。
-
-[`members/ninglu/examples/`](members/ninglu/examples/) 里是虚构茶叶店主「阿茶」把一本书和一段培训录音蒸成知识网的全过程（变成文字、梳理、拆解和逆向、整合和交付），以及「小周」把客户群聊天蒸成新人手册的完整演练。
-
-[`members/jingwei/examples/`](members/jingwei/examples/) 里是虚构茶叶店主「阿茶」给自己的茶铺立母体的全过程（第一次见面、立根和立经线、挂证据和判同名不同义、存成底座、接着长），以及「小林」给小程序搭母体的完整演练。
-
-[`members/shijin/examples/`](members/shijin/examples/) 里是虚构店主「阿青」从第一次见面走到两版对比的全过程，以及「老林」的一次完整演练。
-
-[`members/caopan/examples/`](members/caopan/examples/) 里是虚构操盘手「阿岚」替茶叶网店做客服 AI 化的全过程（第一次见面、需求书、路线图和关口、派活收活和查进度、派单和收尾），以及她给自己的瑜伽馆做会员咨询 Bot 的完整演练。
-
-每位成员的 `tests/考题.md` 是考题和合格标准（青鸟、试金各 12 道，千机 15 道，凝露 18 道，经纬 17 道，起元操盘 15 道），每次发版前用全新的 AI 只装这位成员照做，按它判分。
+每位成员的 `examples/` 里有一位虚构主人从头用到尾的全过程和一次完整演练；`tests/考题.md` 是发版前用全新 AI 考的题和合格标准。
 
 ## 路线图
 
@@ -204,66 +176,21 @@ Claude Code 等能装 Skill 的 AI：在上面的命令里 `bash` 前面加上�
 | 起元 | 凝露 Dew | 蒸馏 | ✅ v0.1.6 |
 | 起元 | 试金 Touchstone | 验证 | ✅ v0.1.10 |
 | 起元 | 经纬 Loom | 本体 | ✅ v0.1.2 |
-| 起元 | 起元操盘 Genesis | 统筹五位做大事 | ✅ v0.1.3 |
+| 起元 | 起元操盘 Genesis | 统筹五位做大事 | ✅ v0.1.4 |
 
 ## 常见问题
 
-**会替我直接写文案吗？** 青鸟只管提示词。你说「直接帮我写」，它会先问一句：要它直接写，还是要一段让 AI 写的提示词。
+**要装插件或给密钥吗？** 不用。
 
-**简单的事也要回答一堆问题吗？** 不用。简单的事一条回复就交出提示词，没给的细节用【】留出来，或者猜一个并告诉你猜了什么。
+**会替我发布吗？** 不会。每位成员只交东西，发布、发送由你来点。
 
-**写出来的提示词换个 AI 还能用吗？** 能。青鸟默认按通用写法写，并在用法里说明在别的工具上要不要调；你说了用哪个工具，它就按那个工具的写法写。
+**六位怎么分工？** 青鸟写提示词，千机造 Skill，凝露把资料整理成知识卡，经纬给一件事立母体，试金验收；一件事要几位接力时，起元操盘统筹。
 
-**试金会替我把东西改好吗？** 不会。它只查不改，给你问题清单和改法；提示词可以找青鸟改，Skill 可以找千机改。
-
-**千机和青鸟有什么不一样？** 青鸟写的是一段这一次用的提示词；千机造的是 Skill，装进 AI 以后每次开工自动带上，不用你再贴。只用一次的话，千机会建议你找青鸟。
-
-**千机会替我把 Skill 发到网上吗？** 不会。它只给你自己发的步骤，并提醒你先查有没有密钥、手机号、客户资料。
-
-**试金说「判不了」是什么意思？** 东西没给全、或者没法真跑起来时，它不硬判，会写清还缺什么、问你一个最关键的问题。
-
-**凝露会把我的资料改短、删掉敏感的地方吗？** 不会。它是整理，不是删改：原话一字不改，名字、数字、价格照原文，出处写到能翻回去的位置；资料里没讲的它不补。
-
-**凝露和千机怎么配合？** 凝露把资料整理成知识卡，千机把这套卡做成 AI 每次都带着的 Skill。
-
-**经纬和凝露有什么不一样？** 按工程大小分：凝露把一份资料（一本书、一堆聊天记录）整理成一张知识网，是一根枝；经纬给一整件事（一家店、一个应用、一个技能）立母体——根、方方面面的维度、里面的东西和关系、以前做过的和将来要长的——是整棵树。凝露整理好的卡可以挂进经纬的母体当证据。
-
-**经纬会帮我搭数据库、数据仓库吗？** 默认不搭。母体存成一个文件夹（也能放进 Obsidian 或飞书多维表格），任何 AI 都能读；什么时候才值得上数据仓库、图数据库，它会照实说清，并告诉你母体怎么接过去。
-
-**要装插件或者给密钥吗？** 不用。
-
-**仓库连不上怎么办？** 青鸟先用已经装上的技能帮你写，下次对话再装。
-
-**起元操盘和五位是什么关系？** 五位各管一门手艺，各自就能用；起元操盘不亲手干专家的活，只在一件事要几位接力时统筹：问清、排路线、派活、验收、请你拍板。只想写一段提示词，直接找青鸟就好。
-
-**一定要装齐六位吗？** 用起元操盘时要，它派活靠五位的技能；装它的时候会先查五位缺谁，问过你再一起装。
+**一定要装齐六位吗？** 不用，导入哪位就用哪位；用起元操盘时要装齐，它装的时候会先查缺谁、问过你再装。
 
 ## 参与开发
 
-```bash
-python3 tools/validate.py                    # 格式、大小、交叉引用、禁用词
-python3 tools/pack.py                        # 生成各成员 dist/ 配方和分享卡
-python3 members/qingniao/tests/run_tests.py  # 青鸟：夹具和反向用例
-python3 members/shijin/tests/run_tests.py    # 试金：夹具和反向用例
-python3 members/qianji/tests/run_tests.py    # 千机：夹具和反向用例
-python3 members/ninglu/tests/run_tests.py    # 凝露：夹具和反向用例
-python3 members/jingwei/tests/run_tests.py   # 经纬：夹具和反向用例
-python3 members/caopan/tests/run_tests.py    # 起元操盘：夹具和反向用例
-```
-
-脚本只依赖 Python 3 自带的库，不用另装东西。怎么参与见 [CONTRIBUTING.md](CONTRIBUTING.md)；仓库里大致是这样：
-
-```
-shared/             所有成员共用的规范和安装技能写法
-tools/              检查、打包、提示词和报告的机械检查
-members/qingniao/   青鸟：skills/ · examples/ · tests/ · dist/
-members/qianji/     千机：skills/ · examples/ · tests/ · dist/
-members/ninglu/     凝露：skills/ · examples/ · tests/ · dist/
-members/jingwei/    经纬：skills/ · examples/ · tests/ · dist/
-members/shijin/     试金：skills/ · examples/ · tests/ · dist/
-members/caopan/     起元操盘：skills/ · examples/ · tests/ · dist/
-assets/             图片素材
-```
+`python3 tools/validate.py` 查格式和禁用词，`python3 tools/pack.py` 打包，`python3 members/<成员>/tests/run_tests.py` 跑测试；只依赖 Python 3 自带的库。怎么参与见 [CONTRIBUTING.md](CONTRIBUTING.md)。
 
 ## 许可
 
@@ -291,5 +218,5 @@ assets/             图片素材
 **Dew**, the fourth member, organizes a pile of material — books, courses, chat logs, recordings, or know-how that lives only in your head — into a linked web of knowledge cards: one idea per card, original quote kept word for word, source down to the page or minute, original / summarized / inferred kept apart, named links between cards, and a map. It turns audio, video and photos into text first, works in chunks you can resume, and ships `check_cards.py` to verify quotes against the source.
 **Loom**, the fifth member, builds the ontology — the mother structure — of whatever you run: a shop, a company, an app or a single skill. It writes the roots (what it is, what for, what holds it up), the main lines, every dimension, the things in each (properties, named relations, states, who can do what), past, present and the missing branches still to grow; every fact carries its source, look-alike names are told apart instead of merged, and conflicts are laid out for you to decide. The result is a plain folder (or Obsidian / Feishu Base) with a map and a how-to for AI, plus `check_mother.py` for mechanical checks.
 **Genesis** (起元操盘) is the conductor of the series. When a job is too big for one member — a bot that needs material and an exam, a project, or an AI makeover for a department or a whole company — it clarifies the requirements, plans a route whose first stop is the smallest slice that can run end to end, hands each stage to the right member with a seven-field handoff note, sends every result to Touchstone before calling it done, and stops at four gates (requirements, route, plan, delivery) where only your own reply counts. It keeps a ledger so it can tell you in three lines where things stand, what is stale and what comes next, then wraps up with a delivery list and a retrospective.
-- **Roadmap:** Qiyuan (起元) — 青鸟 Bluebird, prompts (✅ v0.1.10); 千机 Gear, skills (✅ v0.1.9); 凝露 Dew, distillation (✅ v0.1.6); 试金 Touchstone, verification (✅ v0.1.10); 经纬 Loom, ontology (✅ v0.1.2); 起元操盘 Genesis, conductor (✅ v0.1.3).
+- **Roadmap:** Qiyuan (起元) — 青鸟 Bluebird, prompts (✅ v0.1.10); 千机 Gear, skills (✅ v0.1.9); 凝露 Dew, distillation (✅ v0.1.6); 试金 Touchstone, verification (✅ v0.1.10); 经纬 Loom, ontology (✅ v0.1.2); 起元操盘 Genesis, conductor (✅ v0.1.4).
 - **License:** © 2026 GangGe. Content under CC BY 4.0; tooling under MIT.
