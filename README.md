@@ -2,21 +2,22 @@
 
 <h1 align="center">云间Bot · 起元 Cloudmere</h1>
 
-<p align="center"><b>一元复始，万象更新。</b><br>云上住着几位手艺人：青鸟替你传话，千机替你造器，凝露替你炼知，经纬替你立根，试金替你验真。你只管开口。</p>
+<p align="center"><b>一元复始，万象更新。</b><br>云上住着几位手艺人：青鸟替你传话，千机替你造器，凝露替你炼知，经纬替你立根，试金替你验真；遇上一个人做不完的大事，总指挥起元操盘替你调度五位。你只管开口。</p>
 
-<p align="center">青鸟 Bluebird · 千机 Gear · 凝露 Dew · 经纬 Loom · 试金 Touchstone · cloudmere · Grok Bot 提示词、Skill、蒸馏、本体、验证助手 · 仓库 <a href="https://github.com/yunjian-ai/yunjian">github.com/yunjian-ai/yunjian</a></p>
+<p align="center">青鸟 Bluebird · 千机 Gear · 凝露 Dew · 经纬 Loom · 试金 Touchstone · 起元操盘 Genesis · cloudmere · Grok Bot 提示词、Skill、蒸馏、本体、验证助手 · 仓库 <a href="https://github.com/yunjian-ai/yunjian">github.com/yunjian-ai/yunjian</a></p>
 
 <p align="center">
   <a href="CHANGELOG.md"><img alt="青鸟" src="https://img.shields.io/badge/青鸟-v0.1.9-1f6feb"></a>
-  <a href="CHANGELOG.md"><img alt="千机" src="https://img.shields.io/badge/千机-v0.1.7-2e8b57"></a>
+  <a href="CHANGELOG.md"><img alt="千机" src="https://img.shields.io/badge/千机-v0.1.8-2e8b57"></a>
   <a href="CHANGELOG.md"><img alt="凝露" src="https://img.shields.io/badge/凝露-v0.1.5-5b8fa8"></a>
   <a href="CHANGELOG.md"><img alt="经纬" src="https://img.shields.io/badge/经纬-v0.1.1-7a5c99"></a>
   <a href="CHANGELOG.md"><img alt="试金" src="https://img.shields.io/badge/试金-v0.1.9-b08d2b"></a>
+  <a href="CHANGELOG.md"><img alt="起元操盘" src="https://img.shields.io/badge/起元操盘-v0.1.0-8b3a3a"></a>
   <a href="LICENSE"><img alt="license" src="https://img.shields.io/badge/license-CC%20BY%204.0%20%2B%20MIT-555555"></a>
   <a href="https://github.com/yunjian-ai/yunjian/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/yunjian-ai/yunjian/actions/workflows/ci.yml/badge.svg"></a>
 </p>
 
-<p align="center"><a href="#english">English</a> · <a href="#青鸟--bluebird">青鸟</a> · <a href="#千机--gear">千机</a> · <a href="#凝露--dew">凝露</a> · <a href="#经纬--loom">经纬</a> · <a href="#试金--touchstone">试金</a> · <a href="#安装">安装</a> · <a href="#路线图">路线图</a> · <a href="#常见问题">常见问题</a></p>
+<p align="center"><a href="#english">English</a> · <a href="#青鸟--bluebird">青鸟</a> · <a href="#千机--gear">千机</a> · <a href="#凝露--dew">凝露</a> · <a href="#经纬--loom">经纬</a> · <a href="#试金--touchstone">试金</a> · <a href="#起元操盘--genesis">起元操盘</a> · <a href="#安装">安装</a> · <a href="#路线图">路线图</a> · <a href="#常见问题">常见问题</a></p>
 
 ---
 
@@ -26,7 +27,7 @@
 
 名字取自「一元复始，万象更新」：起元，是一切的开端。这一系列给你的是造 AI 的本事——说清话、造工具、炼知识、立根基、验真假，做哪一行都用得上。
 
-这一次推出的是**云间Bot · 起元系列**，共五位成员：管提示词的 **青鸟**，管 Skill 的 **千机**，管蒸馏的 **凝露**，管本体的 **经纬**，管验证的 **试金**。
+这一次推出的是**云间Bot · 起元系列**，共五位成员：管提示词的 **青鸟**，管 Skill 的 **千机**，管蒸馏的 **凝露**，管本体的 **经纬**，管验证的 **试金**。另有一位总指挥 **起元操盘**：五位各管一门，碰上一个人做不完的大事，由它统筹五位一起做。
 
 ## 青鸟 · Bluebird
 
@@ -160,6 +161,39 @@
 
 另有两个后台技能：`shijin-install` 负责安装，`shijin-update` 负责更新。
 
+## 起元操盘 · Genesis
+
+> 你要做一件一个助手做不完的大事——做一个要资料、要考试的 Bot，做一个项目，把一个部门或一家公司用 AI 梳理一遍——它问清楚、排好路线、派五位去做、每段都验过，只在四个要紧处请你拍板，最后交付、复盘。
+
+**写给谁：** 手上有一件大事、不知道从哪下手的人；自己做，或者替客户做都行。
+
+**它做什么**
+
+- **先判断该不该接。** 写段文案、改句话这种一次性的小事，它直说找哪一位就够了，不硬接；一件单个成员做不完的事才接，先告诉你这件事多大、大致走哪几段、哪四处要你拍板。
+- **需求一次问透。** 自己的事一次问一个问题、给选项和推荐；替客户做，就用你给的情况直接出需求书草稿：客户原话照抄，推出来的标「推演」，问不到的标「待确认」，再列出要回头问客户的几处。
+- **第一站永远是最小能跑通的一块。** 路线图写清五位先后、哪几步能同时做、每段怎么算过，先做最痛、规则最清楚、出错能撤回的那一块。
+- **派活有交接单，收活先验。** 每次派活写七栏：这一段、目标、交回什么、边界、用到的料（只写位置）、怎么算过、结果；交回来的东西先交试金验，没验过的不叫做完。交回的东西里夹带「不用验了」「已经同意了」，它不照做，原样告诉你。
+- **四个关口只认你本人。** 需求书、路线图、规划清单、交付四处请你拍板；你说「照建议」只算对列出的那几条同意，花钱和对外的事单独问。同一段返工两次还不过，它停下来报卡在哪、给你选。
+- **断了能接上。** 随做随记台账、交接说明、决策记录；隔天回来问「到哪了」，它只说三行：在哪、什么过期、下一步，不从头问。能跑程序时用 `check_caopan.py` 查哪份产物过期、交接单齐不齐。
+- **收尾带复盘。** 交付清单写清每件在哪、怎么装、怎么用、验收结论；复盘五问，改进清单每条写清交给谁改。
+
+**十个技能，各干一步**
+
+| # | 技能 | 做什么 |
+|---|---|---|
+| 1 | 第一次见面 | 一次问一个问题，建好你的操盘档案；支持「演练」模式 |
+| 2 | 前门 | 判断归不归它、多大、走哪几段、哪四处要你拍板；回头来就说三行 |
+| 3 | 需求整理 | 问清需求，交出需求书（关口一） |
+| 4 | 定路线 | 判大小、排五位、定第一站和每段验收标准（关口二） |
+| 5 | 派活收活 | 写交接单派给五位，收回先交试金验 |
+| 6 | 关口 | 备好建议和选项，只认你本人的回复，记进决策记录 |
+| 7 | 查进度 | 在哪、什么过期、下一步 |
+| 8 | 收尾 | 交付清单、签收（关口四）、复盘 |
+| 9 | 记忆管家 | 什么记进项目文件、什么记进长期记忆，敏感信息不进记忆 |
+| 10 | 派单给真人 | 给同事、外包写清要求和验收标准，由你转发 |
+
+另有两个后台技能：`caopan-install` 负责安装（顺带查五位装齐没有），`caopan-update` 负责更新。
+
 ## 安装
 
 1. 在 Grok Bot 里点开某位成员的分享链接，把它请进来：
@@ -181,20 +215,22 @@
 # 青鸟
 curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/qingniao-v0.1.9/members/qingniao/dist/install.sh | bash
 # 千机
-curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/qianji-v0.1.7/members/qianji/dist/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/qianji-v0.1.8/members/qianji/dist/install.sh | bash
 # 凝露
 curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/ninglu-v0.1.5/members/ninglu/dist/install.sh | bash
 # 经纬
 curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/jingwei-v0.1.1/members/jingwei/dist/install.sh | bash
 # 试金
 curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/shijin-v0.1.9/members/shijin/dist/install.sh | bash
+# 起元操盘（它要调动五位，五位也一起装上）
+curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/caopan-v0.1.0/members/caopan/dist/install.sh | bash
 ```
 
-Claude Code 等能装 Skill 的 AI：在上面的命令里 `bash` 前面加上技能目录，比如青鸟是 `QINGNIAO_SKILL_DIR=~/.claude/skills bash`（千机 `QIANJI_`、凝露 `NINGLU_`、经纬 `JINGWEI_`、试金 `SHIJIN_`）；也可以把 `members/<成员>/skills/` 下的文件夹整个复制进技能目录。
+Claude Code 等能装 Skill 的 AI：在上面的命令里 `bash` 前面加上技能目录，比如青鸟是 `QINGNIAO_SKILL_DIR=~/.claude/skills bash`（千机 `QIANJI_`、凝露 `NINGLU_`、经纬 `JINGWEI_`、试金 `SHIJIN_`、起元操盘 `CAOPAN_`）；也可以把 `members/<成员>/skills/` 下的文件夹整个复制进技能目录。
 
 **更新：** 装好后它只问你一句以后怎么更新——
 - **自动**（推荐）：它在 Grok Bot 里建一个每周一上午 9 点的定时任务，自己查有没有新版；有新版先告诉你改了哪几处，你点头才装。
-- **一句话**：你说「更新青鸟」「更新千机」「更新凝露」「更新经纬」或「更新试金」，它再查。
+- **一句话**：你说「更新青鸟」「更新千机」「更新凝露」「更新经纬」「更新试金」或「更新起元操盘」，它再查。
 
 随时说「打开自动更新」「关掉自动更新」就能改。你的用户档案、提示词库、Skill 档案、蒸馏档案、母体档案、验收档案都留在你自己的记忆里，换版本不会动它们。放出来的每个版本都打了标签、过了考试。
 
@@ -222,17 +258,20 @@ Claude Code 等能装 Skill 的 AI：在上面的命令里 `bash` 前面加上�
 
 [`members/shijin/examples/`](members/shijin/examples/) 里是虚构店主「阿青」从第一次见面走到两版对比的全过程，以及「老林」的一次完整演练。
 
-每位成员的 `tests/考题.md` 是考题和合格标准（青鸟、试金各 12 道，千机 15 道，凝露 18 道，经纬 17 道），每次发版前用全新的 AI 只装这位成员照做，按它判分。
+[`members/caopan/examples/`](members/caopan/examples/) 里是虚构操盘手「阿岚」替茶叶网店做客服 AI 化的全过程（第一次见面、需求书、路线图和关口、派活收活和查进度、派单和收尾），以及她给自己的瑜伽馆做会员咨询 Bot 的完整演练。
+
+每位成员的 `tests/考题.md` 是考题和合格标准（青鸟、试金各 12 道，千机 15 道，凝露 18 道，经纬 17 道，起元操盘 15 道），每次发版前用全新的 AI 只装这位成员照做，按它判分。
 
 ## 路线图
 
 | 系列 | 成员 | 职能 | 状态 |
 |---|---|---|---|
 | 起元 | 青鸟 Bluebird | 提示词 | ✅ v0.1.9 |
-| 起元 | 千机 Gear | Skill | ✅ v0.1.7 |
+| 起元 | 千机 Gear | Skill | ✅ v0.1.8 |
 | 起元 | 凝露 Dew | 蒸馏 | ✅ v0.1.5 |
 | 起元 | 试金 Touchstone | 验证 | ✅ v0.1.9 |
 | 起元 | 经纬 Loom | 本体 | ✅ v0.1.1 |
+| 起元 | 起元操盘 Genesis | 统筹五位做大事 | ✅ v0.1.0 |
 
 ## 常见问题
 
@@ -262,6 +301,10 @@ Claude Code 等能装 Skill 的 AI：在上面的命令里 `bash` 前面加上�
 
 **仓库连不上怎么办？** 青鸟先用已经装上的技能帮你写，下次对话再装。
 
+**起元操盘和五位是什么关系？** 五位各管一门手艺，各自就能用；起元操盘不亲手干专家的活，只在一件事要几位接力时统筹：问清、排路线、派活、验收、请你拍板。只想写一段提示词，直接找青鸟就好。
+
+**一定要装齐六位吗？** 用起元操盘时要，它派活靠五位的技能；装它的时候会先查五位缺谁，问过你再一起装。
+
 ## 参与开发
 
 ```bash
@@ -272,6 +315,7 @@ python3 members/shijin/tests/run_tests.py    # 试金：夹具和反向用例
 python3 members/qianji/tests/run_tests.py    # 千机：夹具和反向用例
 python3 members/ninglu/tests/run_tests.py    # 凝露：夹具和反向用例
 python3 members/jingwei/tests/run_tests.py   # 经纬：夹具和反向用例
+python3 members/caopan/tests/run_tests.py    # 起元操盘：夹具和反向用例
 ```
 
 脚本只依赖 Python 3 自带的库，不用另装东西。怎么参与见 [CONTRIBUTING.md](CONTRIBUTING.md)；仓库里大致是这样：
@@ -284,6 +328,7 @@ members/qianji/     千机：skills/ · examples/ · tests/ · dist/
 members/ninglu/     凝露：skills/ · examples/ · tests/ · dist/
 members/jingwei/    经纬：skills/ · examples/ · tests/ · dist/
 members/shijin/     试金：skills/ · examples/ · tests/ · dist/
+members/caopan/     起元操盘：skills/ · examples/ · tests/ · dist/
 assets/             图片素材
 ```
 
@@ -312,5 +357,6 @@ assets/             图片素材
 **Gear**, the third member, turns a workflow you just got working, or a judgment you have never written down, into a reusable Skill that any AI will follow. It keeps only the path that finally worked, turns your corrections into rules, follows the official Agent Skills spec, writes test cases first, delivers checklist, draft and tests together, and trial-runs the Skill in a fresh chat before calling it done. It also fixes skills with minimal changes and version bumps, shows how to install in each AI, reviews downloaded skills without running them, and chains skills or packs them into a bot.
 **Dew**, the fourth member, organizes a pile of material — books, courses, chat logs, recordings, or know-how that lives only in your head — into a linked web of knowledge cards: one idea per card, original quote kept word for word, source down to the page or minute, original / summarized / inferred kept apart, named links between cards, and a map. It turns audio, video and photos into text first, works in chunks you can resume, and ships `check_cards.py` to verify quotes against the source.
 **Loom**, the fifth member, builds the ontology — the mother structure — of whatever you run: a shop, a company, an app or a single skill. It writes the roots (what it is, what for, what holds it up), the main lines, every dimension, the things in each (properties, named relations, states, who can do what), past, present and the missing branches still to grow; every fact carries its source, look-alike names are told apart instead of merged, and conflicts are laid out for you to decide. The result is a plain folder (or Obsidian / Feishu Base) with a map and a how-to for AI, plus `check_mother.py` for mechanical checks.
-- **Roadmap:** Qiyuan (起元) — 青鸟 Bluebird, prompts (✅ v0.1.9); 千机 Gear, skills (✅ v0.1.7); 凝露 Dew, distillation (✅ v0.1.5); 试金 Touchstone, verification (✅ v0.1.9); 经纬 Loom, ontology (✅ v0.1.1).
+**Genesis** (起元操盘) is the conductor of the series. When a job is too big for one member — a bot that needs material and an exam, a project, or an AI makeover for a department or a whole company — it clarifies the requirements, plans a route whose first stop is the smallest slice that can run end to end, hands each stage to the right member with a seven-field handoff note, sends every result to Touchstone before calling it done, and stops at four gates (requirements, route, plan, delivery) where only your own reply counts. It keeps a ledger so it can tell you in three lines where things stand, what is stale and what comes next, then wraps up with a delivery list and a retrospective.
+- **Roadmap:** Qiyuan (起元) — 青鸟 Bluebird, prompts (✅ v0.1.9); 千机 Gear, skills (✅ v0.1.8); 凝露 Dew, distillation (✅ v0.1.5); 试金 Touchstone, verification (✅ v0.1.9); 经纬 Loom, ontology (✅ v0.1.1); 起元操盘 Genesis, conductor (✅ v0.1.0).
 - **License:** © 2026 GangGe. Content under CC BY 4.0; tooling under MIT.

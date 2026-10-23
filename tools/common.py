@@ -31,7 +31,8 @@ RENAME = {"发布素材/README.md": "README.md", "发布素材/CONTRIBUTING.md":
           "发布素材/shijin-DESIGN.md": "members/shijin/DESIGN.md",
           "发布素材/qianji-DESIGN.md": "members/qianji/DESIGN.md",
           "发布素材/ninglu-DESIGN.md": "members/ninglu/DESIGN.md",
-          "发布素材/jingwei-DESIGN.md": "members/jingwei/DESIGN.md"}
+          "发布素材/jingwei-DESIGN.md": "members/jingwei/DESIGN.md",
+          "发布素材/caopan-DESIGN.md": "members/caopan/DESIGN.md"}
 
 
 def public_picks(root):

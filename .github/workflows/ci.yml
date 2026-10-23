@@ -26,3 +26,5 @@ jobs:
         run: python3 members/ninglu/tests/run_tests.py
       - name: 经纬夹具和反向用例
         run: python3 members/jingwei/tests/run_tests.py
+      - name: 起元操盘夹具和反向用例
+        run: python3 members/caopan/tests/run_tests.py
