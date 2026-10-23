@@ -73,7 +73,9 @@ def check_member(m, root, errors):
             if "不装回" not in text:
                 errors.append(f"[install] {name}: {where} 没写「比这一版新就不装回旧版」（只升不降）")
         # 两条记忆（shared/安装写法.md）：平台记忆改不准一条里的几格，所以分「安装规矩」（不变）和一行「安装状态」（装完、更新完整条换新）
-        cn = json.loads(prof.read_text(encoding="utf-8")).get("name", "").split(" · ")[0]
+        pj = json.loads(prof.read_text(encoding="utf-8"))
+        m_cn = re.match(r"你是(.+?)（", pj.get("instructions", ""))  # 中文名以岗位说明第一句为准，Bot 名字可以另起
+        cn = m_cn.group(1) if m_cn else pj.get("name", "").split(" · ")[0]
         entries = [e.strip() for e in places["memory.md"].split("\n\n") if e.strip()]
         if len(entries) != 2 or not entries[0].startswith(f"【{cn}安装规矩】") or not re.fullmatch(
                 f"【{cn}安装状态】现在装的：[^\n｜]+｜上回查新版：[^\n｜]+｜更新方式：[^\n｜]+", entries[1]):
