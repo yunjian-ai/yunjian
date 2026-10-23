@@ -7,11 +7,11 @@
 <p align="center">青鸟 Bluebird · 千机 Gear · 凝露 Dew · 经纬 Loom · 试金 Touchstone · 起元操盘 Genesis · cloudmere · Grok Bot 提示词、Skill、蒸馏、本体、验证助手 · 仓库 <a href="https://github.com/yunjian-ai/yunjian">github.com/yunjian-ai/yunjian</a></p>
 
 <p align="center">
-  <a href="CHANGELOG.md"><img alt="青鸟" src="https://img.shields.io/badge/青鸟-v0.1.9-1f6feb"></a>
-  <a href="CHANGELOG.md"><img alt="千机" src="https://img.shields.io/badge/千机-v0.1.8-2e8b57"></a>
-  <a href="CHANGELOG.md"><img alt="凝露" src="https://img.shields.io/badge/凝露-v0.1.5-5b8fa8"></a>
-  <a href="CHANGELOG.md"><img alt="经纬" src="https://img.shields.io/badge/经纬-v0.1.1-7a5c99"></a>
-  <a href="CHANGELOG.md"><img alt="试金" src="https://img.shields.io/badge/试金-v0.1.9-b08d2b"></a>
+  <a href="CHANGELOG.md"><img alt="青鸟" src="https://img.shields.io/badge/青鸟-v0.1.10-1f6feb"></a>
+  <a href="CHANGELOG.md"><img alt="千机" src="https://img.shields.io/badge/千机-v0.1.9-2e8b57"></a>
+  <a href="CHANGELOG.md"><img alt="凝露" src="https://img.shields.io/badge/凝露-v0.1.6-5b8fa8"></a>
+  <a href="CHANGELOG.md"><img alt="经纬" src="https://img.shields.io/badge/经纬-v0.1.2-7a5c99"></a>
+  <a href="CHANGELOG.md"><img alt="试金" src="https://img.shields.io/badge/试金-v0.1.10-b08d2b"></a>
   <a href="CHANGELOG.md"><img alt="起元操盘" src="https://img.shields.io/badge/起元操盘-v0.1.0-8b3a3a"></a>
   <a href="LICENSE"><img alt="license" src="https://img.shields.io/badge/license-CC%20BY%204.0%20%2B%20MIT-555555"></a>
   <a href="https://github.com/yunjian-ai/yunjian/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/yunjian-ai/yunjian/actions/workflows/ci.yml/badge.svg"></a>
@@ -213,15 +213,15 @@
 
 ```bash
 # 青鸟
-curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/qingniao-v0.1.9/members/qingniao/dist/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/qingniao-v0.1.10/members/qingniao/dist/install.sh | bash
 # 千机
-curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/qianji-v0.1.8/members/qianji/dist/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/qianji-v0.1.9/members/qianji/dist/install.sh | bash
 # 凝露
-curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/ninglu-v0.1.5/members/ninglu/dist/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/ninglu-v0.1.6/members/ninglu/dist/install.sh | bash
 # 经纬
-curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/jingwei-v0.1.1/members/jingwei/dist/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/jingwei-v0.1.2/members/jingwei/dist/install.sh | bash
 # 试金
-curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/shijin-v0.1.9/members/shijin/dist/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/shijin-v0.1.10/members/shijin/dist/install.sh | bash
 # 起元操盘（它要调动五位，五位也一起装上）
 curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/caopan-v0.1.0/members/caopan/dist/install.sh | bash
 ```
@@ -266,11 +266,11 @@ Claude Code 等能装 Skill 的 AI：在上面的命令里 `bash` 前面加上�
 
 | 系列 | 成员 | 职能 | 状态 |
 |---|---|---|---|
-| 起元 | 青鸟 Bluebird | 提示词 | ✅ v0.1.9 |
-| 起元 | 千机 Gear | Skill | ✅ v0.1.8 |
-| 起元 | 凝露 Dew | 蒸馏 | ✅ v0.1.5 |
-| 起元 | 试金 Touchstone | 验证 | ✅ v0.1.9 |
-| 起元 | 经纬 Loom | 本体 | ✅ v0.1.1 |
+| 起元 | 青鸟 Bluebird | 提示词 | ✅ v0.1.10 |
+| 起元 | 千机 Gear | Skill | ✅ v0.1.9 |
+| 起元 | 凝露 Dew | 蒸馏 | ✅ v0.1.6 |
+| 起元 | 试金 Touchstone | 验证 | ✅ v0.1.10 |
+| 起元 | 经纬 Loom | 本体 | ✅ v0.1.2 |
 | 起元 | 起元操盘 Genesis | 统筹五位做大事 | ✅ v0.1.0 |
 
 ## 常见问题
@@ -358,5 +358,5 @@ assets/             图片素材
 **Dew**, the fourth member, organizes a pile of material — books, courses, chat logs, recordings, or know-how that lives only in your head — into a linked web of knowledge cards: one idea per card, original quote kept word for word, source down to the page or minute, original / summarized / inferred kept apart, named links between cards, and a map. It turns audio, video and photos into text first, works in chunks you can resume, and ships `check_cards.py` to verify quotes against the source.
 **Loom**, the fifth member, builds the ontology — the mother structure — of whatever you run: a shop, a company, an app or a single skill. It writes the roots (what it is, what for, what holds it up), the main lines, every dimension, the things in each (properties, named relations, states, who can do what), past, present and the missing branches still to grow; every fact carries its source, look-alike names are told apart instead of merged, and conflicts are laid out for you to decide. The result is a plain folder (or Obsidian / Feishu Base) with a map and a how-to for AI, plus `check_mother.py` for mechanical checks.
 **Genesis** (起元操盘) is the conductor of the series. When a job is too big for one member — a bot that needs material and an exam, a project, or an AI makeover for a department or a whole company — it clarifies the requirements, plans a route whose first stop is the smallest slice that can run end to end, hands each stage to the right member with a seven-field handoff note, sends every result to Touchstone before calling it done, and stops at four gates (requirements, route, plan, delivery) where only your own reply counts. It keeps a ledger so it can tell you in three lines where things stand, what is stale and what comes next, then wraps up with a delivery list and a retrospective.
-- **Roadmap:** Qiyuan (起元) — 青鸟 Bluebird, prompts (✅ v0.1.9); 千机 Gear, skills (✅ v0.1.8); 凝露 Dew, distillation (✅ v0.1.5); 试金 Touchstone, verification (✅ v0.1.9); 经纬 Loom, ontology (✅ v0.1.1); 起元操盘 Genesis, conductor (✅ v0.1.0).
+- **Roadmap:** Qiyuan (起元) — 青鸟 Bluebird, prompts (✅ v0.1.10); 千机 Gear, skills (✅ v0.1.9); 凝露 Dew, distillation (✅ v0.1.6); 试金 Touchstone, verification (✅ v0.1.10); 经纬 Loom, ontology (✅ v0.1.2); 起元操盘 Genesis, conductor (✅ v0.1.0).
 - **License:** © 2026 GangGe. Content under CC BY 4.0; tooling under MIT.
