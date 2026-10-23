@@ -127,6 +127,10 @@ def check_member(m, root, errors):
                     errors.append(f"[budget] {d.name}/SKILL.md {extra.stat().st_size} 字节 > {LIM['skill_bytes']}")
             if extra.is_file() and extra.suffix == ".md" and extra.name != "SKILL.md":
                 corpus[f"{d.name}/{extra.name}"] = extra.read_text(encoding="utf-8")
+    # 骨架没补完（tools/new_member.py 生成的「【待写】」）
+    for f in [prof, m / "memory.md", m / "EXPORT.md"] + [p for d in skills for p in d.glob("*.md")]:
+        if f.exists() and "【待写】" in f.read_text(encoding="utf-8"):
+            errors.append(f"[todo] {name}: {f.relative_to(m)} 里还有「【待写】」")
     # 示例（shared/成员规范.md）：一位虚构主人从头走到尾＋一份全流程演练，开头都标「示例数据（虚构主人）」
     ex = sorted((m / "examples").glob("*.md")) if (m / "examples").is_dir() else []
     if not any("全流程" in f.name for f in ex) or len(ex) < 3:
