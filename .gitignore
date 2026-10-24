@@ -10,3 +10,11 @@ __pycache__/
 
 # 第三方本体包，只在本机拆解学结构，不上云（原件在本机母体工作文件夹）
 资料/对标/本体/
+
+# 写作对标里没写许可证、不许商用的，只在本机学，不上云
+资料/对标/写作/human-writing-skill/
+资料/对标/写作/jianghushuo-oral-skill/
+资料/对标/带货卖课/Auto-Redbook-Skills/
+资料/对标/带货卖课/xiaohongshu-ops-skill/
+资料/对标/带货卖课/sjskill/
+资料/对标/带货卖课/yihaiyoudao-skills/
