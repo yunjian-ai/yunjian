@@ -53,11 +53,11 @@ def edit_ins(rel, fn):
     return go
 
 
-banned = "".join(map(chr, (0x8BFE, 0x4EF6)))          # 名单上的词用码点拼出来，仓库里不出现明文
+banned = "".join(map(chr, (0x5DE5, 0x5177, 0x7BB1)))          # 名单上的词用码点拼出来，仓库里不出现明文
 run_negative_cases("ninglu", [
     ("budget", append(SK / "ninglu-plan/SKILL.md", "啊" * 3000)),
     ("private", append(SK / "ninglu-distill/蒸馏卡.md", "\n" + banned + "\n")),
-    ("private", append(SK / "ninglu-ingest/转写卡.md", "\n" + "".join(map(chr, (0x58A8, 0x7075))) + "\n")),
+    ("private", append(SK / "ninglu-ingest/转写卡.md", "\n" + "".join(map(chr, (0x5DE5, 0x5177, 0x7BB1))) + "\n")),
     ("xref", append(SK / "ninglu-merge/SKILL.md", "\n交给 ninglu-nonexistent。\n")),
     ("xref", append(SK / "ninglu-merge/SKILL.md", "\n见 `不存在的卡.md`。\n")),
     ("frontmatter", lambda d: (d / SK / "ninglu-distill/SKILL.md").write_text("没有头部\n", encoding="utf-8")),

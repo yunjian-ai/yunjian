@@ -38,7 +38,7 @@ def append(rel, text):
     return lambda d: (d / rel).write_text((d / rel).read_text(encoding="utf-8") + text, encoding="utf-8")
 
 
-banned = "".join(map(chr, (0x8BFE, 0x4EF6)))          # 名单上的词用码点拼出来，仓库里不出现明文
+banned = "".join(map(chr, (0x5DE5, 0x5177, 0x7BB1)))          # 名单上的词用码点拼出来，仓库里不出现明文
 
 
 def edit_ins(rel, fn):

@@ -49,7 +49,7 @@ def edit_ins(rel, fn):
     return go
 
 
-banned = "".join(map(chr, (0x8BFE, 0x4EF6)))          # 名单上的词用码点拼出来，仓库里不出现明文
+banned = "".join(map(chr, (0x5DE5, 0x5177, 0x7BB1)))          # 名单上的词用码点拼出来，仓库里不出现明文
 run_negative_cases("qianji", [
     ("budget", append(SK / "qianji-capture/SKILL.md", "啊" * 3000)),
     ("private", append(SK / "qianji-build/规则卡.md", "\n" + banned + "\n")),
@@ -72,7 +72,7 @@ run_negative_cases("qianji", [
     ("private", append(SK / "qianji-build/check_skill.py", "\n# " + banned + "\n")),
     ("private", append(Path("发布素材/qianji-DESIGN.md"), "\n" + banned + "\n")),
     # 名单上的另一个词（同样用码点拼），埋进示例，validate 也要拦（考试材料是原始资料，不扫）
-    ("private", append(Path("members/qianji/examples/01-第一次见面-阿茶.md"), "\n" + "".join(map(chr, (0x58A8, 0x7075))) + "\n")),
+    ("private", append(Path("members/qianji/examples/01-第一次见面-阿茶.md"), "\n" + "".join(map(chr, (0x5DE5, 0x5177, 0x7BB1))) + "\n")),
     # 禁用词.txt 加了词、哈希名单没跟上：两份名单不一致要报
     ("private", append(Path("tools/禁用词.txt"), "\n新加的词\n")),
 ], report)

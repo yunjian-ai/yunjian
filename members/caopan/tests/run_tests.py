@@ -63,7 +63,7 @@ def edit_ins(rel, fn):
     return go
 
 
-banned = "".join(map(chr, (0x8BFE, 0x4EF6)))          # 名单上的词用码点拼出来，仓库里不出现明文
+banned = "".join(map(chr, (0x5DE5, 0x5177, 0x7BB1)))          # 名单上的词用码点拼出来，仓库里不出现明文
 run_negative_cases("caopan", [
     ("budget", append(SK / "caopan-relay/SKILL.md", "啊" * 3000)),
     ("private", append(SK / "caopan-start/规则卡.md", "\n" + banned + "\n")),
