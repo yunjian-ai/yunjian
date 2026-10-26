@@ -177,7 +177,7 @@ curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/caopan-v0.1.6/me
 | 起元 | 试金 Touchstone | 验证 | ✅ v0.1.11 |
 | 起元 | 经纬 Loom | 本体 | ✅ v0.1.4 |
 | 起元 | 起元操盘 Genesis | 统筹五位做大事 | ✅ v0.1.6 |
-| 万象 | 执笔 Pen | 写稿（口播、长文） | ✅ v0.3.3，[另一个仓库](https://github.com/yunjian-ai/yunjian-zimeiti) |
+| 万象 | 执笔 Pen | 写稿（口播、长文） | ✅ v0.3.4，[另一个仓库](https://github.com/yunjian-ai/yunjian-zimeiti) |
 
 ## 加微信交流
 
