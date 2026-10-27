@@ -62,6 +62,7 @@ json.dump({"version": r["version"], "tag": r["tag"], "installed": time.strftime(
 print("INSTALLED", len(ok), d)
 if saved:
     print("BACKUP", backup, ",".join(saved))
-print("NEXT 收尾照新装的 jingwei-install 第 3 步做；记忆里没有「经纬安装规矩」，就把下面 RULE 后面那段原样存成一条")
-print("RULE", r["memory"][0])
+print("NEXT 收尾照新装的 jingwei-install 第 3 步做；记忆里缺「经纬安装规矩」或「经纬装完规矩」，就把下面对应那行 RULE 后面那段原样存成一条")
+for e in r["memory"][:2]:
+    print("RULE", e)
 PY
