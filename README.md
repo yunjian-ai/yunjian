@@ -132,12 +132,12 @@
 
    | 成员 | 分享链接 |
    |---|---|
-   | 青鸟 Bluebird | https://x.ai/bot/9CwXPs6jsmaQ7HObWmQce |
-   | 千机 Gear | https://x.ai/bot/JYKF36-3atI76W5QYdIq3 |
-   | 凝露 Dew | https://x.ai/bot/9zPoGWngujInyf31EjpzL |
-   | 经纬 Loom | https://x.ai/bot/yZLB_EF-gFtOe8WRFTPeq |
-   | 试金 Touchstone | https://x.ai/bot/58rS6M89eG7fl_6UouP6y |
-   | 起元操盘 Genesis（要调动五位，建议六位都请进来） | https://x.ai/bot/2OahtdVJ5dShzLr9yqL7U |
+   | 青鸟 Bluebird | https://x.ai/bot/mu25Unc7k-8V8U971c4Bm |
+   | 千机 Gear | https://x.ai/bot/jf001mfN6tUqyLzX05sri |
+   | 凝露 Dew | https://x.ai/bot/xR2AXDgI45ALlGsQDpmEj |
+   | 经纬 Loom | https://x.ai/bot/sOsWuH4aKhRWB1gsYICKM |
+   | 试金 Touchstone | https://x.ai/bot/8SiSunCVqKaWb0vdaRwd1 |
+   | 起元操盘 Genesis（要调动五位，建议六位都请进来） | https://x.ai/bot/Hfjbo_wz-7Emc4v4ysRXg |
 
 2. 第一次对话时它会问能不能从本仓库装齐技能，说可以，一分钟装好，不装插件、不要密钥。
 
