@@ -43,8 +43,8 @@ def check(folder):
             errs.append(f"[流程] 技能 {s} 没加前缀，共用技能库里会和别的 Bot 重名")
         if not s.endswith(NOT_WORK):
             text = (d / "skills" / s / "SKILL.md").read_text(encoding="utf-8")
-            for need in ("先读进度", "写进度"):
-                if need not in text:
+            for need in ("先读进度", "写进度"):  # 「不写进度」不算写了
+                if not re.search(rf"(?<!不){need}", text):
                     errs.append(f"[流程] {s} 没写「{need}」")
     tpl = d / "进度模板.md"
     if not tpl.exists():

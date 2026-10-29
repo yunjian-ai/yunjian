@@ -43,7 +43,7 @@ def problems(m):
             continue
         text = f.read_text(encoding="utf-8")
         for need in ("先读进度", "写进度"):
-            if need not in text:
+            if not re.search(rf"(?<!不){need}", text):  # 「不写进度」不算写了（10-29 掠影 reel-brief 漏过）
                 out.append(f"{d.name} 没写「{need}」")
     design = m / "DESIGN.md"
     body = design.read_text(encoding="utf-8") if design.exists() else ""
