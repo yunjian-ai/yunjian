@@ -43,7 +43,8 @@ def sub(rel, a, b):
 LONG = "发笔记的流程：" + "先看数据、再选题、写正文、做封面、配图、通读、定时发、回评论、记数据。" * 16
 BOT_CASES = [
     ("岗位", "只有一句指令", lambda d: (d / "岗位说明.md").write_text("你是小红书助手，帮阿禾做小红书。\n", encoding="utf-8")),
-    ("岗位", "第 2 段没读进度", sub("岗位说明.md", "装齐以后每次接活先读进度文件（~/.hepinglun/进度.md，没有就照进度模板建）。", "")),
+    ("岗位", "第 2 段没读进度", sub("岗位说明.md", "装齐以后每次接活（含主人说接着、到哪了）先读进度文件（~/.hepinglun/进度.md，没有就照进度模板建）、说一句停在哪，不靠聊天记录。", "")),
+    ("岗位", "第 2 段没说停在哪", sub("岗位说明.md", "、说一句停在哪，不靠聊天记录", "")),
     ("岗位", "第 3 段没写先打开技能", sub("岗位说明.md", "接到活先打开对应技能照着做，短活也一样，不凭印象答。", "")),
     ("岗位", "技能没派到", sub("岗位说明.md", "要回评论用 hepinglun-reply。", "要回评论找我。")),
     ("原则", "做法超过 8 条", sub("岗位说明.md", "做法：", "做法：" + "；".join(f"规矩{i}" for i in range(9)) + "；")),
@@ -93,6 +94,7 @@ run_negative_cases("qianji", [
     ("xref", append(SK / "qianji-ship/SKILL.md", "\n见 `不存在的卡.md`。\n")),
     ("frontmatter", lambda d: (d / SK / "qianji-improve/SKILL.md").write_text("没有头部\n", encoding="utf-8")),
     ("version", lambda d: (d / "members/qianji/VERSION").write_text("v1\n")),
+    ("export", lambda d: (d / "members/qianji/EXPORT.md").write_text((d / "members/qianji/EXPORT.md").read_text(encoding="utf-8").replace("另外 6 个技能", "另外 3 个技能"), encoding="utf-8")),  # 导出说明的卡外技能数没跟着技能数改
     ("instructions", edit_ins("members/qianji/profile.json", lambda t: t.replace("qianji-capture", "某技能"))),
     ("instructions", edit_ins("members/qianji/profile.json", lambda t: t.replace("不到 8 个", "不到 5 个"))),
     ("install", lambda d: (d / "members/qianji/memory.md").write_text("【安装记录】去别处装。\n", encoding="utf-8")),

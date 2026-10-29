@@ -24,8 +24,8 @@ def check(folder):
             errs.append("[岗位] 岗位说明要以「你是」开头")
         if len(paras) != 5:
             errs.append(f"[岗位] 岗位说明要正好五段（现在 {len(paras)} 段，段之间空一行）")
-        if len(paras) < 2 or "进度" not in paras[1]:
-            errs.append("[岗位] 第 2 段没写「每次接活先读进度文件」")
+        if len(paras) < 2 or "先读进度文件" not in paras[1] or "说一句停在哪" not in paras[1]:
+            errs.append("[岗位] 第 2 段没写「每次接活（含主人说接着、到哪了）先读进度文件、说一句停在哪」")
         if len(paras) < 3 or "先打开对应技能" not in paras[2]:
             errs.append("[岗位] 第 3 段没写「接到活先打开对应技能照着做」")
         for s in skills:

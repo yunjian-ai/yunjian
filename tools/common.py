@@ -103,6 +103,9 @@ def run_negative_cases(member, cases, report):
         if tag == "private" and not has_list:
             print(f"（跳过「{tag}」：禁用词名单只在开发仓库里，公开仓库没有）")
             continue
+        if tag == "export" and not (ROOT / "members" / member / "EXPORT.md").exists():
+            print(f"（跳过「{tag}」：导出说明只在开发仓库里，公开仓库没有）")
+            continue
         with tempfile.TemporaryDirectory() as tmp:
             copy_root = Path(tmp) / "副本"
             shutil.copytree(ROOT, copy_root, ignore=skip)

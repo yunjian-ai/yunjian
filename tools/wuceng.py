@@ -23,8 +23,8 @@ def problems(m):
     prof = m / "profile.json"
     ins = json.loads(prof.read_text(encoding="utf-8")).get("instructions", "") if prof.exists() else ""
     paras = [p for p in ins.split("\n\n") if p.strip()]
-    if len(paras) < 2 or "进度" not in paras[1]:
-        out.append("岗位说明第 2 段没写「每次接活先读进度文件」")
+    if len(paras) < 2 or "先读进度文件" not in paras[1] or "说一句停在哪" not in paras[1]:
+        out.append("岗位说明第 2 段没写「每次接活（含主人说接着、到哪了）先读进度文件、说一句停在哪」")
     if len(paras) < 3 or "先打开对应技能" not in paras[2]:
         out.append("岗位说明第 3 段没写「接到活先打开对应技能照着做」")
     n = rules_count(ins)

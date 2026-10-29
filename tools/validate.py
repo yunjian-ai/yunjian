@@ -30,6 +30,20 @@ def check_member(m, root, errors):
     ver = (m / "VERSION").read_text().strip() if (m / "VERSION").exists() else ""
     if not re.fullmatch(r"\d+\.\d+\.\d+", ver):
         errors.append(f"[version] {name}: VERSION 缺失或不是 x.y.z")
+    for readme in (root / "发布素材" / "README.md", root / "README.md"):  # 首页手动安装命令的标签要跟当前版本（v0.2.1 首页还写着 v0.2.0）
+        if readme.exists():
+            text = readme.read_text(encoding="utf-8")
+            for old in set(re.findall(rf"{name}-v(\d+\.\d+\.\d+)", text)) - {ver}:
+                errors.append(f"[version] {readme.relative_to(root)} 里写的是 {name}-v{old}，当前 VERSION 是 {ver}")
+            # 起元首页一行列好几位、「起元」又是系列名，按英文名认：表格那行、路线图里那一段、小标签（10-29：千机发到 0.2.0，首页还写 v0.1.12）
+            full = json.loads((m / "profile.json").read_text(encoding="utf-8")).get("name", "") if (m / "profile.json").exists() else ""
+            cn, en = (re.split(r"\s*·\s*", re.split(r"\s*｜", full)[0]) + [""])[:2]
+            segs = [ln for ln in text.splitlines() if ln.startswith("|") and f" {en} " in ln] if en else []
+            segs += [s for ln in text.splitlines() if ln.startswith("- **Roadmap") for s in re.split(r"[;；]|\. ", ln) if en and f" {en}," in s]
+            segs += [f"小标签 v{v}" for v in re.findall(rf"badge/{re.escape(cn)}-v(\d+\.\d+\.\d+)-", text)] if cn else []
+            for s in segs:
+                for old in set(re.findall(r"(?<![\w.-])v(\d+\.\d+\.\d+)", s)) - {ver}:
+                    errors.append(f"[version] {readme.relative_to(root)} 写{cn}的地方还是 v{old}，当前 VERSION 是 {ver}：{s.strip()[:40]}")
     prof = m / "profile.json"
     if not prof.exists():
         errors.append(f"[profile] {name}: 缺 profile.json")
@@ -52,6 +66,11 @@ def check_member(m, root, errors):
         total += (m / "memory.md").stat().st_size
     skills = sorted(d for d in (m / "skills").iterdir() if d.is_dir())
     names, corpus = {d.name for d in skills}, {}
+    # 导出说明（EXPORT.md）里写的卡外技能数要等于实际技能数减 2（卡里只带安装、第一次见面两个）
+    exp = m / "EXPORT.md"
+    for n in re.findall(r"另外 (\d+) 个技能", exp.read_text(encoding="utf-8") if exp.exists() else ""):
+        if int(n) != len(names) - 2:
+            errors.append(f"[export] {name}: EXPORT.md 写「另外 {n} 个技能」，实际应为 {len(names) - 2}")
     # 岗位说明（shared/岗位说明写法.md 第五节）
     if prof.exists():
         ins = json.loads(prof.read_text(encoding="utf-8")).get("instructions", "")
