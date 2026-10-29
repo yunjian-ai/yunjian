@@ -2,9 +2,9 @@
 
 <h1 align="center">云间Bot · 起元 Cloudmere</h1>
 
-<p align="center"><b>一元复始，万象更新。</b><br>云上住着几位手艺人：青鸟替你传话，千机替你造器，凝露替你炼知，经纬替你立根，试金替你验真；遇上一个人做不完的大事，总指挥起元操盘替你调度五位。你只管开口。</p>
+<p align="center"><b>一元复始，万象更新。</b><br>云上住着几位手艺人：青鸟替你传话，千机替你造器，凝露替你炼知，经纬替你立根，试金替你验真，照骨替你拆透别人的成品；遇上一个人做不完的大事，总指挥起元操盘替你调度五位。你只管开口。</p>
 
-<p align="center">青鸟 Bluebird · 千机 Gear · 凝露 Dew · 经纬 Loom · 试金 Touchstone · 起元操盘 Genesis · cloudmere · Grok Bot 提示词、Skill、蒸馏、本体、验证助手 · 仓库 <a href="https://github.com/yunjian-ai/yunjian">github.com/yunjian-ai/yunjian</a></p>
+<p align="center">青鸟 Bluebird · 千机 Gear · 凝露 Dew · 经纬 Loom · 试金 Touchstone · 照骨 Xray · 起元操盘 Genesis · cloudmere · Grok Bot 提示词、Skill、蒸馏、本体、验证、拆解助手 · 仓库 <a href="https://github.com/yunjian-ai/yunjian">github.com/yunjian-ai/yunjian</a></p>
 
 <p align="center">
   <a href="CHANGELOG.md"><img alt="青鸟" src="https://img.shields.io/badge/青鸟-v0.1.13-1f6feb"></a>
@@ -12,12 +12,13 @@
   <a href="CHANGELOG.md"><img alt="凝露" src="https://img.shields.io/badge/凝露-v0.1.9-5b8fa8"></a>
   <a href="CHANGELOG.md"><img alt="经纬" src="https://img.shields.io/badge/经纬-v0.1.6-7a5c99"></a>
   <a href="CHANGELOG.md"><img alt="试金" src="https://img.shields.io/badge/试金-v0.1.13-b08d2b"></a>
+  <a href="CHANGELOG.md"><img alt="照骨" src="https://img.shields.io/badge/照骨-v0.1.0-4a6670"></a>
   <a href="CHANGELOG.md"><img alt="起元操盘" src="https://img.shields.io/badge/起元操盘-v0.1.8-8b3a3a"></a>
   <a href="LICENSE"><img alt="license" src="https://img.shields.io/badge/license-CC%20BY%204.0%20%2B%20MIT-555555"></a>
   <a href="https://github.com/yunjian-ai/yunjian/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/yunjian-ai/yunjian/actions/workflows/ci.yml/badge.svg"></a>
 </p>
 
-<p align="center"><a href="#english">English</a> · <a href="#青鸟--bluebird">青鸟</a> · <a href="#千机--gear">千机</a> · <a href="#凝露--dew">凝露</a> · <a href="#经纬--loom">经纬</a> · <a href="#试金--touchstone">试金</a> · <a href="#起元操盘--genesis">起元操盘</a> · <a href="#安装">安装</a> · <a href="#路线图">路线图</a> · <a href="#常见问题">常见问题</a></p>
+<p align="center"><a href="#english">English</a> · <a href="#青鸟--bluebird">青鸟</a> · <a href="#千机--gear">千机</a> · <a href="#凝露--dew">凝露</a> · <a href="#经纬--loom">经纬</a> · <a href="#试金--touchstone">试金</a> · <a href="#照骨--xray">照骨</a> · <a href="#起元操盘--genesis">起元操盘</a> · <a href="#安装">安装</a> · <a href="#路线图">路线图</a> · <a href="#常见问题">常见问题</a></p>
 
 ---
 
@@ -27,7 +28,7 @@
 
 名字取自「一元复始，万象更新」：起元，是一切的开端。这一系列给你的是造 AI 的本事——说清话、造工具、炼知识、立根基、验真假。
 
-共六位成员：管提示词的 **青鸟**，管 Skill 的 **千机**，管蒸馏的 **凝露**，管本体的 **经纬**，管验证的 **试金**；**起元操盘**统筹五位，解决工程级别任务。
+共七位成员：管提示词的 **青鸟**，管 Skill 的 **千机**，管蒸馏的 **凝露**，管本体的 **经纬**，管验证的 **试金**，管拆解的 **照骨**；**起元操盘**统筹五位，解决工程级别任务。
 
 ## 青鸟 · Bluebird
 
@@ -105,6 +106,22 @@
 
 另有两个后台技能：`shijin-install` 负责安装，`shijin-update` 负责更新。
 
+## 照骨 · Xray
+
+> 你看到别人做得好的东西——开源仓库、Skill、Bot、App、一套做法——丢给它，它先查能不能用（是谁的、什么许可证），再一层层拆到看懂：是什么、由什么组成、怎么运作、为什么这样，每句标清是看到的、推出来的还是不知道；最后交一份吸收清单，写清哪些值得并进你自己的东西、放在哪一步。
+
+**五个技能，各干一步**
+
+| # | 技能 | 做什么 |
+|---|---|---|
+| 1 | 第一次见面 | 一次问一个问题，建好你的拆解档案，马上拆第一个；支持「演练」模式 |
+| 2 | 门禁、勘察、扒全 | 查是谁的、什么许可证（常见 18 种速查卡）、拿来干什么；只读勘察、不运行目标；原件一字不改存档 |
+| 3 | 五层还原 | 是什么 → 由什么组成 → 怎么运作 → 为什么这样 →（怎么复刻），不跳层；每句标看到 / 推出 / 不知道 |
+| 4 | 吸收清单 | 强的、不对的、不足的、放哪，每条落到你的具体技能；可出复刻规格；交付前自查 |
+| 5 | 案例库 | 先翻拆过的同类，同类满三个归纳一次规律 |
+
+解密、破解、绕授权一律不做；没有许可证的只学做法、不搬原文。另有两个后台技能：`zhaogu-install` 负责安装，`zhaogu-update` 负责更新。
+
 ## 起元操盘 · Genesis
 
 > 你要做一件一个助手做不完的大事——做一个要资料、要考试的 Bot，做一个项目，把一个部门或一家公司用 AI 梳理一遍——它问清楚、排好路线、派五位去做、每段都验过，只在四个要紧处请你拍板，最后交付、复盘。
@@ -154,6 +171,8 @@ curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/ninglu-v0.1.9/me
 curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/jingwei-v0.1.6/members/jingwei/dist/install.sh | bash
 # 试金
 curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/shijin-v0.1.13/members/shijin/dist/install.sh | bash
+# 照骨
+curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/zhaogu-v0.1.0/members/zhaogu/dist/install.sh | bash
 # 起元操盘
 curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/caopan-v0.1.8/members/caopan/dist/install.sh | bash
 ```
@@ -176,6 +195,7 @@ curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/caopan-v0.1.8/me
 | 起元 | 凝露 Dew | 蒸馏 | ✅ v0.1.9 |
 | 起元 | 试金 Touchstone | 验证 | ✅ v0.1.13 |
 | 起元 | 经纬 Loom | 本体 | ✅ v0.1.6 |
+| 起元 | 照骨 Xray | 拆解 | ✅ v0.1.0 |
 | 起元 | 起元操盘 Genesis | 统筹五位做大事 | ✅ v0.1.8 |
 | 万象 | 执笔 Pen | 写稿（口播、长文） | ✅ v0.3.10，[另一个仓库](https://github.com/yunjian-ai/yunjian-zimeiti) |
 
@@ -189,7 +209,7 @@ curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/caopan-v0.1.8/me
 
 **会替我发布吗？** 不会。每位成员只交东西，发布、发送由你来点。
 
-**六位怎么分工？** 青鸟写提示词，千机造 Skill，凝露把资料整理成知识卡，经纬给一件事立母体，试金验收；一件事要几位接力时，起元操盘统筹。
+**七位怎么分工？** 青鸟写提示词，千机造 Skill，凝露把资料整理成知识卡，经纬给一件事立母体，试金验收，照骨拆别人做好的东西、交吸收清单；一件事要几位接力时，起元操盘统筹。
 
 **一定要装齐六位吗？** 不用，导入哪位就用哪位；用起元操盘时要装齐，它装的时候会先查缺谁、问过你再装。
 
@@ -222,6 +242,8 @@ curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/caopan-v0.1.8/me
 **Gear**, the third member, turns a workflow you just got working, or a judgment you have never written down, into a reusable Skill that any AI will follow. It keeps only the path that finally worked, turns your corrections into rules, follows the official Agent Skills spec, writes test cases first, delivers checklist, draft and tests together, and trial-runs the Skill in a fresh chat before calling it done. It also fixes skills with minimal changes and version bumps, shows how to install in each AI, reviews downloaded skills without running them, and chains skills or packs them into a bot.
 **Dew**, the fourth member, organizes a pile of material — books, courses, chat logs, recordings, or know-how that lives only in your head — into a linked web of knowledge cards: one idea per card, original quote kept word for word, source down to the page or minute, original / summarized / inferred kept apart, named links between cards, and a map. It turns audio, video and photos into text first, works in chunks you can resume, and ships `check_cards.py` to verify quotes against the source.
 **Loom**, the fifth member, builds the ontology — the mother structure — of whatever you run: a shop, a company, an app or a single skill. It writes the roots (what it is, what for, what holds it up), the main lines, every dimension, the things in each (properties, named relations, states, who can do what), past, present and the missing branches still to grow; every fact carries its source, look-alike names are told apart instead of merged, and conflicts are laid out for you to decide. The result is a plain folder (or Obsidian / Feishu Base) with a map and a how-to for AI, plus `check_mother.py` for mechanical checks.
+**Xray** (照骨) takes apart things other people built — repos, skills, bots, apps, workflows. It checks who owns it and which license applies first (an 18-license cheat card built from choosealicense.com and the SPDX list), surveys read-only without running anything, archives the originals byte for byte, then rebuilds the picture layer by layer — what it is, what it is made of, how it works, why it is built that way — marking every claim as seen, inferred or unknown. It ends with an absorb list: what to adopt, what not to copy, what is missing, and exactly where each item goes in your own setup. No decryption, cracking or license workarounds; unlicensed work is studied for method only.
+
 **Genesis** (起元操盘) is the conductor of the series. When a job is too big for one member — a bot that needs material and an exam, a project, or an AI makeover for a department or a whole company — it clarifies the requirements, plans a route whose first stop is the smallest slice that can run end to end, hands each stage to the right member with a seven-field handoff note, sends every result to Touchstone before calling it done, and stops at four gates (requirements, route, plan, delivery) where only your own reply counts. It keeps a ledger so it can tell you in three lines where things stand, what is stale and what comes next, then wraps up with a delivery list and a retrospective.
-- **Roadmap:** Qiyuan (起元) — 青鸟 Bluebird, prompts (✅ v0.1.13); 千机 Gear, skills (✅ v0.2.2); 凝露 Dew, distillation (✅ v0.1.9); 试金 Touchstone, verification (✅ v0.1.13); 经纬 Loom, ontology (✅ v0.1.6); 起元操盘 Genesis, conductor (✅ v0.1.8). Wanxiang (万象) — 执笔 Pen, writing (✅ v0.3.10, [separate repo](https://github.com/yunjian-ai/yunjian-zimeiti)).
+- **Roadmap:** Qiyuan (起元) — 青鸟 Bluebird, prompts (✅ v0.1.13); 千机 Gear, skills (✅ v0.2.2); 凝露 Dew, distillation (✅ v0.1.9); 试金 Touchstone, verification (✅ v0.1.13); 经纬 Loom, ontology (✅ v0.1.6); 照骨 Xray, teardown (✅ v0.1.0); 起元操盘 Genesis, conductor (✅ v0.1.8). Wanxiang (万象) — 执笔 Pen, writing (✅ v0.3.10, [separate repo](https://github.com/yunjian-ai/yunjian-zimeiti)).
 - **License:** © 2026 GangGe. Content under CC BY 4.0; tooling under MIT.
