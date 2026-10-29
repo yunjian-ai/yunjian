@@ -28,6 +28,42 @@ for e in sorted((HERE / "expected").glob("*.json")):
     got = sorted({re.match(r"\[(.+?)\]", x).group(1) for x in check(HERE / "fixtures" / e.stem / exp["skill"])})
     report(got == sorted(exp["expect"]), f"夹具 {e.stem}", f"得到 {got} 应为 {exp['expect']}｜{exp['why']}")
 
+# ①½ 上岗包夹具（qianji-bot/check_bot.py）：合格的不许误伤；每次只埋一个错，必须报出对应类别
+import shutil, tempfile  # noqa: E402
+sys.path.insert(0, str(HERE.parent / "skills" / "qianji-bot"))
+from check_bot import check as check_bot  # noqa: E402
+GOOD = HERE / "fixtures" / "07-bot-good" / "阿禾评论助手-上岗包"
+report(check_bot(GOOD) == [], "上岗包夹具 合格的不误伤", str(check_bot(GOOD)))
+
+
+def sub(rel, a, b):
+    return lambda d: (d / rel).write_text((d / rel).read_text(encoding="utf-8").replace(a, b), encoding="utf-8")
+
+
+LONG = "发笔记的流程：" + "先看数据、再选题、写正文、做封面、配图、通读、定时发、回评论、记数据。" * 16
+BOT_CASES = [
+    ("岗位", "只有一句指令", lambda d: (d / "岗位说明.md").write_text("你是小红书助手，帮阿禾做小红书。\n", encoding="utf-8")),
+    ("岗位", "第 2 段没读进度", sub("岗位说明.md", "装齐以后每次接活先读进度文件（~/.hepinglun/进度.md，没有就照进度模板建）。", "")),
+    ("岗位", "第 3 段没写先打开技能", sub("岗位说明.md", "接到活先打开对应技能照着做，短活也一样，不凭印象答。", "")),
+    ("岗位", "技能没派到", sub("岗位说明.md", "要回评论用 hepinglun-reply。", "要回评论找我。")),
+    ("原则", "做法超过 8 条", sub("岗位说明.md", "做法：", "做法：" + "；".join(f"规矩{i}" for i in range(9)) + "；")),
+    ("流程", "干活技能没写进度", sub("skills/hepinglun-reply/SKILL.md", "1. 先读进度文件。", "1. 开始。")),
+    ("流程", "技能没加前缀", lambda d: (d / "skills/hepinglun-getting-started").rename(d / "skills/getting-started")),
+    ("状态", "缺进度模板", lambda d: (d / "进度模板.md").unlink()),
+    ("状态", "进度模板太长", lambda d: (d / "进度模板.md").write_text((d / "进度模板.md").read_text(encoding="utf-8") + "字" * 3000, encoding="utf-8")),
+    ("硬闸", "没写谁拦", sub("硬闸.md", "→ 平台先询问：「任何付款、购买、充值之前先询问。」", "→ ")),
+    ("硬闸", "缺对外发这一类", sub("硬闸.md", "- 在小红书发表评论或回复 → 平台先询问：「替我在小红书发表评论、回复评论或私信之前先询问。」\n", "")),
+    ("记忆", "一条超过 480 字", lambda d: (d / "记忆.md").write_text("主人档案：称呼阿禾。\n\n" + LONG + "\n", encoding="utf-8")),
+    ("记忆", "规矩写进了记忆", lambda d: (d / "记忆.md").write_text("主人档案：称呼阿禾。\n\n规矩：回评论前一律先给阿禾看。\n", encoding="utf-8")),
+]
+for cat, why, mut in BOT_CASES:
+    with tempfile.TemporaryDirectory() as t:
+        dst = Path(t) / GOOD.name
+        shutil.copytree(GOOD, dst)
+        mut(dst)
+        got = {re.match(r"\[(.+?)\]", x).group(1) for x in check_bot(dst)}
+        report(cat in got, f"上岗包埋错 {why}", f"得到 {sorted(got)} 应含 {cat}")
+
 # ② 仓库检查本身要通过
 r = subprocess.run([sys.executable, str(ROOT / "tools" / "validate.py"), str(ROOT)], capture_output=True, text=True)
 report(r.returncode == 0, "仓库检查通过", r.stdout.strip().splitlines()[-1] if r.stdout.strip() else r.stderr)
@@ -58,7 +94,7 @@ run_negative_cases("qianji", [
     ("frontmatter", lambda d: (d / SK / "qianji-improve/SKILL.md").write_text("没有头部\n", encoding="utf-8")),
     ("version", lambda d: (d / "members/qianji/VERSION").write_text("v1\n")),
     ("instructions", edit_ins("members/qianji/profile.json", lambda t: t.replace("qianji-capture", "某技能"))),
-    ("instructions", edit_ins("members/qianji/profile.json", lambda t: t.replace("不到 7 个", "不到 5 个"))),
+    ("instructions", edit_ins("members/qianji/profile.json", lambda t: t.replace("不到 8 个", "不到 5 个"))),
     ("install", lambda d: (d / "members/qianji/memory.md").write_text("【安装记录】去别处装。\n", encoding="utf-8")),
     ("install", edit_ins("members/qianji/profile.json", lambda t: t.replace("装的比 qianji-v{{VERSION}} 旧", "装的不是 qianji-v{{VERSION}}"))),  # 只升不降：写成「不是这一版」会劝回旧版
     ("install", lambda d: (d / "members/qianji/memory.md").write_text((d / "members/qianji/memory.md").read_text(encoding="utf-8").replace("不装回旧版", "重装"), encoding="utf-8")),  # 只升不降：漏写「不装回旧版」

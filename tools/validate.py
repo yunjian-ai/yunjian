@@ -8,6 +8,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from common import LIM, hash_hits, is_material, norm, parse_frontmatter, public_picks  # noqa: E402
+import wuceng  # noqa: E402  五层上岗检查（shared/岗位说明写法.md 第五节）
 
 REQUIRED = ("install", "update", "getting-started")
 LESSON = re.compile(r"第[一二三四五六七八九十0-9]+课")
@@ -51,7 +52,7 @@ def check_member(m, root, errors):
         total += (m / "memory.md").stat().st_size
     skills = sorted(d for d in (m / "skills").iterdir() if d.is_dir())
     names, corpus = {d.name for d in skills}, {}
-    # 岗位说明（shared/岗位说明写法.md 第四节）
+    # 岗位说明（shared/岗位说明写法.md 第五节）
     if prof.exists():
         ins = json.loads(prof.read_text(encoding="utf-8")).get("instructions", "")
         if not ins.startswith("你是"):
@@ -196,6 +197,7 @@ def main(root):
     for m in sorted((root / "members").iterdir()):
         if (m / "skills").is_dir():
             totals[m.name] = check_member(m, root, errors)
+            wuceng.check(m, errors)
     for e in errors:
         print("❌", e)
     print(("✅ 全部通过" if not errors else f"共 {len(errors)} 处问题") + "｜" + "，".join(f"{k} {v} 字节" for k, v in totals.items()))
