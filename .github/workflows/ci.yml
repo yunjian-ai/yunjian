@@ -32,3 +32,5 @@ jobs:
         run: python3 members/caopan/tests/run_tests.py
       - name: 照骨夹具和反向用例
         run: python3 members/zhaogu/tests/run_tests.py
+      - name: 起元架构体检、瘦身、改回、压测
+        run: python3 members/jiagou/tests/run_tests.py

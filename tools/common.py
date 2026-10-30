@@ -20,7 +20,7 @@ BRAND = CONFIG["brand"]  # 品牌：名（开场白「欢迎来到…」）、�
 # 公开仓库白名单：tools/publish.py 照它挑文件，tools/validate.py 照它扫——两边用同一份，平时检查不会比发布扫得少
 PUBLIC_FILES = ["LICENSE", "CHANGELOG.md", ".gitignore", ".github/workflows/ci.yml", "shared",
                 "tools/validate.py", "tools/预算.json", "tools/kernel.py", "tools/zongbiao.py", "tools/wuceng.py", "tools/pack.py", "tools/test_install.py", "tools/config.json", "tools/check_prompt.py", "tools/check_report.py",
-                "tools/make_hero.py", "tools/common.py", "assets/hero.png", "assets/README.md", "assets/wechat-qr.jpg"] + CONFIG.get("public_files_extra", [])
+                "tools/danzi.py", "tools/test_danzi.py", "tools/make_hero.py", "tools/common.py", "assets/hero.png", "assets/README.md", "assets/wechat-qr.jpg"] + CONFIG.get("public_files_extra", [])
 MEMBER_ITEMS = ["profile.json", "memory.md", "VERSION", "install.sh", "skills", "examples", "dist"]
 # 成员带的库和工具（有就挑，没有跳过）：只挑公开的部分，清单在 config.json 的 member_extras
 MEMBER_EXTRAS = CONFIG.get("member_extras", [])
@@ -54,14 +54,15 @@ def exam_version(f):
     m = re.search(r"v(\d+)\.(\d+)", f.read_text(encoding="utf-8").split("\n", 1)[0])
     return (int(m.group(1)), int(m.group(2))) if m else (0, 0)
 
-def public_picks(root):
+def public_picks(root, 含未发布=False):
     """要进公开仓库的 [(开发仓库里的源路径, 公开仓库里的相对路径)]，源可以是文件夹；不检查存不存在。
-    在公开仓库里跑时，改名的那几份源文件不在，就直接用改名后的位置。"""
+    在公开仓库里跑时，改名的那几份源文件不在，就直接用改名后的位置。
+    config.json「未发布」里的成员（还在开发）发布时跳过；validate 传 含未发布=True 照样扫。"""
     root = Path(root)
     picks = [(root / f, f) for f in PUBLIC_FILES]
     picks += [((root / s) if (root / s).exists() else (root / d), d) for s, d in RENAME.items()]
     for m in sorted((root / "members").iterdir()):
-        if not (m / "skills").is_dir():
+        if not (m / "skills").is_dir() or (m.name in CONFIG.get("未发布", []) and not 含未发布):
             continue
         picks += [(m / i, f"members/{m.name}/{i}") for i in MEMBER_ITEMS]
         picks += [(m / i, f"members/{m.name}/{i}") for i in MEMBER_EXTRAS if (m / i).exists()]

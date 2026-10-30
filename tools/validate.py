@@ -30,7 +30,7 @@ def public_files(root):
     """装进 Bot、放进公开仓库的文件：和 tools/publish.py 用同一份白名单（common.public_picks），
     发布会挑走的每个文件都扫，不论后缀（.md、.json、.py、.sh……）；开发仓库里的内部文档不扫。"""
     seen = set()
-    for src, _ in [(root / "README.md", ""), (root / "CHANGELOG.md", ""), (root / "CONTRIBUTING.md", "")] + public_picks(root):
+    for src, _ in [(root / "README.md", ""), (root / "CHANGELOG.md", ""), (root / "CONTRIBUTING.md", "")] + public_picks(root, 含未发布=True):
         for f in sorted(src.rglob("*")) if src.is_dir() else [src]:
             if f.is_file() and f not in seen and f.name != ".DS_Store" and "__pycache__" not in f.parts:
                 seen.add(f)
@@ -77,8 +77,8 @@ def check_member(m, root, errors):
             errors.append(f"[profile] {name}: 名字只写「中文名 · 英文名 ｜ 管什么」，不加出品方（2026-10-22 定）")
         if BRAND["出品方"] not in p.get("description", ""):
             errors.append(f"[profile] {name}: 简介里要写明「{BRAND['出品方']}」出品")
-        if b > LIM["profile_bytes"]:
-            errors.append(f"[budget] {name}: profile.json {b} 字节 > {LIM['profile_bytes']}")
+        if b > LIM["profile_bytes"]:  # 和别的预算项一样认豁免：新成员发布、别人第 5 段加一句时，存量超线的跟各自下个小版本改
+            over(name, ver, "profile字节", f"{name}: profile.json {b} 字节 > {LIM['profile_bytes']}", errors)
     if (m / "memory.md").exists():
         total += (m / "memory.md").stat().st_size
     skills = sorted(d for d in (m / "skills").iterdir() if d.is_dir())

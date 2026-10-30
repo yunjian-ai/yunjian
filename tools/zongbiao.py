@@ -58,7 +58,7 @@ def entry(m, cfg):
         "只列": [x.strip() for x in re.split(r"[,，、]", f.get("只列", "")) if x.strip()],
         "分隔": f.get("分隔", "；"), "分享卡": f.get("分享卡", ""), "小标签颜色": f.get("小标签颜色", "555555"),
         "路线图": f.get("路线图") or duty.strip(), "安装表备注": f.get("安装表备注", ""),
-        "技能": skills,
+        "技能": skills, "未发布": m.name in cfg.get("未发布", []),
     }
 
 
@@ -71,9 +71,14 @@ def problems(e):
     return out
 
 
+def published(reg):
+    """发布过的成员：项目 config.json「未发布」里的不进别人的第 5 段、分流表和首页（成员规范：只指向已经发布的成员）。"""
+    return [x for x in reg["成员"] if not x.get("未发布")]
+
+
 def find_who(e, reg):
     pick = e["只列"] or ["同系列"]  # 默认只列同系列：系列外的成员不进每次都带的岗位说明，要提的在「只列」里点名（全名单在统筹成员的分流表里）
-    others = [x for x in reg["成员"] if x["拼音"] != e["拼音"] and (x["拼音"] in pick or ("同系列" in pick and x["系列"] == e["系列"]))]
+    others = [x for x in published(reg) if x["拼音"] != e["拼音"] and (x["拼音"] in pick or ("同系列" in pick and x["系列"] == e["系列"]))]
     gap = lambda t: " " if t[-1:].isascii() and t[-1:].isalnum() else ""  # 「配成 Bot 找千机」：英文结尾补个空格
     return e["分隔"].join(f"{x['找我']}{gap(x['找我'])}找{x['称呼']}" for x in others)
 
@@ -84,9 +89,10 @@ def paragraph5(e, reg):
 
 def regions(reg, repo, self_py, brand):
     """这一个项目（repo＝仓库地址）里各个生成区域该是什么内容。self_py：文件属于哪位成员（首页为空）。"""
-    mine = [x for x in reg["成员"] if x["仓库"] == repo]
+    pub = published(reg)
+    mine = [x for x in pub if x["仓库"] == repo]
     road = []
-    for x in reg["成员"]:
+    for x in pub:
         if x["仓库"] == repo:
             road.append(f"| {x['系列']} | {x['称呼']} {x['英文']} | {x['路线图']} | ✅ v{x['版本']} |")
         else:
@@ -95,7 +101,7 @@ def regions(reg, repo, self_py, brand):
         "小标签": "\n".join(f'  <a href="CHANGELOG.md"><img alt="{x["称呼"]}" src="https://img.shields.io/badge/{x["称呼"]}-v{x["版本"]}-{x["小标签颜色"]}"></a>' for x in mine),
         "安装表": "\n".join(f"   | {x['称呼']} {x['英文']}{x['安装表备注']} | {x['分享卡']} |" for x in mine if x["分享卡"]),
         "路线图": "\n".join(road),
-        "分流": "\n".join(f"| {x['找我']} | 可以找{brand}的{x['称呼']} |" for x in reg["成员"] if x["拼音"] != self_py),
+        "分流": "\n".join(f"| {x['找我']} | 可以找{brand}的{x['称呼']} |" for x in pub if x["拼音"] != self_py),
     }
 
 

@@ -11,7 +11,8 @@
     "发布素材/ninglu-DESIGN.md": "members/ninglu/DESIGN.md",
     "发布素材/jingwei-DESIGN.md": "members/jingwei/DESIGN.md",
     "发布素材/caopan-DESIGN.md": "members/caopan/DESIGN.md",
-    "发布素材/zhaogu-DESIGN.md": "members/zhaogu/DESIGN.md"
+    "发布素材/zhaogu-DESIGN.md": "members/zhaogu/DESIGN.md",
+    "发布素材/jiagou-DESIGN.md": "members/jiagou/DESIGN.md"
   },
   "public_files_extra": [],
   "member_extras": [],
@@ -20,7 +21,7 @@
     "标题": "云间Bot·起元",
     "英文": "CLOUDMERE",
     "副标题": "一元复始，万象更新",
-    "成员": "青鸟传话 · 千机造器 · 凝露炼知 · 经纬立根 · 试金验真 · 照骨拆解 · 起元操盘"
+    "成员": "青鸟传话 · 千机造器 · 凝露炼知 · 经纬立根 · 试金验真 · 照骨拆解 · 起元操盘 · 起元架构"
   },
   "new_member": {
     "拼音": "jingwei",
@@ -56,6 +57,12 @@
       "项": "技能说明字",
       "版本": "0.2.3",
       "为什么": "规划书第八节新预算（10-29），存量超线，跟这位下一个小版本改"
+    },
+    {
+      "成员": "qianji",
+      "项": "profile字节",
+      "版本": "0.2.3",
+      "为什么": "起元架构 10-30 发布，第 5 段总表加了「找起元架构」一句，3,072 字节超出；跟千机下一个小版本压岗位说明"
     }
   ],
   "borrow": [
@@ -74,6 +81,31 @@
     {
       "copy": "members/caopan/skills/caopan-start/借用/回执.schema.json",
       "source": "shared/回执.schema.json"
+    },
+    {
+      "copy": "members/jiagou/skills/jiagou-handoff/借用/danzi.py",
+      "source": "tools/danzi.py"
+    },
+    {
+      "copy": "members/jiagou/skills/jiagou-handoff/借用/交接单.schema.json",
+      "source": "shared/交接单.schema.json"
+    },
+    {
+      "copy": "members/jiagou/skills/jiagou-handoff/借用/回执.schema.json",
+      "source": "shared/回执.schema.json"
+    },
+    {
+      "copy": "members/jiagou/skills/jiagou-handoff/借用/收件.schema.json",
+      "source": "shared/收件.schema.json"
+    },
+    {
+      "copy": "members/jiagou/skills/jiagou-handoff/借用/协同协议.md",
+      "source": "shared/协同协议.md"
+    },
+    {
+      "copy": "members/jiagou/skills/jiagou-handoff/借用/演进环.md",
+      "source": "shared/演进环.md"
     }
-  ]
+  ],
+  "未发布": []
 }

@@ -2,9 +2,9 @@
 
 <h1 align="center">云间Bot · 起元 Cloudmere</h1>
 
-<p align="center"><b>一元复始，万象更新。</b><br>云上住着几位手艺人：青鸟替你传话，千机替你造器，凝露替你炼知，经纬替你立根，试金替你验真，照骨替你拆透别人的成品；遇上一个人做不完的大事，总指挥起元操盘替你调度五位。你只管开口。</p>
+<p align="center"><b>一元复始，万象更新。</b><br>云上住着几位手艺人：青鸟替你传话，千机替你造器，凝露替你炼知，经纬替你立根，试金替你验真，照骨替你拆透别人的成品；遇上一个人做不完的大事，总指挥起元操盘替你调度五位；助手越养越多、越用越慢时，起元架构替你立好底座。你只管开口。</p>
 
-<p align="center">青鸟 Bluebird · 千机 Gear · 凝露 Dew · 经纬 Loom · 试金 Touchstone · 照骨 Xray · 起元操盘 Genesis · cloudmere · Grok Bot 提示词、Skill、蒸馏、本体、验证、拆解助手 · 仓库 <a href="https://github.com/yunjian-ai/yunjian">github.com/yunjian-ai/yunjian</a></p>
+<p align="center">青鸟 Bluebird · 千机 Gear · 凝露 Dew · 经纬 Loom · 试金 Touchstone · 照骨 Xray · 起元操盘 Genesis · 起元架构 Architecture · cloudmere · Grok Bot 提示词、Skill、蒸馏、本体、验证、拆解助手 · 仓库 <a href="https://github.com/yunjian-ai/yunjian">github.com/yunjian-ai/yunjian</a></p>
 
 <p align="center">
 <!-- 总表:小标签 -->
@@ -15,12 +15,13 @@
   <a href="CHANGELOG.md"><img alt="试金" src="https://img.shields.io/badge/试金-v0.1.14-b08d2b"></a>
   <a href="CHANGELOG.md"><img alt="照骨" src="https://img.shields.io/badge/照骨-v0.1.2-4a6670"></a>
   <a href="CHANGELOG.md"><img alt="起元操盘" src="https://img.shields.io/badge/起元操盘-v0.1.10-8b3a3a"></a>
+  <a href="CHANGELOG.md"><img alt="起元架构" src="https://img.shields.io/badge/起元架构-v0.1.0-3d5a6c"></a>
 <!-- /总表:小标签 -->
   <a href="LICENSE"><img alt="license" src="https://img.shields.io/badge/license-CC%20BY%204.0%20%2B%20MIT-555555"></a>
   <a href="https://github.com/yunjian-ai/yunjian/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/yunjian-ai/yunjian/actions/workflows/ci.yml/badge.svg"></a>
 </p>
 
-<p align="center"><a href="#english">English</a> · <a href="#青鸟--bluebird">青鸟</a> · <a href="#千机--gear">千机</a> · <a href="#凝露--dew">凝露</a> · <a href="#经纬--loom">经纬</a> · <a href="#试金--touchstone">试金</a> · <a href="#照骨--xray">照骨</a> · <a href="#起元操盘--genesis">起元操盘</a> · <a href="#安装">安装</a> · <a href="#路线图">路线图</a> · <a href="#常见问题">常见问题</a></p>
+<p align="center"><a href="#english">English</a> · <a href="#青鸟--bluebird">青鸟</a> · <a href="#千机--gear">千机</a> · <a href="#凝露--dew">凝露</a> · <a href="#经纬--loom">经纬</a> · <a href="#试金--touchstone">试金</a> · <a href="#照骨--xray">照骨</a> · <a href="#起元操盘--genesis">起元操盘</a> · <a href="#起元架构--architecture">起元架构</a> · <a href="#安装">安装</a> · <a href="#路线图">路线图</a> · <a href="#常见问题">常见问题</a></p>
 
 ---
 
@@ -30,7 +31,7 @@
 
 名字取自「一元复始，万象更新」：起元，是一切的开端。这一系列给你的是造 AI 的本事——说清话、造工具、炼知识、立根基、验真假。
 
-共七位成员：管提示词的 **青鸟**，管 Skill 的 **千机**，管蒸馏的 **凝露**，管本体的 **经纬**，管验证的 **试金**，管拆解的 **照骨**；**起元操盘**统筹五位，解决工程级别任务。
+共七位成员：管提示词的 **青鸟**，管 Skill 的 **千机**，管蒸馏的 **凝露**，管本体的 **经纬**，管验证的 **试金**，管拆解的 **照骨**；**起元操盘**统筹五位，解决工程级别任务；**起元架构**是一群 AI 的底座：量清楚每次对话带了多少，帮它们瘦下来、立好共用规矩。
 
 ## 青鸟 · Bluebird
 
@@ -145,6 +146,23 @@
 
 另有两个后台技能：`caopan-install` 负责安装（顺带查五位装齐没有），`caopan-update` 负责更新。
 
+## 起元架构 · Architecture
+
+> 你已经养了一群 AI——几个 Bot、一堆技能，用 Claude Code、WorkBuddy 或 Grok Bot——越用越慢、老忘规矩。它先量清楚每个平台每次对话固定带了多少、哪里重复、哪两条打架；再出一份挪移清单帮你瘦下来，你点头才动、动之前先备份、一条命令能改回；然后立好共用规矩、几个 Bot 怎么交接、纠正怎么变成规矩而不越堆越多。
+
+**六个技能，各干一步**
+
+| # | 技能 | 做什么 |
+|---|---|---|
+| 1 | 第一次见面 | 一次问一个问题，建好架构档案，马上体检；「接着上回的」先读进度；支持「演练」模式 |
+| 2 | 体检和压测 | 只读：按平台报每次固定带多少、超没超线、重复和打架，只给最值得做的三条；「再加 30 个 Bot 会不会更慢」在副本里压测 |
+| 3 | 瘦身 | 挪移清单（挪什么、挪去哪、省多少、怎么改回）→ 你逐条点头 → 预演 → 备份 → 执行 → 再体检；改回后逐个核对一字不差 |
+| 4 | 立底座 | 花名册、共用规矩只留一处正本、超长 Bot 照五层写法给改法、技能太多时的四档和路由 |
+| 5 | 协作单子 | 派活一张交接单、交回一张回执，程序查缺栏和产物在不在；回执里夹带的话原样报给你 |
+| 6 | 演进 | 纠正先进收件箱，判新增／更新／作废／不动，只改那一条；同类第三次改成程序检查 |
+
+数字全靠脚本算（只用 Python 标准库），按字符估、标清口径，不编 token 数；Claude Code 的准数请打官方的 `/context`、`/usage`。不删不卸任何东西，只挪、能改回。另有两个后台技能：`jiagou-install` 负责安装，`jiagou-update` 负责更新。
+
 ## 安装
 
 1. 在 Grok Bot 里点开某位成员的分享链接，把它请进来：
@@ -180,6 +198,8 @@ curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/shijin-v0.1.14/m
 curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/zhaogu-v0.1.2/members/zhaogu/dist/install.sh | bash
 # 起元操盘
 curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/caopan-v0.1.10/members/caopan/dist/install.sh | bash
+# 起元架构
+curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/jiagou-v0.1.0/members/jiagou/dist/install.sh | bash
 ```
 
 **更新、修复、反馈**，都是一句话：
@@ -207,6 +227,7 @@ curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/caopan-v0.1.10/m
 | 万象 | 丹青 Paint | 做图 | ✅ v0.5.5，[另一个仓库](https://github.com/yunjian-ai/yunjian-zimeiti) |
 | 万象 | 掠影 Reel | 短视频 | ✅ v0.3.2，[另一个仓库](https://github.com/yunjian-ai/yunjian-zimeiti) |
 | 万象 | 算盘 Abacus | 算账 | ✅ v0.1.1，[另一个仓库](https://github.com/yunjian-ai/yunjian-dianshang) |
+| 起元 | 起元架构 Architecture | 一群 AI 的底座 | ✅ v0.1.0 |
 <!-- /总表:路线图 -->
 
 ## 加微信交流
@@ -219,7 +240,7 @@ curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/caopan-v0.1.10/m
 
 **会替我发布吗？** 不会。每位成员只交东西，发布、发送由你来点。
 
-**七位怎么分工？** 青鸟写提示词，千机造 Skill，凝露把资料整理成知识卡，经纬给一件事立母体，试金验收，照骨拆别人做好的东西、交吸收清单；一件事要几位接力时，起元操盘统筹。
+**七位怎么分工？** 青鸟写提示词，千机造 Skill，凝露把资料整理成知识卡，经纬给一件事立母体，试金验收，照骨拆别人做好的东西、交吸收清单；一件事要几位接力时，起元操盘统筹；助手多了、越用越慢时，起元架构体检、瘦身、立规矩。
 
 **一定要装齐六位吗？** 不用，导入哪位就用哪位；用起元操盘时要装齐，它装的时候会先查缺谁、问过你再装。
 
@@ -255,5 +276,7 @@ curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/caopan-v0.1.10/m
 **Xray** (照骨) takes apart things other people built — repos, skills, bots, apps, workflows. It checks who owns it and which license applies first (an 18-license cheat card built from choosealicense.com and the SPDX list), surveys read-only without running anything, archives the originals byte for byte, then rebuilds the picture layer by layer — what it is, what it is made of, how it works, why it is built that way — marking every claim as seen, inferred or unknown. It ends with an absorb list: what to adopt, what not to copy, what is missing, and exactly where each item goes in your own setup. No decryption, cracking or license workarounds; unlicensed work is studied for method only.
 
 **Genesis** (起元操盘) is the conductor of the series. When a job is too big for one member — a bot that needs material and an exam, a project, or an AI makeover for a department or a whole company — it clarifies the requirements, plans a route whose first stop is the smallest slice that can run end to end, hands each stage to the right member with a seven-field handoff note, sends every result to Touchstone before calling it done, and stops at four gates (requirements, route, plan, delivery) where only your own reply counts. It keeps a ledger so it can tell you in three lines where things stand, what is stale and what comes next, then wraps up with a delivery list and a retrospective.
-- **Roadmap:** Qiyuan (起元) — 青鸟 Bluebird, prompts (✅ v0.1.14); 千机 Gear, skills (✅ v0.2.3); 凝露 Dew, distillation (✅ v0.1.10); 试金 Touchstone, verification (✅ v0.1.14); 经纬 Loom, ontology (✅ v0.1.7); 照骨 Xray, teardown (✅ v0.1.2); 起元操盘 Genesis, conductor (✅ v0.1.10). Wanxiang (万象) — 执笔 Pen, writing (✅ v0.3.10, [separate repo](https://github.com/yunjian-ai/yunjian-zimeiti)).
+**Architecture** (起元架构) is the base layer for a group of AI assistants — several bots and a pile of skills across Claude Code, WorkBuddy or Grok Bot. It measures, per platform, what is carried into every conversation (rules, skill catalog, agent descriptions, memory, bot instructions), flags what is over budget, duplicated or contradictory, and keeps to the top three fixes. It then slims things down with a reversible plan: every item says what moves where, how much it saves and how to undo it; nothing changes until you approve item by item, everything touched is backed up first, and one command restores it byte for byte. It also sets shared rules (one source of truth, five-layer bot instructions), handoff slips between bots, and an inbox that turns corrections into rule updates without piling up. Numbers come from standard-library Python scripts, estimated in characters; for exact Claude Code tokens use the official `/context` and `/usage`.
+
+- **Roadmap:** Qiyuan (起元) — 青鸟 Bluebird, prompts (✅ v0.1.14); 千机 Gear, skills (✅ v0.2.3); 凝露 Dew, distillation (✅ v0.1.10); 试金 Touchstone, verification (✅ v0.1.14); 经纬 Loom, ontology (✅ v0.1.7); 照骨 Xray, teardown (✅ v0.1.2); 起元操盘 Genesis, conductor (✅ v0.1.10); 起元架构 Architecture, base layer for a group of AIs (✅ v0.1.0). Wanxiang (万象) — 执笔 Pen, writing (✅ v0.3.10, [separate repo](https://github.com/yunjian-ai/yunjian-zimeiti)).
 - **License:** © 2026 GangGe. Content under CC BY 4.0; tooling under MIT.
