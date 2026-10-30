@@ -103,6 +103,13 @@ class T(unittest.TestCase):
         self.assertTrue(x["改动"][0]["内容"].splitlines()[-2].startswith("- 第"), "前半段不该带走半个标题")
         self.assertIn("发布前必须请主人点头", x["效果"])
 
+    def test_共用技能库占大头要提醒(self):
+        """10-30 Grok 实测：146 个共用技能、目录约 2.5 万字，每个 Bot 每次都带，比各 Bot 自己的指令长得多。"""
+        r = load("体检").measure(self.home, B={"共用技能库目录字": 2000})
+        self.assertTrue(r["Grok"]["共用技能库"]["目录超线"])  # 排不排进前三看大小：假电脑里 CLAUDE.md 更大；真账号 2.5 万字会排第一
+        self.assertTrue(any("共用技能库" in x["挪什么"] and x["类"] == "手工" for x in load("瘦身").items(r, self.home, "2026-10-30")))
+        self.assertFalse(any("共用技能库 40 个" in x for x in load("体检").measure(self.home)["最值得做"]), "默认线 4,000 字，假电脑 2,838 字不该提醒")
+
     def test_两个项目不算重复(self):
         line = "回复一律用简体中文，专业词第一次出现要解释。"  # 假电脑全局 CLAUDE.md 里也有这句
         ps = []

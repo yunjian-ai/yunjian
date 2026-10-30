@@ -12,7 +12,7 @@ import re
 from pathlib import Path
 
 预算 = {"CLAUDE.md行": 200, "说明截断字": 1536, "自动记忆行": 200, "自动记忆字节": 25 * 1024,
-      "WorkBuddy读字": 4000, "Bot指令字": 4000, "共用技能库个数": 200}
+      "WorkBuddy读字": 4000, "Bot指令字": 4000, "共用技能库个数": 200, "共用技能库目录字": 4000}
 口径 = {
     "CLAUDE.md行": "官方·Claude Code Memory 页：每份 200 行以内（2026-10-30 核）",
     "说明截断字": "官方·Claude Code Skills 页：description＋when_to_use 合计超 1,536 字截断（2026-10-30 核）",
@@ -20,6 +20,7 @@ from pathlib import Path
     "WorkBuddy读字": "推荐值：WorkBuddy 每次只读 MEMORY.md 前 4,000 字（实测记录，没找到官方说明）",
     "Bot指令字": "推荐值：Bot 指令 4,000 字以内（五层写法的预算线，可在 --预算 里改）",
     "共用技能库个数": "实测：Grok 共用技能库两百多项时会截断（没找到官方说明）",
+    "共用技能库目录字": "推荐值：Grok 共用技能库的目录每个 Bot 每次都带，超过 4,000 字就比大多数 Bot 自己的指令还长（10-30 实测一个账号 146 项、约 2.5 万字）",
     "字": "字＝字符（一个汉字算 1），按字符估，不是 token；准数用官方 /context、/usage",
 }
 OVERRIDE = {"on": "开", "name-only": "只露名字", "user-invocable-only": "只给用户用", "off": "关"}
@@ -167,7 +168,8 @@ def grok(d, home, B):
         bots.append({"名字": prof.get("name", f.parent.name), "id": f.parent.name, "指令字": len(ins), "超线": len(ins) > B["Bot指令字"],
                      "位置": rel(f, home), "_指令": ins})
     lib = skills([d / "workflows"], {}, B["说明截断字"]) if (d / "workflows").exists() else {"个数": 0, "每次带的字": 0}
-    return {"目录": rel(d, home), "Bot": bots, "共用技能库": {"个数": lib["个数"], "目录字": lib["每次带的字"], "超线": lib["个数"] > B["共用技能库个数"]},
+    return {"目录": rel(d, home), "Bot": bots, "共用技能库": {"个数": lib["个数"], "目录字": lib["每次带的字"], "超线": lib["个数"] > B["共用技能库个数"],
+                                                    "目录超线": lib["每次带的字"] > B["共用技能库目录字"]},
             "量不到": ["各 Bot 自己的记忆（不在沙盒里）：请在那个 Bot 里问一句「你有几条记忆、多少字」", "账号共用记忆（在云端，沙盒里没有）"]}
 
 
@@ -229,6 +231,9 @@ def top3(r, B):
         over = [b for b in r["Grok"]["Bot"] if b["超线"]]
         if over:
             c.append((sum(b["指令字"] - B["Bot指令字"] for b in over), f"Grok {len(over)} 个 Bot 指令超 {B['Bot指令字']} 字（{'、'.join(b['名字'] for b in over)}）：照五层写法改"))
+    if r["Grok"] and r["Grok"]["共用技能库"].get("目录超线"):
+        lib = r["Grok"]["共用技能库"]
+        c.append((lib["目录字"], f"Grok 共用技能库 {lib['个数']} 个、目录 {lib['目录字']} 字，每个 Bot 每次都带：不常用的挪进归档（全账号共用，挪走后所有 Bot 都用不到，先查在用）"))
     if r["重复"]:
         c.append((sum(len(d["规矩"]) * (len(d["位置"]) - 1) for d in r["重复"]), f"{len(r['重复'])} 条规矩写在两处以上（最多的一条在 {len(r['重复'][0]['位置'])} 处）：只留一个正本"))
     return [t for _, t in sorted(c, key=lambda x: -x[0])[:3]]

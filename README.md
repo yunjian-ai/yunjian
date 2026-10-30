@@ -15,7 +15,7 @@
   <a href="CHANGELOG.md"><img alt="试金" src="https://img.shields.io/badge/试金-v0.1.14-b08d2b"></a>
   <a href="CHANGELOG.md"><img alt="照骨" src="https://img.shields.io/badge/照骨-v0.1.2-4a6670"></a>
   <a href="CHANGELOG.md"><img alt="起元操盘" src="https://img.shields.io/badge/起元操盘-v0.1.10-8b3a3a"></a>
-  <a href="CHANGELOG.md"><img alt="起元架构" src="https://img.shields.io/badge/起元架构-v0.1.0-3d5a6c"></a>
+  <a href="CHANGELOG.md"><img alt="起元架构" src="https://img.shields.io/badge/起元架构-v0.1.1-3d5a6c"></a>
 <!-- /总表:小标签 -->
   <a href="LICENSE"><img alt="license" src="https://img.shields.io/badge/license-CC%20BY%204.0%20%2B%20MIT-555555"></a>
   <a href="https://github.com/yunjian-ai/yunjian/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/yunjian-ai/yunjian/actions/workflows/ci.yml/badge.svg"></a>
@@ -177,6 +177,7 @@
    | 试金 Touchstone | https://x.ai/bot/8SiSunCVqKaWb0vdaRwd1 |
    | 照骨 Xray | https://x.ai/bot/IQsCuw0vG7LK-laVfesAi |
    | 起元操盘 Genesis（要调动五位，建议六位都请进来） | https://x.ai/bot/Hfjbo_wz-7Emc4v4ysRXg |
+   | 起元架构 Architecture | https://x.ai/bot/qAqbzn1gekpJt4q6fmiFr |
    <!-- /总表:安装表 -->
 
 2. 第一次对话时它会问能不能从本仓库装齐技能，说可以，一分钟装好，不装插件、不要密钥。
@@ -199,7 +200,7 @@ curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/zhaogu-v0.1.2/me
 # 起元操盘
 curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/caopan-v0.1.10/members/caopan/dist/install.sh | bash
 # 起元架构
-curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/jiagou-v0.1.0/members/jiagou/dist/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/jiagou-v0.1.1/members/jiagou/dist/install.sh | bash
 ```
 
 **更新、修复、反馈**，都是一句话：
@@ -227,7 +228,7 @@ curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/jiagou-v0.1.0/me
 | 万象 | 丹青 Paint | 做图 | ✅ v0.5.5，[另一个仓库](https://github.com/yunjian-ai/yunjian-zimeiti) |
 | 万象 | 掠影 Reel | 短视频 | ✅ v0.3.2，[另一个仓库](https://github.com/yunjian-ai/yunjian-zimeiti) |
 | 万象 | 算盘 Abacus | 算账 | ✅ v0.1.1，[另一个仓库](https://github.com/yunjian-ai/yunjian-dianshang) |
-| 起元 | 起元架构 Architecture | 一群 AI 的底座 | ✅ v0.1.0 |
+| 起元 | 起元架构 Architecture | 一群 AI 的底座 | ✅ v0.1.1 |
 <!-- /总表:路线图 -->
 
 ## 加微信交流
@@ -278,5 +279,5 @@ curl -fsSL https://raw.githubusercontent.com/yunjian-ai/yunjian/jiagou-v0.1.0/me
 **Genesis** (起元操盘) is the conductor of the series. When a job is too big for one member — a bot that needs material and an exam, a project, or an AI makeover for a department or a whole company — it clarifies the requirements, plans a route whose first stop is the smallest slice that can run end to end, hands each stage to the right member with a seven-field handoff note, sends every result to Touchstone before calling it done, and stops at four gates (requirements, route, plan, delivery) where only your own reply counts. It keeps a ledger so it can tell you in three lines where things stand, what is stale and what comes next, then wraps up with a delivery list and a retrospective.
 **Architecture** (起元架构) is the base layer for a group of AI assistants — several bots and a pile of skills across Claude Code, WorkBuddy or Grok Bot. It measures, per platform, what is carried into every conversation (rules, skill catalog, agent descriptions, memory, bot instructions), flags what is over budget, duplicated or contradictory, and keeps to the top three fixes. It then slims things down with a reversible plan: every item says what moves where, how much it saves and how to undo it; nothing changes until you approve item by item, everything touched is backed up first, and one command restores it byte for byte. It also sets shared rules (one source of truth, five-layer bot instructions), handoff slips between bots, and an inbox that turns corrections into rule updates without piling up. Numbers come from standard-library Python scripts, estimated in characters; for exact Claude Code tokens use the official `/context` and `/usage`.
 
-- **Roadmap:** Qiyuan (起元) — 青鸟 Bluebird, prompts (✅ v0.1.14); 千机 Gear, skills (✅ v0.2.3); 凝露 Dew, distillation (✅ v0.1.10); 试金 Touchstone, verification (✅ v0.1.14); 经纬 Loom, ontology (✅ v0.1.7); 照骨 Xray, teardown (✅ v0.1.2); 起元操盘 Genesis, conductor (✅ v0.1.10); 起元架构 Architecture, base layer for a group of AIs (✅ v0.1.0). Wanxiang (万象) — 执笔 Pen, writing (✅ v0.3.10, [separate repo](https://github.com/yunjian-ai/yunjian-zimeiti)).
+- **Roadmap:** Qiyuan (起元) — 青鸟 Bluebird, prompts (✅ v0.1.14); 千机 Gear, skills (✅ v0.2.3); 凝露 Dew, distillation (✅ v0.1.10); 试金 Touchstone, verification (✅ v0.1.14); 经纬 Loom, ontology (✅ v0.1.7); 照骨 Xray, teardown (✅ v0.1.2); 起元操盘 Genesis, conductor (✅ v0.1.10); 起元架构 Architecture, base layer for a group of AIs (✅ v0.1.1). Wanxiang (万象) — 执笔 Pen, writing (✅ v0.3.10, [separate repo](https://github.com/yunjian-ai/yunjian-zimeiti)).
 - **License:** © 2026 GangGe. Content under CC BY 4.0; tooling under MIT.
