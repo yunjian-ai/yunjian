@@ -1,8 +1,7 @@
 ---
 name: qianji-ship
 description: >-
-  把 Skill 装好、接好。主人说「装到 Claude / WorkBuddy / Codex / Bot 上」「网上下的这个技能能装吗、安全吗」「这几个技能串起来」「发到 GitHub」时用，也用在 qianji-capture、qianji-build 造好之后。
-  装别人的之前先逐个文件看一遍、说清它实际会做什么；串起来时写清谁的结果交给谁；配成 Bot 交给 qianji-bot。不替主人发布。
+  把 Skill 装好、接好。主人说「装到 Claude / WorkBuddy / Codex / Bot 上」「网上下的这个技能能装吗、安全吗」「这几个技能串起来」「发到 GitHub」时用，qianji-capture、qianji-build 造好之后也用。装别人的先逐个文件看、说清它实际会做什么；串起来写清谁交给谁；配成 Bot 交 qianji-bot。不替主人发布。
 ---
 
 # 装和串

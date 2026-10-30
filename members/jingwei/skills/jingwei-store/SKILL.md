@@ -1,8 +1,7 @@
 ---
 name: jingwei-store
 description: >-
-  存成底座：把母体放到主人用得上的地方，让以后的人和 AI 都能顺着查。主人说「存下来」「放进 Obsidian / 飞书」「以后别的 AI 也要能用」「要不要上数据库 / 数据仓库」时用；也在 jingwei-frame、jingwei-weave 做完一轮之后用。
-  按环境选载体，建文件夹或表，出地图和给 AI 的用法，跑 check_mother.py，用一个真动作验；更重的东西只讲清什么时候需要。
+  存成底座：把母体放到主人用得上的地方，让以后的人和 AI 顺着查。主人说「存下来」「放进 Obsidian / 飞书」「以后别的 AI 也要能用」「要不要上数据库」时用；jingwei-frame、jingwei-weave 做完一轮后也用。按环境选载体，建文件夹或表，出地图和用法，跑 check_mother.py，用一个真动作验。
 ---
 
 # 存成底座

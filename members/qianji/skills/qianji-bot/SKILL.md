@@ -1,8 +1,7 @@
 ---
 name: qianji-bot
 description: >-
-  造一个专门干一件事的 Bot，或给越用越笨的老 Bot 体检瘦身。主人说「帮我做个 Bot」「几个技能配成一个 Bot」「做个专门回评论的 Bot」「这个 Bot 越来越笨、越来越慢」「Bot 老忘事」「帮我看看这个 Bot」时用；qianji-capture、qianji-build 造好一组技能、要配成 Bot 时也用。
-  照五层上岗出上岗包：岗位、原则、流程、状态、硬闸，常带的少而稳，会变的进文件，不许做的交程序和平台拦；老 Bot 先列体检清单请主人确认，不自己删记忆。单个技能的装和串用 qianji-ship。
+  造一个专门干一件事的 Bot，或给越用越笨的老 Bot 体检瘦身。主人说「帮我做个 Bot」「几个技能配成一个 Bot」「这个 Bot 越来越笨、越来越慢」「Bot 老忘事」时用；qianji-capture、qianji-build 造好技能要配成 Bot 时也用。照五层上岗出上岗包；老 Bot 先列体检清单请主人确认，不自己删记忆。单个技能的装和串用 qianji-ship。
 metadata:
   version: "0.2"
 ---
