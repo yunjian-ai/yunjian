@@ -32,7 +32,7 @@ curl -fsSL https://raw.githubusercontent.com/{{OWNER}}/{{REPO}}/jingwei-v{{VERSI
 
 ## 4. 体检和修复
 主人说「经纬坏了」「修一下经纬」「体检经纬」，或者每周检查（jingwei-update 第 5 节）时：
-1. 先体检，只看不改：
+1. 先体检，只看不改（主人说「修一下」、或者坏的地方是你自己刚改的，也照这三步走：先体检、报结果、问过再修，不凭记忆直接改回）：
 ```bash
 curl -fsSL https://raw.githubusercontent.com/{{OWNER}}/{{REPO}}/jingwei-v{{VERSION}}/members/jingwei/dist/install.sh | bash -s -- --check
 ```

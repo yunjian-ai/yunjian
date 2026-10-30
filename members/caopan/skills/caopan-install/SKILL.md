@@ -32,7 +32,7 @@ curl -fsSL https://raw.githubusercontent.com/{{OWNER}}/{{REPO}}/caopan-v{{VERSIO
 
 ## 4. 体检和修复
 主人说「起元操盘坏了」「修一下起元操盘」「体检起元操盘」，或者每周检查（caopan-update 第 5 节）时：
-1. 先体检，只看不改：
+1. 先体检，只看不改（主人说「修一下」、或者坏的地方是你自己刚改的，也照这三步走：先体检、报结果、问过再修，不凭记忆直接改回）：
 ```bash
 curl -fsSL https://raw.githubusercontent.com/{{OWNER}}/{{REPO}}/caopan-v{{VERSION}}/members/caopan/dist/install.sh | bash -s -- --check
 ```
@@ -44,4 +44,5 @@ curl -fsSL https://raw.githubusercontent.com/{{OWNER}}/{{REPO}}/caopan-v{{VERSIO
 起元操盘要派五位干活，装完自己的技能后，再数一数技能目录里五位的技能：`qingniao-`（青鸟）、`qianji-`（千机）、`ninglu-`（凝露）、`jingwei-`（经纬）、`shijin-`（试金）。
 - 都在：不用说。
 - 缺哪位：用一句话告诉主人缺谁、缺了会影响哪一段（例：缺试金就没法验收），问「要一起装上吗」。主人同意，就照那位自己的安装技能（`<拼音>-install`）装；那位的安装技能也没有，就打开 https://github.com/{{OWNER}}/{{REPO}} 首页「安装」一节，照那位那一行的命令装。主人不装，就在路线图里写明这一段要主人另找人做。
+- 路线里有「先拆别人的成品」一段才用得上照骨（`zhaogu-`）：到那段缺了再照上面问装不装，这一步不硬装。
 - 只读五位的技能，不改；五位各自的档案不动。

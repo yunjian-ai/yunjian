@@ -32,7 +32,7 @@ curl -fsSL https://raw.githubusercontent.com/{{OWNER}}/{{REPO}}/ninglu-v{{VERSIO
 
 ## 4. 体检和修复
 主人说「凝露坏了」「修一下凝露」「体检凝露」，或者每周检查（ninglu-update 第 5 节）时：
-1. 先体检，只看不改：
+1. 先体检，只看不改（主人说「修一下」、或者坏的地方是你自己刚改的，也照这三步走：先体检、报结果、问过再修，不凭记忆直接改回）：
 ```bash
 curl -fsSL https://raw.githubusercontent.com/{{OWNER}}/{{REPO}}/ninglu-v{{VERSION}}/members/ninglu/dist/install.sh | bash -s -- --check
 ```
