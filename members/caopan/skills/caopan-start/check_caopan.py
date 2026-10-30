@@ -1,11 +1,14 @@
 """查一个操盘项目文件夹走到哪了、哪里不对（只用 Python 自带的库）。
 用法：python3 check_caopan.py <项目文件夹>
 逐条打印「❌ [类别] 说明」，最后打印三行：在哪、什么过期、下一步。没问题返回 0，有问题返回 1。
-类别：过期（下游比上游旧）、交接单（七栏缺栏）、验收（结论不是三选一）、关口（往下走了却没有主人本人、或经主人转达的决定记录）。
+类别：过期（下游比上游旧）、交接单／回执（缺栏、空栏、超字数、自检没打勾，照同目录 借用/danzi.py）、验收（结论不是三选一）、关口（往下走了却没有主人本人、或经主人转达的决定记录）。
 九段的固定文件名见同目录 `流程卡.md`。"""
 import re
 import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent / "借用"))
+import danzi  # noqa: E402  协同协议的单子检查（借用自起元架构引擎）
 
 # 段号 → (段名, 产物路径)；目录用 / 结尾
 STAGES = [
@@ -24,7 +27,6 @@ DEPENDS = {"02": ["01"], "03": ["02", "原始资料/"], "04": ["03"], "05": ["02
            "06": ["05"], "08": ["06", "07"], "09": ["08"]}
 # 有了这一段的产物，说明哪个关口必须已经过了
 GATES = {"02": "关口一", "03": "关口二", "06": "关口三", "09": "关口四"}
-FIELDS = ("这一段", "目标", "交回格式", "边界", "用到的料", "验收标准", "结果")
 VERDICTS = ("部分通过", "不通过", "通过")  # 先比长的，免得「部分通过」被当成「通过」
 
 
@@ -61,14 +63,9 @@ def check(root):
                 name_u = next((n for c, n, _ in STAGES if c == up), up.rstrip("/"))
                 stale.append(f"{name_d} 比 {name_u} 旧")
     errs += [f"[过期] {s}，要回头重做或重新确认" for s in stale]
-    # ② 交接单：任何 md 里写了「### 交接单」的，七栏都要有
+    # ② 交接单、回执：照协同协议的 Schema 查（八栏、回执五栏、字数、自检打勾）
     for f in sorted(root.rglob("*.md")):
-        text = f.read_text(encoding="utf-8", errors="ignore")
-        for block in re.split(r"(?m)^### 交接单", text)[1:]:
-            block = re.split(r"(?m)^#{1,3} ", block)[0]
-            miss = [k for k in FIELDS if not re.search(rf"(?m)^\s*-\s*{k}(（[^）\n]*）)?[：:]", block)]  # 栏名后可带「（收活时填）」这类说明
-            if miss:
-                errs.append(f"[交接单] {f.relative_to(root)} 缺栏：{'、'.join(miss)}")
+        errs += danzi.check_text(f.read_text(encoding="utf-8", errors="ignore"), f"{f.relative_to(root)}：")
     # ③ 验收：07-验收/ 里每份都要有一行「结论：通过 / 部分通过 / 不通过」
     vdir = root / "07-验收"
     if vdir.is_dir():

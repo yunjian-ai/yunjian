@@ -51,7 +51,7 @@ def edit_ins(rel, fn):
 
 
 run_negative_cases("qingniao", [
-    ("budget", append(SK / "qingniao-write/SKILL.md", "啊" * 3000)),
+    ("budget", append(SK / "qingniao-write/SKILL.md", "啊" * 33000)),  # 超过 96KB 硬上限（预算.json）,
     ("private", append(SK / "qingniao-write/规则卡.md", "\n" + banned + "\n")),
     ("xref", append(SK / "qingniao-write/SKILL.md", "\n交给 qingniao-nonexistent。\n")),
     ("xref", append(SK / "qingniao-write/SKILL.md", "\n见 `不存在的卡.md`。\n")),

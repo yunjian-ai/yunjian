@@ -68,7 +68,7 @@ def edit(rel, a, b):
 
 banned = "".join(map(chr, (0x5DE5, 0x5177, 0x7BB1)))          # 名单上的词用码点拼出来，仓库里不出现明文
 run_negative_cases("jingwei", [
-    ("budget", append(SK / "jingwei-frame/SKILL.md", "啊" * 3000)),
+    ("budget", append(SK / "jingwei-frame/SKILL.md", "啊" * 33000)),  # 超过 96KB 硬上限（预算.json）,
     ("private", append(SK / "jingwei-frame/母体卡.md", "\n" + banned + "\n")),
     ("xref", append(SK / "jingwei-weave/SKILL.md", "\n交给 jingwei-nonexistent。\n")),
     ("xref", append(SK / "jingwei-store/SKILL.md", "\n见 `不存在的卡.md`。\n")),

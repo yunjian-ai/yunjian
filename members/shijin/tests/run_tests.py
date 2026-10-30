@@ -51,7 +51,7 @@ def edit_ins(rel, fn):
 
 
 run_negative_cases("shijin", [
-    ("budget", append(SK / "shijin-check/SKILL.md", "啊" * 3000)),
+    ("budget", append(SK / "shijin-check/SKILL.md", "啊" * 33000)),  # 超过 96KB 硬上限（预算.json）,
     ("private", append(SK / "shijin-check/规则卡.md", "\n" + banned + "\n")),
     ("xref", append(SK / "shijin-check/SKILL.md", "\n交给 shijin-nonexistent。\n")),
     ("xref", append(SK / "shijin-check/SKILL.md", "\n见 `不存在的卡.md`。\n")),

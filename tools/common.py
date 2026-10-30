@@ -11,29 +11,41 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 with open(ROOT / "tools" / "config.json", encoding="utf-8") as _fh:
     CONFIG = json.load(_fh)
-LIM = CONFIG["limits"]
+BUDGET = json.loads((ROOT / "tools" / "预算.json").read_text(encoding="utf-8"))  # 引擎统一的预算（规划书第八节）
+LIM = {"skill_bytes": BUDGET["技能字节"], "skill_warn_bytes": BUDGET["技能提醒字节"], "total_bytes": BUDGET["成员合计字节"],
+       "profile_bytes": BUDGET["profile字节"], "description_chars": BUDGET["简介字"]}
+BRAND = CONFIG["brand"]  # 品牌：名（开场白「欢迎来到…」）、出品方（简介里要写）、目录（~/.<目录>/、<目录>-backup）
 
 
 # 公开仓库白名单：tools/publish.py 照它挑文件，tools/validate.py 照它扫——两边用同一份，平时检查不会比发布扫得少
 PUBLIC_FILES = ["LICENSE", "CHANGELOG.md", ".gitignore", ".github/workflows/ci.yml", "shared",
-                "tools/validate.py", "tools/wuceng.py", "tools/pack.py", "tools/test_install.py", "tools/config.json", "tools/check_prompt.py", "tools/check_report.py",
-                "tools/make_hero.py", "tools/common.py", "assets/hero.png", "assets/README.md", "assets/wechat-qr.jpg"]
+                "tools/validate.py", "tools/预算.json", "tools/kernel.py", "tools/zongbiao.py", "tools/wuceng.py", "tools/pack.py", "tools/test_install.py", "tools/config.json", "tools/check_prompt.py", "tools/check_report.py",
+                "tools/make_hero.py", "tools/common.py", "assets/hero.png", "assets/README.md", "assets/wechat-qr.jpg"] + CONFIG.get("public_files_extra", [])
 MEMBER_ITEMS = ["profile.json", "memory.md", "VERSION", "install.sh", "skills", "examples", "dist"]
+# 成员带的库和工具（有就挑，没有跳过）：只挑公开的部分，清单在 config.json 的 member_extras
+MEMBER_EXTRAS = CONFIG.get("member_extras", [])
 MEMBER_TEST_ITEMS = ["fixtures", "expected", "run_tests.py", "材料"]
 
 
+LIB_GENERATED = {"目录.md", "索引.json", "统计.md"}  # 建目录.py 生成的；发布时在公开副本里只用公开卡重建
+
+
+def is_unpublished(path):
+    """不会原样发出去的库文件：没标「公开: true」的爆款卡（发布时删掉），和建目录.py 生成的目录、索引、统计、招式（发布时只用公开卡重建，重建后的由发布扫描查）。"""
+    parts = Path(path).parts
+    if "库" not in parts:
+        return False
+    if "爆款" in parts and str(path).endswith(".md"):
+        head = Path(path).read_text(encoding="utf-8").split("\n---", 1)[0]
+        return not __import__("re").search(r"^公开:\s*true\s*$", head, __import__("re").M)
+    return Path(path).name in LIB_GENERATED or "招式" in parts
+
+
 def is_material(rel):
-    """考试材料是要处理的原始资料，原样保留，不做禁用词扫描（杨先生 2026-10-22 定：扫描只扫自己写的说明，不碰资料原文）。"""
+    """考试材料是要处理的原始资料，原样保留，不做禁用词扫描（2026-10-22 定：扫描只扫自己写的说明，不碰资料原文）。"""
     parts = Path(rel).parts
     return "tests" in parts and "材料" in parts
-RENAME = {"发布素材/README.md": "README.md", "发布素材/CONTRIBUTING.md": "CONTRIBUTING.md",
-          "发布素材/qingniao-DESIGN.md": "members/qingniao/DESIGN.md",
-          "发布素材/shijin-DESIGN.md": "members/shijin/DESIGN.md",
-          "发布素材/qianji-DESIGN.md": "members/qianji/DESIGN.md",
-          "发布素材/ninglu-DESIGN.md": "members/ninglu/DESIGN.md",
-          "发布素材/jingwei-DESIGN.md": "members/jingwei/DESIGN.md",
-          "发布素材/caopan-DESIGN.md": "members/caopan/DESIGN.md",
-          "发布素材/zhaogu-DESIGN.md": "members/zhaogu/DESIGN.md"}
+RENAME = {"发布素材/README.md": "README.md", "发布素材/CONTRIBUTING.md": "CONTRIBUTING.md", **CONFIG.get("rename_extra", {})}
 
 
 
@@ -52,6 +64,7 @@ def public_picks(root):
         if not (m / "skills").is_dir():
             continue
         picks += [(m / i, f"members/{m.name}/{i}") for i in MEMBER_ITEMS]
+        picks += [(m / i, f"members/{m.name}/{i}") for i in MEMBER_EXTRAS if (m / i).exists()]
         tests = sorted((m / "tests").glob("考题*.md"), key=exam_version)  # 公开的考题用最新一版（按第一行写的版本号，不按文件名排），统一叫 考题.md
         if tests:
             picks.append((tests[-1], f"members/{m.name}/tests/考题.md"))
@@ -95,6 +108,18 @@ def hash_hits(text, entries):
     return hits
 
 
+def copy_minimal(root, dst, member, skip):
+    """埋错用的副本只放这位成员＋公共部分（根目录文件、tools、shared、发布素材、assets）：埋的错都在这位身上，
+    别的成员不用复制、不用检查——原来每例复制整个仓库，一位成员的测试要 30～70 秒。"""
+    dst.mkdir(parents=True)
+    for f in root.iterdir():
+        if f.is_file():
+            shutil.copy2(f, dst / f.name)
+    for d in ("tools", "shared", "发布素材", "assets", ".github", f"members/{member}"):
+        if (root / d).is_dir():
+            shutil.copytree(root / d, dst / d, ignore=skip)
+
+
 def run_negative_cases(member, cases, report):
     """反向用例：每个用例都在一份临时副本里埋一个错，然后跑检查脚本——它必须失败，并且报出这个类别。
     cases 是 [(类别, 埋错的函数), ...]；埋错的函数拿到副本的根目录。"""
@@ -109,7 +134,7 @@ def run_negative_cases(member, cases, report):
             continue
         with tempfile.TemporaryDirectory() as tmp:
             copy_root = Path(tmp) / "副本"
-            shutil.copytree(ROOT, copy_root, ignore=skip)
+            copy_minimal(ROOT, copy_root, member, skip)
             plant(copy_root)
             done = subprocess.run([sys.executable, "tools/validate.py", "."], cwd=copy_root, capture_output=True, text=True)
             caught = done.returncode != 0 and ("[" + tag + "]") in done.stdout

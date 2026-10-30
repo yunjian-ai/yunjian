@@ -1,11 +1,79 @@
 {
   "github_owner": "yunjian-ai",
   "repo": "yunjian",
-  "limits": {
-    "skill_bytes": 6144,
-    "total_bytes": 81920,
-    "profile_bytes": 3072,
-    "description_chars": 400
+  "feedback_url": "https://www.feishu.cn/share/base/form/shrcnFyVGCVJkpcH7lfjOD8Ec6b",
+  "系列": "起元",
+  "readme_version_by": "en",
+  "rename_extra": {
+    "发布素材/qingniao-DESIGN.md": "members/qingniao/DESIGN.md",
+    "发布素材/shijin-DESIGN.md": "members/shijin/DESIGN.md",
+    "发布素材/qianji-DESIGN.md": "members/qianji/DESIGN.md",
+    "发布素材/ninglu-DESIGN.md": "members/ninglu/DESIGN.md",
+    "发布素材/jingwei-DESIGN.md": "members/jingwei/DESIGN.md",
+    "发布素材/caopan-DESIGN.md": "members/caopan/DESIGN.md",
+    "发布素材/zhaogu-DESIGN.md": "members/zhaogu/DESIGN.md"
   },
-  "feedback_url": "https://www.feishu.cn/share/base/form/shrcnFyVGCVJkpcH7lfjOD8Ec6b"
+  "public_files_extra": [],
+  "member_extras": [],
+  "email_ok": [],
+  "hero": {
+    "标题": "云间Bot·起元",
+    "英文": "CLOUDMERE",
+    "副标题": "一元复始，万象更新",
+    "成员": "青鸟传话 · 千机造器 · 凝露炼知 · 经纬立根 · 试金验真 · 照骨拆解 · 起元操盘"
+  },
+  "new_member": {
+    "拼音": "jingwei",
+    "中文": "经纬",
+    "英文": "Loom",
+    "技能数": 7,
+    "管什么": "本体",
+    "开场白后半": "给一件事立起它的母体，打好地基",
+    "档案": "母体档案",
+    "系列": "起元",
+    "漏改词": [
+      "母体"
+    ],
+    "开发手册": "资料/方法/云间Bot开发手册.md",
+    "源": "members/jingwei"
+  },
+  "brand": {
+    "名": "云间",
+    "出品方": "云间工作室",
+    "英文": "Cloudmere",
+    "目录": "yunjian"
+  },
+  "共用记忆字": 275,
+  "预算豁免": [
+    {
+      "成员": "jingwei",
+      "项": "技能说明字",
+      "版本": "0.1.7",
+      "为什么": "规划书第八节新预算（10-29），存量超线，跟这位下一个小版本改"
+    },
+    {
+      "成员": "qianji",
+      "项": "技能说明字",
+      "版本": "0.2.3",
+      "为什么": "规划书第八节新预算（10-29），存量超线，跟这位下一个小版本改"
+    }
+  ],
+  "borrow": [
+    {
+      "copy": "members/caopan/skills/caopan-start/借用/协同协议.md",
+      "source": "shared/协同协议.md"
+    },
+    {
+      "copy": "members/caopan/skills/caopan-start/借用/danzi.py",
+      "source": "tools/danzi.py"
+    },
+    {
+      "copy": "members/caopan/skills/caopan-start/借用/交接单.schema.json",
+      "source": "shared/交接单.schema.json"
+    },
+    {
+      "copy": "members/caopan/skills/caopan-start/借用/回执.schema.json",
+      "source": "shared/回执.schema.json"
+    }
+  ]
 }

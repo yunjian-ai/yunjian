@@ -65,7 +65,7 @@ def edit_ins(rel, fn):
 
 banned = "".join(map(chr, (0x5DE5, 0x5177, 0x7BB1)))          # 名单上的词用码点拼出来，仓库里不出现明文
 run_negative_cases("caopan", [
-    ("budget", append(SK / "caopan-relay/SKILL.md", "啊" * 3000)),
+    ("budget", append(SK / "caopan-relay/SKILL.md", "啊" * 33000)),  # 超过 96KB 硬上限（预算.json）,
     ("private", append(SK / "caopan-start/规则卡.md", "\n" + banned + "\n")),
     ("private", append(SK / "caopan-start/check_caopan.py", "\n# " + banned + "\n")),
     ("xref", append(SK / "caopan-route/SKILL.md", "\n交给 caopan-nonexistent。\n")),

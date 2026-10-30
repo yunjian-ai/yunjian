@@ -19,7 +19,7 @@ python3 - "$RJ" "$D" "$MODE" <<'PY'
 import hashlib, json, os, sys, time
 r = json.load(open(sys.argv[1], encoding="utf-8")); d, mode = sys.argv[2], sys.argv[3]
 assert r["version"] == "0.2.3", "版本不对"
-ok = [s for s in r["skills"] if s["name"].startswith("qianji-") and len(s["content"].encode()) <= 6144]
+ok = [s for s in r["skills"] if s["name"].startswith("qianji-") and len(s["content"].encode()) <= 98304]
 assert len(ok) == len(r["skills"]), "技能校验没过"
 if not d:
     print("NO_SKILL_DIR", len(ok), sys.argv[1]); sys.exit(0)
@@ -31,6 +31,7 @@ for s in ok:
         want[s["name"] + "/" + n] = t
 fp = lambda t: hashlib.sha256(t.encode()).hexdigest()[:16]
 state_file = os.path.join(d, "qianji-install", ".yunjian-installed.json")
+same = lambda a, b: a is not None and b is not None and [x.rstrip() for x in a.replace("\r\n", "\n").strip().split("\n")] == [x.rstrip() for x in b.replace("\r\n", "\n").strip().split("\n")]  # 平台存技能时会动换行和行尾空白，这种不算改过
 try:
     old = json.load(open(state_file, encoding="utf-8"))
 except Exception:
@@ -42,7 +43,7 @@ def now(rel):
         return None
 if mode == "--check":
     missing = [k for k in want if now(k) is None]
-    changed = [k for k in want if now(k) not in (None, want[k])]
+    changed = [k for k in want if now(k) is not None and not same(now(k), want[k])]
     print("CHECK", "OK" if not missing and not changed else "PROBLEM", "装的版本", old.get("version", "不知道"), "对照", r["tag"])
     print("MISSING", ",".join(missing) or "-")
     print("CHANGED", ",".join(changed) or "-")
@@ -52,7 +53,7 @@ backup = os.path.join(os.path.expanduser("~"), "yunjian-backup", "qianji-" + tim
 saved = []
 for k, t in want.items():
     cur = now(k)
-    if cur is not None and cur != t and old.get("files", {}).get(k) not in (None, fp(cur)):
+    if cur is not None and not same(cur, t) and old.get("files", {}).get(k) not in (None, fp(cur)):
         os.makedirs(os.path.dirname(os.path.join(backup, k)), exist_ok=True)
         open(os.path.join(backup, k), "w", encoding="utf-8").write(cur); saved.append(k)
     os.makedirs(os.path.dirname(os.path.join(d, k)), exist_ok=True)

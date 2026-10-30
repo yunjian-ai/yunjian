@@ -100,7 +100,7 @@ def edit_ins(fn):
 
 banned = "".join(map(chr, (0x5DE5, 0x5177, 0x7BB1)))          # 名单上的词用码点拼出来，仓库里不出现明文
 run_negative_cases("zhaogu", [
-    ("budget", append(SKR / "zhaogu-scan/SKILL.md", "啊" * 3000)),
+    ("budget", append(SKR / "zhaogu-scan/SKILL.md", "啊" * 33000)),  # 超过 96KB 硬上限（预算.json）,
     ("private", append(SKR / "zhaogu-scan/许可证卡.md", "\n" + banned + "\n")),
     ("private", append(SKR / "zhaogu-scan/勘察.py", "\n# " + banned + "\n")),
     ("xref", append(SKR / "zhaogu-layers/SKILL.md", "\n交给 zhaogu-nonexistent。\n")),
